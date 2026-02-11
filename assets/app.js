@@ -10,6 +10,7 @@
   var searchTerm = "";
   var kitFilter = "";
   var isDesktop = window.matchMedia("(min-width: 768px)").matches;
+  var selectedItems = []; // session-only selection list
 
   /* ── DOM refs ── */
   var searchInput = document.getElementById("search");
@@ -17,6 +18,14 @@
   var sortSelect = document.getElementById("sort-select");
   var statusBar = document.getElementById("status-bar");
   var listEl = document.getElementById("item-list");
+  var selectedBtn = document.getElementById("selected-btn");
+  var selOverlay = document.getElementById("sel-overlay");
+  var selDrawer = document.getElementById("sel-drawer");
+  var selTitle = document.getElementById("sel-title");
+  var selList = document.getElementById("sel-list");
+  var selClose = document.getElementById("sel-close");
+  var selExport = document.getElementById("sel-export");
+  var selClear = document.getElementById("sel-clear");
 
   /* ── CSV Parsing ── */
   function parseCSVRows(text) {
@@ -198,8 +207,13 @@
     var html = "";
     for (var i = 0; i < filteredItems.length; i++) {
       var it = filteredItems[i];
+      var isSel = isSelected(it);
       html += '<div class="card">';
+      html += '<div class="card-top"><div class="card-top-left">';
       html += '<div class="nsn">' + escapeHtml(it.nsn) + "</div>";
+      html += '</div>';
+      html += '<button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added \u2713" : "Add") + '</button>';
+      html += '</div>';
       html += '<div class="desc">' + escapeHtml(it.description || "\u2014") + "</div>";
       html += '<div class="meta">';
       html += "<span><span class=\"label\">UoM:</span> " + escapeHtml(it.uom || "\u2014") + "</span>";
@@ -224,12 +238,14 @@
 
   function renderTable() {
     var html = '<table class="inv-table"><thead><tr>';
-    html += "<th>NSN</th><th>Description</th><th>UoM</th><th>Qty</th><th>Kit Membership</th>";
+    html += "<th></th><th>NSN</th><th>Description</th><th>UoM</th><th>Qty</th><th>Kit Membership</th>";
     html += "</tr></thead><tbody>";
     for (var i = 0; i < filteredItems.length; i++) {
       var it = filteredItems[i];
       var needsTruncate = it.kits.length > 120;
+      var isSel = isSelected(it);
       html += "<tr>";
+      html += '<td class="sel-cell"><button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added \u2713" : "Add") + '</button></td>';
       html += "<td>" + escapeHtml(it.nsn) + "</td>";
       html += "<td>" + escapeHtml(it.description || "\u2014") + "</td>";
       html += "<td>" + escapeHtml(it.uom || "\u2014") + "</td>";
@@ -317,6 +333,158 @@
   function escapeAttr(s) {
     return escapeHtml(s);
   }
+
+  /* ── Selection Feature ── */
+  function isSelected(item) {
+    for (var i = 0; i < selectedItems.length; i++) {
+      if (selectedItems[i].nsn === item.nsn && selectedItems[i].description === item.description) return true;
+    }
+    return false;
+  }
+
+  function toggleSelect(nsn) {
+    // find item in allItems
+    var item = null;
+    for (var i = 0; i < allItems.length; i++) {
+      if (allItems[i].nsn === nsn) { item = allItems[i]; break; }
+    }
+    if (!item) return;
+
+    var idx = -1;
+    for (var i = 0; i < selectedItems.length; i++) {
+      if (selectedItems[i].nsn === item.nsn && selectedItems[i].description === item.description) { idx = i; break; }
+    }
+    if (idx >= 0) {
+      selectedItems.splice(idx, 1);
+    } else {
+      selectedItems.push(item);
+    }
+    updateSelectedCount();
+    render();
+  }
+
+  function removeSelected(nsn, desc) {
+    for (var i = 0; i < selectedItems.length; i++) {
+      if (selectedItems[i].nsn === nsn && selectedItems[i].description === desc) {
+        selectedItems.splice(i, 1);
+        break;
+      }
+    }
+    updateSelectedCount();
+    renderDrawer();
+  }
+
+  function updateSelectedCount() {
+    var n = selectedItems.length;
+    selectedBtn.textContent = "Selected (" + n + ")";
+    selTitle.textContent = "Selected (" + n + ")";
+  }
+
+  function openDrawer() {
+    renderDrawer();
+    selDrawer.classList.remove("hidden");
+    selOverlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    selDrawer.classList.add("hidden");
+    selOverlay.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  function renderDrawer() {
+    updateSelectedCount();
+    if (selectedItems.length === 0) {
+      selList.innerHTML = '<div class="sel-empty">No items selected.</div>';
+      return;
+    }
+    var html = "";
+    for (var i = 0; i < selectedItems.length; i++) {
+      var it = selectedItems[i];
+      html += '<div class="sel-card">';
+      html += '<div class="sel-card-top">';
+      html += '<div class="nsn">' + escapeHtml(it.nsn) + '</div>';
+      html += '<button class="sel-remove-btn" data-nsn="' + escapeAttr(it.nsn) + '" data-desc="' + escapeAttr(it.description) + '">Remove</button>';
+      html += '</div>';
+      html += '<div class="desc">' + escapeHtml(it.description || "\u2014") + '</div>';
+      html += '<div class="meta">';
+      html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "\u2014") + '</span>';
+      html += '<span><span class="label">Qty:</span> ' + escapeHtml(it.qty || "\u2014") + '</span>';
+      html += '</div>';
+      if (it.kits) {
+        html += '<div class="kits"><span class="label">Kits:</span> ' + escapeHtml(it.kits) + '</div>';
+      }
+      html += '</div>';
+    }
+    selList.innerHTML = html;
+  }
+
+  function csvField(val) {
+    if (!val) return '""';
+    if (val.indexOf(",") !== -1 || val.indexOf('"') !== -1 || val.indexOf(";") !== -1 || val.indexOf("\n") !== -1) {
+      return '"' + val.replace(/"/g, '""') + '"';
+    }
+    return val;
+  }
+
+  function exportCSV() {
+    if (selectedItems.length === 0) return;
+    var lines = ["NSN,Description,Unit of Measure,Quantity Required,Kit Membership"];
+    for (var i = 0; i < selectedItems.length; i++) {
+      var it = selectedItems[i];
+      lines.push(
+        csvField(it.nsn) + "," +
+        csvField(it.description) + "," +
+        csvField(it.uom) + "," +
+        csvField(it.qty) + "," +
+        csvField(it.kits)
+      );
+    }
+    var csv = lines.join("\r\n");
+    var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var now = new Date();
+    var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+    var fname = "selected_items_" +
+      now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) +
+      "_" + pad(now.getHours()) + pad(now.getMinutes()) + ".csv";
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = fname;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  /* Selection event: Add/Added buttons in main list */
+  listEl.addEventListener("click", function (e) {
+    var btn = e.target.closest(".sel-add-btn");
+    if (btn) {
+      e.stopPropagation();
+      toggleSelect(btn.getAttribute("data-nsn"));
+    }
+  });
+
+  /* Drawer events */
+  selectedBtn.addEventListener("click", openDrawer);
+  selClose.addEventListener("click", closeDrawer);
+  selOverlay.addEventListener("click", closeDrawer);
+  selExport.addEventListener("click", exportCSV);
+  selClear.addEventListener("click", function () {
+    selectedItems = [];
+    updateSelectedCount();
+    renderDrawer();
+    render();
+  });
+  selList.addEventListener("click", function (e) {
+    var btn = e.target.closest(".sel-remove-btn");
+    if (btn) {
+      removeSelected(btn.getAttribute("data-nsn"), btn.getAttribute("data-desc"));
+      render(); // refresh main list button states
+    }
+  });
 
   /* ── Init ── */
   loadData();
