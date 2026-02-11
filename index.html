@@ -13,6 +13,7 @@
   <div class="top-bar">
     <div class="row">
       <input type="search" id="search" placeholder="Search NSN, description, kit…" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button id="selected-btn" class="selected-btn" aria-label="View selected items">Selected (0)</button>
     </div>
     <div class="row">
       <select id="kit-filter" aria-label="Filter by kit">
@@ -34,6 +35,19 @@
   <div class="card-list" id="item-list"></div>
 
   <div class="footer">Data source: Data/master_inventory.csv</div>
+
+  <div id="sel-overlay" class="sel-overlay hidden"></div>
+  <div id="sel-drawer" class="sel-drawer hidden">
+    <div class="sel-header">
+      <span id="sel-title">Selected (0)</span>
+      <button id="sel-close" class="sel-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="sel-actions">
+      <button id="sel-export" class="sel-action-btn">Export CSV</button>
+      <button id="sel-clear" class="sel-action-btn sel-clear-btn">Clear list</button>
+    </div>
+    <div id="sel-list" class="sel-list"></div>
+  </div>
 
   <script src="assets/app.js"></script>
 </body>
