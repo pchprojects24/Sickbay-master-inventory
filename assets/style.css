@@ -38,6 +38,38 @@ body {
   align-items: stretch;
 }
 
+.top-bar .search-row {
+  position: relative;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 146px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+  min-height: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.search-clear-btn:hover {
+  background: #f3f4f6;
+  color: #1d1d1f;
+}
+
+.search-clear-btn.hidden {
+  display: none;
+}
+
 .top-bar input[type="search"],
 .top-bar select {
   font-size: 16px; /* prevents iOS zoom */
@@ -469,8 +501,9 @@ body {
     font-weight: 600;
     color: #374151;
     position: sticky;
-    top: 0;
+    top: 102px;
     white-space: nowrap;
+    z-index: 10;
   }
 
   .inv-table td:first-child {
