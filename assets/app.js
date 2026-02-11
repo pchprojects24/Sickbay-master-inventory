@@ -188,8 +188,12 @@
   /* ── Rendering ── */
   function render() {
     var msg = "Showing " + filteredItems.length + " of " + allItems.length + " items";
-    if (searchTerm || kitFilter) {
+    var isFiltering = searchTerm || kitFilter;
+    if (isFiltering) {
       msg += " (filtered)";
+      statusBar.classList.add("filtering");
+    } else {
+      statusBar.classList.remove("filtering");
     }
     statusBar.textContent = msg;
 
@@ -464,7 +468,10 @@
   }
 
   function exportCSV() {
-    if (selectedItems.length === 0) return;
+    if (selectedItems.length === 0) {
+      alert("No items selected to export.");
+      return;
+    }
     var lines = ["NSN,Description,Unit of Measure,Quantity Required,Kit Membership"];
     for (var i = 0; i < selectedItems.length; i++) {
       var it = selectedItems[i];
@@ -491,6 +498,15 @@
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    // Show feedback
+    var originalText = selExport.textContent;
+    selExport.textContent = "Exported \u2713";
+    selExport.disabled = true;
+    setTimeout(function() {
+      selExport.textContent = originalText;
+      selExport.disabled = false;
+    }, 2000);
   }
 
   /* Drawer events */

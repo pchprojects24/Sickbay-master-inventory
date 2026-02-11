@@ -112,6 +112,12 @@ body {
   color: #6b7280;
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.status-bar.filtering {
+  background: #fef3c7;
+  color: #92400e;
 }
 
 /* === Card List === */
@@ -290,11 +296,17 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.35);
   z-index: 200;
+  transition: opacity 0.2s ease;
 }
 
-.sel-overlay.hidden,
+.sel-overlay.hidden {
+  display: none;
+  opacity: 0;
+}
+
 .sel-drawer.hidden {
   display: none;
+  transform: translateX(100%);
 }
 
 .sel-drawer {
@@ -309,6 +321,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .sel-header {
@@ -358,6 +371,11 @@ body {
 
 .sel-action-btn:active {
   background: #2563eb;
+}
+
+.sel-action-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
 }
 
 .sel-clear-btn {
@@ -477,6 +495,10 @@ body {
 @media (min-width: 768px) {
   .card-list {
     padding: 12px 20px;
+  }
+
+  .search-clear-btn {
+    right: 146px;
   }
 
   .inv-table {
