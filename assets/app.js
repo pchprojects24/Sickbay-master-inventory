@@ -14,6 +14,7 @@
 
   /* ── DOM refs ── */
   var searchInput = document.getElementById("search");
+  var searchClearBtn = document.getElementById("search-clear");
   var kitSelect = document.getElementById("kit-filter");
   var sortSelect = document.getElementById("sort-select");
   var statusBar = document.getElementById("status-bar");
@@ -186,12 +187,22 @@
 
   /* ── Rendering ── */
   function render() {
-    statusBar.textContent = "Showing " + filteredItems.length + " of " + allItems.length + " items";
+    var msg = "Showing " + filteredItems.length + " of " + allItems.length + " items";
+    var isFiltering = searchTerm || kitFilter;
+    if (isFiltering) {
+      msg += " (filtered)";
+      statusBar.classList.add("filtering");
+    } else {
+      statusBar.classList.remove("filtering");
+    }
+    statusBar.textContent = msg;
 
     if (filteredItems.length === 0) {
-      listEl.innerHTML =
-        '<div class="no-results"><p>No items match your search.</p>' +
-        '<button id="reset-btn">Reset Filters</button></div>';
+      var msg = '<div class="no-results"><p>No items match';
+      if (searchTerm) msg += ' search "' + escapeHtml(searchTerm) + '"';
+      if (kitFilter) msg += ' in kit "' + escapeHtml(kitFilter) + '"';
+      msg += '.</p><button id="reset-btn">Reset Filters</button></div>';
+      listEl.innerHTML = msg;
       document.getElementById("reset-btn").addEventListener("click", resetFilters);
       return;
     }
@@ -227,7 +238,7 @@
           escapeHtml(it.kits) +
           "</span>";
         if (needsTruncate) {
-          html += ' <button class="kits-toggle" data-idx="' + i + '">more</button>';
+          html += ' <button class="kits-toggle" data-idx="' + i + '" aria-label="Expand kits list" aria-expanded="false">more</button>';
         }
         html += "</div>";
       }
@@ -256,7 +267,7 @@
         escapeHtml(it.kits || "\u2014") +
         "</span>";
       if (needsTruncate) {
-        html += ' <button class="kits-toggle" data-idx="' + i + '">more</button>';
+        html += ' <button class="kits-toggle" data-idx="' + i + '" aria-label="Expand kits list" aria-expanded="false">more</button>';
       }
       html += "</td></tr>";
     }
@@ -264,9 +275,11 @@
     listEl.innerHTML = html;
   }
 
-  /* ── Toggle kits expand/collapse ── */
+  /* ── Toggle kits expand/collapse & Selection ── */
   listEl.addEventListener("click", function (e) {
+    // Handle kits toggle
     if (e.target.classList.contains("kits-toggle")) {
+      e.target.setAttribute("aria-expanded", e.target.textContent === "more" ? "true" : "false");
       var textEl = e.target.previousElementSibling;
       if (!textEl) return;
       var expanded = !textEl.classList.contains("truncated");
@@ -277,6 +290,14 @@
         textEl.classList.remove("truncated");
         e.target.textContent = "less";
       }
+      return;
+    }
+
+    // Handle add/remove selection
+    var btn = e.target.closest(".sel-add-btn");
+    if (btn) {
+      e.stopPropagation();
+      toggleSelect(btn.getAttribute("data-nsn"));
     }
   });
 
@@ -298,8 +319,22 @@
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(function () {
       searchTerm = searchInput.value.trim();
+      // Toggle clear button visibility
+      if (searchTerm) {
+        searchClearBtn.classList.remove("hidden");
+      } else {
+        searchClearBtn.classList.add("hidden");
+      }
       applyFilters();
     }, 200);
+  });
+
+  searchClearBtn.addEventListener("click", function () {
+    searchInput.value = "";
+    searchTerm = "";
+    searchClearBtn.classList.add("hidden");
+    applyFilters();
+    searchInput.focus();
   });
 
   kitSelect.addEventListener("change", function () {
@@ -337,7 +372,7 @@
   /* ── Selection Feature ── */
   function isSelected(item) {
     for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === item.nsn && selectedItems[i].description === item.description) return true;
+      if (selectedItems[i].nsn === item.nsn) return true;
     }
     return false;
   }
@@ -352,7 +387,7 @@
 
     var idx = -1;
     for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === item.nsn && selectedItems[i].description === item.description) { idx = i; break; }
+      if (selectedItems[i].nsn === item.nsn) { idx = i; break; }
     }
     if (idx >= 0) {
       selectedItems.splice(idx, 1);
@@ -365,7 +400,7 @@
 
   function removeSelected(nsn, desc) {
     for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === nsn && selectedItems[i].description === desc) {
+      if (selectedItems[i].nsn === nsn) {
         selectedItems.splice(i, 1);
         break;
       }
@@ -385,12 +420,16 @@
     selDrawer.classList.remove("hidden");
     selOverlay.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+    // Focus on close button for accessibility
+    setTimeout(function() { selClose.focus(); }, 100);
   }
 
   function closeDrawer() {
     selDrawer.classList.add("hidden");
     selOverlay.classList.add("hidden");
     document.body.style.overflow = "";
+    // Return focus to the button that opened the drawer
+    selectedBtn.focus();
   }
 
   function renderDrawer() {
@@ -429,7 +468,10 @@
   }
 
   function exportCSV() {
-    if (selectedItems.length === 0) return;
+    if (selectedItems.length === 0) {
+      alert("No items selected to export.");
+      return;
+    }
     var lines = ["NSN,Description,Unit of Measure,Quantity Required,Kit Membership"];
     for (var i = 0; i < selectedItems.length; i++) {
       var it = selectedItems[i];
@@ -456,16 +498,16 @@
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }
 
-  /* Selection event: Add/Added buttons in main list */
-  listEl.addEventListener("click", function (e) {
-    var btn = e.target.closest(".sel-add-btn");
-    if (btn) {
-      e.stopPropagation();
-      toggleSelect(btn.getAttribute("data-nsn"));
-    }
-  });
+    // Show feedback
+    var originalText = selExport.textContent;
+    selExport.textContent = "Exported \u2713";
+    selExport.disabled = true;
+    setTimeout(function() {
+      selExport.textContent = originalText;
+      selExport.disabled = false;
+    }, 2000);
+  }
 
   /* Drawer events */
   selectedBtn.addEventListener("click", openDrawer);
@@ -483,6 +525,21 @@
     if (btn) {
       removeSelected(btn.getAttribute("data-nsn"), btn.getAttribute("data-desc"));
       render(); // refresh main list button states
+    }
+  });
+
+  /* ── Keyboard shortcuts ── */
+  document.addEventListener("keydown", function (e) {
+    // Escape key closes drawer
+    if (e.key === "Escape" && !selDrawer.classList.contains("hidden")) {
+      closeDrawer();
+    }
+    // Clear search with Escape when search is focused and not empty
+    if (e.key === "Escape" && document.activeElement === searchInput && searchInput.value) {
+      searchInput.value = "";
+      searchTerm = "";
+      searchClearBtn.classList.add("hidden");
+      applyFilters();
     }
   });
 

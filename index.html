@@ -11,8 +11,9 @@
 <body>
 
   <div class="top-bar">
-    <div class="row">
-      <input type="search" id="search" placeholder="Search NSN, description, kit…" autocomplete="off" autocorrect="off" spellcheck="false">
+    <div class="row search-row">
+      <input type="search" id="search" placeholder="Search NSN, description, kit…" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search inventory items">
+      <button id="search-clear" class="search-clear-btn hidden" aria-label="Clear search">&times;</button>
       <button id="selected-btn" class="selected-btn" aria-label="View selected items">Selected (0)</button>
     </div>
     <div class="row">

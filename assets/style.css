@@ -38,6 +38,38 @@ body {
   align-items: stretch;
 }
 
+.top-bar .search-row {
+  position: relative;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 146px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+  min-height: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.search-clear-btn:hover {
+  background: #f3f4f6;
+  color: #1d1d1f;
+}
+
+.search-clear-btn.hidden {
+  display: none;
+}
+
 .top-bar input[type="search"],
 .top-bar select {
   font-size: 16px; /* prevents iOS zoom */
@@ -80,6 +112,12 @@ body {
   color: #6b7280;
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.status-bar.filtering {
+  background: #fef3c7;
+  color: #92400e;
 }
 
 /* === Card List === */
@@ -258,11 +296,17 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.35);
   z-index: 200;
+  transition: opacity 0.2s ease;
 }
 
-.sel-overlay.hidden,
+.sel-overlay.hidden {
+  display: none;
+  opacity: 0;
+}
+
 .sel-drawer.hidden {
   display: none;
+  transform: translateX(100%);
 }
 
 .sel-drawer {
@@ -277,6 +321,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .sel-header {
@@ -326,6 +371,11 @@ body {
 
 .sel-action-btn:active {
   background: #2563eb;
+}
+
+.sel-action-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
 }
 
 .sel-clear-btn {
@@ -447,6 +497,10 @@ body {
     padding: 12px 20px;
   }
 
+  .search-clear-btn {
+    right: 146px;
+  }
+
   .inv-table {
     width: 100%;
     border-collapse: collapse;
@@ -469,8 +523,9 @@ body {
     font-weight: 600;
     color: #374151;
     position: sticky;
-    top: 0;
+    top: 102px;
     white-space: nowrap;
+    z-index: 10;
   }
 
   .inv-table td:first-child {
