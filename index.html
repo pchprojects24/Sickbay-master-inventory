@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Sickbay Master Inventory</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <h1>Sickbay Master Inventory</h1>
-  <p>Site is live.</p>
+
+  <div class="top-bar">
+    <div class="row">
+      <input type="search" id="search" placeholder="Search NSN, description, kit…" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="row">
+      <select id="kit-filter" aria-label="Filter by kit">
+        <option value="">All Kits</option>
+      </select>
+      <select id="sort-select" aria-label="Sort items">
+        <option value="nsn-asc">NSN A→Z</option>
+        <option value="nsn-desc">NSN Z→A</option>
+        <option value="description-asc">Desc A→Z</option>
+        <option value="description-desc">Desc Z→A</option>
+        <option value="qty-asc">Qty Low→High</option>
+        <option value="qty-desc">Qty High→Low</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="status-bar" id="status-bar">Loading…</div>
+
+  <div class="card-list" id="item-list"></div>
+
+  <div class="footer">Data source: Data/master_inventory.csv</div>
+
+  <script src="assets/app.js"></script>
 </body>
 </html>
