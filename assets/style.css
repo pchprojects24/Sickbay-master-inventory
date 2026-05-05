@@ -475,6 +475,111 @@ body {
   background: #fef2f2;
 }
 
+/* === Group by Kit button === */
+.group-btn {
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 14px;
+  border: 1px solid #c4c8cf;
+  border-radius: 8px;
+  background: #f7f8fa;
+  color: #374151;
+  cursor: pointer;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.group-btn:active {
+  background: #e5e7eb;
+}
+
+.group-btn.active {
+  background: #3478f6;
+  color: #fff;
+  border-color: #3478f6;
+}
+
+/* === Kit Groups (Group by Kit view) === */
+.kit-group {
+  margin-bottom: 8px;
+}
+
+.kit-group-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: #e8edf5;
+  border: 1px solid #c4cfe4;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1d3461;
+  transition: background 0.15s ease;
+}
+
+.kit-group-header[aria-expanded="false"] {
+  border-radius: 8px;
+}
+
+.kit-group-header[aria-expanded="true"] {
+  border-radius: 8px 8px 0 0;
+  border-bottom-color: transparent;
+}
+
+.kit-group-header:hover {
+  background: #dce5f5;
+}
+
+.kit-group-chevron {
+  font-size: 0.65rem;
+  color: #3478f6;
+  flex-shrink: 0;
+  width: 12px;
+  text-align: center;
+}
+
+.kit-group-name {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+.kit-group-count {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #3478f6;
+  background: #fff;
+  border: 1px solid #c4cfe4;
+  border-radius: 10px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.kit-group-body {
+  border: 1px solid #c4cfe4;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.kit-group-body .card {
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.kit-group-body .card:last-child {
+  border-bottom: none;
+}
+
 /* === Footer === */
 .footer {
   text-align: center;
@@ -562,5 +667,15 @@ body {
     width: 70px;
     text-align: center;
     padding: 10px 8px;
+  }
+
+  .inv-table.inv-table-group {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .inv-table.inv-table-group th {
+    position: static;
+    top: auto;
   }
 }

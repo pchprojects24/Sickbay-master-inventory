@@ -9,8 +9,10 @@
   var sortAsc = true;
   var searchTerm = "";
   var kitFilter = "";
+  var groupByKit = false;
+  var collapsedKits = {};
   var isDesktop = window.matchMedia("(min-width: 768px)").matches;
-  var selectedItems = []; // session-only selection list
+  var selectedItems = [];
 
   /* ── DOM refs ── */
   var searchInput = document.getElementById("search");
@@ -19,6 +21,7 @@
   var sortSelect = document.getElementById("sort-select");
   var statusBar = document.getElementById("status-bar");
   var listEl = document.getElementById("item-list");
+  var groupBtn = document.getElementById("group-btn");
   var selectedBtn = document.getElementById("selected-btn");
   var selOverlay = document.getElementById("sel-overlay");
   var selDrawer = document.getElementById("sel-drawer");
@@ -195,6 +198,7 @@
     } else {
       statusBar.classList.remove("filtering");
     }
+    if (groupByKit) msg += " — grouped by kit";
     statusBar.textContent = msg;
 
     if (filteredItems.length === 0) {
@@ -207,7 +211,9 @@
       return;
     }
 
-    if (isDesktop) {
+    if (groupByKit) {
+      renderGrouped();
+    } else if (isDesktop) {
       renderTable();
     } else {
       renderCards();
@@ -275,8 +281,111 @@
     listEl.innerHTML = html;
   }
 
+  function renderGrouped() {
+    var kitsToShow = kitFilter ? [kitFilter] : kitList;
+    var html = "";
+    var hasAny = false;
+
+    for (var ki = 0; ki < kitsToShow.length; ki++) {
+      var kitName = kitsToShow[ki];
+      var kitItems = [];
+      for (var ii = 0; ii < filteredItems.length; ii++) {
+        if (filteredItems[ii].kitArr.indexOf(kitName) !== -1) {
+          kitItems.push(filteredItems[ii]);
+        }
+      }
+      if (kitItems.length === 0) continue;
+      hasAny = true;
+
+      var key = sortKey;
+      var asc = sortAsc;
+      kitItems.sort(function (a, b) {
+        var va, vb;
+        if (key === "qty") { va = a.qtyNum; vb = b.qtyNum; }
+        else if (key === "nsn") { va = a.nsn; vb = b.nsn; }
+        else { va = a.description; vb = b.description; }
+        if (va < vb) return asc ? -1 : 1;
+        if (va > vb) return asc ? 1 : -1;
+        return 0;
+      });
+
+      var isCollapsed = !!collapsedKits[kitName];
+      html += '<div class="kit-group">';
+      html += '<button class="kit-group-header" data-kit="' + escapeAttr(kitName) + '" aria-expanded="' + (!isCollapsed) + '">';
+      html += '<span class="kit-group-chevron">' + (isCollapsed ? "&#9654;" : "&#9660;") + "</span>";
+      html += '<span class="kit-group-name">' + escapeHtml(kitName) + "</span>";
+      html += '<span class="kit-group-count">' + kitItems.length + " item" + (kitItems.length !== 1 ? "s" : "") + "</span>";
+      html += "</button>";
+
+      if (!isCollapsed) {
+        html += '<div class="kit-group-body">';
+        if (isDesktop) {
+          html += '<table class="inv-table inv-table-group"><thead><tr>';
+          html += "<th></th><th>NSN</th><th>Description</th><th>UoM</th><th>Qty</th>";
+          html += "</tr></thead><tbody>";
+          for (var i = 0; i < kitItems.length; i++) {
+            var it = kitItems[i];
+            var isSel = isSelected(it);
+            html += "<tr>";
+            html += '<td class="sel-cell"><button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added ✓" : "Add") + "</button></td>";
+            html += "<td>" + escapeHtml(it.nsn) + "</td>";
+            html += "<td>" + escapeHtml(it.description || "—") + "</td>";
+            html += "<td>" + escapeHtml(it.uom || "—") + "</td>";
+            html += "<td>" + escapeHtml(it.qty || "—") + "</td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+        } else {
+          for (var i = 0; i < kitItems.length; i++) {
+            var it = kitItems[i];
+            var isSel = isSelected(it);
+            html += '<div class="card">';
+            html += '<div class="card-top"><div class="card-top-left">';
+            html += '<div class="nsn">' + escapeHtml(it.nsn) + "</div>";
+            html += "</div>";
+            html += '<button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added ✓" : "Add") + "</button>";
+            html += "</div>";
+            html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
+            html += '<div class="meta">';
+            html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
+            html += '<span><span class="label">Qty:</span> ' + escapeHtml(it.qty || "—") + "</span>";
+            html += "</div>";
+            html += "</div>";
+          }
+        }
+        html += "</div>";
+      }
+      html += "</div>";
+    }
+
+    if (!hasAny) {
+      var noMsg = '<div class="no-results"><p>No items match';
+      if (searchTerm) noMsg += ' search "' + escapeHtml(searchTerm) + '"';
+      if (kitFilter) noMsg += ' in kit "' + escapeHtml(kitFilter) + '"';
+      noMsg += '.</p><button id="reset-btn">Reset Filters</button></div>';
+      listEl.innerHTML = noMsg;
+      document.getElementById("reset-btn").addEventListener("click", resetFilters);
+      return;
+    }
+
+    listEl.innerHTML = html;
+  }
+
   /* ── Toggle kits expand/collapse & Selection ── */
   listEl.addEventListener("click", function (e) {
+    // Handle kit group header collapse/expand
+    var groupHeader = e.target.closest(".kit-group-header");
+    if (groupHeader) {
+      var kitName = groupHeader.getAttribute("data-kit");
+      if (collapsedKits[kitName]) {
+        delete collapsedKits[kitName];
+      } else {
+        collapsedKits[kitName] = true;
+      }
+      render();
+      return;
+    }
+
     // Handle kits toggle
     if (e.target.classList.contains("kits-toggle")) {
       e.target.setAttribute("aria-expanded", e.target.textContent === "more" ? "true" : "false");
@@ -348,6 +457,14 @@
     sortAsc = parts[parts.length - 1] === "asc";
     sortKey = parts.slice(0, parts.length - 1).join("-");
     applyFilters();
+  });
+
+  groupBtn.addEventListener("click", function () {
+    groupByKit = !groupByKit;
+    collapsedKits = {};
+    groupBtn.setAttribute("aria-pressed", groupByKit ? "true" : "false");
+    groupBtn.classList.toggle("active", groupByKit);
+    render();
   });
 
   window.matchMedia("(min-width: 768px)").addEventListener("change", function (e) {
