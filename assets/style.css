@@ -42,9 +42,17 @@ body {
   position: relative;
 }
 
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+}
+
 .search-clear-btn {
   position: absolute;
-  right: 146px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -86,6 +94,7 @@ body {
 .top-bar input[type="search"] {
   flex: 1;
   min-width: 0;
+  padding-right: 44px;
 }
 
 .top-bar select {
@@ -600,10 +609,6 @@ body {
 @media (min-width: 768px) {
   .card-list {
     padding: 12px 20px;
-  }
-
-  .search-clear-btn {
-    right: 146px;
   }
 
   .inv-table {

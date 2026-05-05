@@ -13,6 +13,9 @@
   var collapsedKits = {};
   var isDesktop = window.matchMedia("(min-width: 768px)").matches;
   var selectedItems = [];
+  var NO_KIT_KEY = "__NO_KIT__";
+  var NO_KIT_LABEL = "No kit assigned";
+  var hasNoKitItems = false;
 
   /* ── DOM refs ── */
   var searchInput = document.getElementById("search");
@@ -98,6 +101,8 @@
         return res.text();
       })
       .then(function (text) {
+        allItems = [];
+        hasNoKitItems = false;
         var rows = parseCSVRows(text);
         if (rows.length < 2) {
           listEl.innerHTML = '<div class="loading">No data found in CSV.</div>';
@@ -125,6 +130,7 @@
           item.kitArr = item.kits
             ? item.kits.split(";").map(function (k) { return k.trim(); }).filter(Boolean)
             : [];
+          if (item.kitArr.length === 0) hasNoKitItems = true;
           item.searchText = (
             item.nsn + " " + item.description + " " + item.uom + " " + item.qty + " " + item.kits
           ).toLowerCase();
@@ -152,6 +158,9 @@
     for (var i = 0; i < kitList.length; i++) {
       html += '<option value="' + escapeAttr(kitList[i]) + '">' + escapeHtml(kitList[i]) + "</option>";
     }
+    if (hasNoKitItems) {
+      html += '<option value="' + NO_KIT_KEY + '">' + escapeHtml(NO_KIT_LABEL) + "</option>";
+    }
     kitSelect.innerHTML = html;
   }
 
@@ -160,11 +169,20 @@
     var term = searchTerm.toLowerCase();
     filteredItems = allItems.filter(function (item) {
       if (term && item.searchText.indexOf(term) === -1) return false;
-      if (kitFilter && item.kitArr.indexOf(kitFilter) === -1) return false;
+      if (kitFilter) {
+        if (kitFilter === NO_KIT_KEY) return item.kitArr.length === 0;
+        if (item.kitArr.indexOf(kitFilter) === -1) return false;
+      }
       return true;
     });
     sortItems();
     render();
+  }
+
+  function compareText(a, b) {
+    var sa = (a || "");
+    var sb = (b || "");
+    return sa.localeCompare(sb, undefined, { numeric: true, sensitivity: "base" });
   }
 
   function sortItems() {
@@ -182,13 +200,20 @@
         va = a.description;
         vb = b.description;
       }
-      if (va < vb) return asc ? -1 : 1;
-      if (va > vb) return asc ? 1 : -1;
+      var cmp;
+      if (key === "qty") cmp = va - vb;
+      else cmp = compareText(va, vb);
+      if (cmp < 0) return asc ? -1 : 1;
+      if (cmp > 0) return asc ? 1 : -1;
       return 0;
     });
   }
 
   /* ── Rendering ── */
+  function formatKitLabel(val) {
+    return val === NO_KIT_KEY ? NO_KIT_LABEL : val;
+  }
+
   function render() {
     var msg = "Showing " + filteredItems.length + " of " + allItems.length + " items";
     var isFiltering = searchTerm || kitFilter;
@@ -204,7 +229,7 @@
     if (filteredItems.length === 0) {
       var msg = '<div class="no-results"><p>No items match';
       if (searchTerm) msg += ' search "' + escapeHtml(searchTerm) + '"';
-      if (kitFilter) msg += ' in kit "' + escapeHtml(kitFilter) + '"';
+      if (kitFilter) msg += ' in kit "' + escapeHtml(formatKitLabel(kitFilter)) + '"';
       msg += '.</p><button id="reset-btn">Reset Filters</button></div>';
       listEl.innerHTML = msg;
       document.getElementById("reset-btn").addEventListener("click", resetFilters);
@@ -282,7 +307,8 @@
   }
 
   function renderGrouped() {
-    var kitsToShow = kitFilter ? [kitFilter] : kitList;
+    var kitsToShow = kitFilter ? [kitFilter] : kitList.slice();
+    if (!kitFilter && hasNoKitItems) kitsToShow.push(NO_KIT_KEY);
     var html = "";
     var hasAny = false;
 
@@ -290,7 +316,10 @@
       var kitName = kitsToShow[ki];
       var kitItems = [];
       for (var ii = 0; ii < filteredItems.length; ii++) {
-        if (filteredItems[ii].kitArr.indexOf(kitName) !== -1) {
+        var it = filteredItems[ii];
+        if (kitName === NO_KIT_KEY) {
+          if (it.kitArr.length === 0) kitItems.push(it);
+        } else if (it.kitArr.indexOf(kitName) !== -1) {
           kitItems.push(filteredItems[ii]);
         }
       }
@@ -304,16 +333,20 @@
         if (key === "qty") { va = a.qtyNum; vb = b.qtyNum; }
         else if (key === "nsn") { va = a.nsn; vb = b.nsn; }
         else { va = a.description; vb = b.description; }
-        if (va < vb) return asc ? -1 : 1;
-        if (va > vb) return asc ? 1 : -1;
+        var cmp;
+        if (key === "qty") cmp = va - vb;
+        else cmp = compareText(va, vb);
+        if (cmp < 0) return asc ? -1 : 1;
+        if (cmp > 0) return asc ? 1 : -1;
         return 0;
       });
 
       var isCollapsed = !!collapsedKits[kitName];
+      var kitLabel = kitName === NO_KIT_KEY ? NO_KIT_LABEL : kitName;
       html += '<div class="kit-group">';
       html += '<button class="kit-group-header" data-kit="' + escapeAttr(kitName) + '" aria-expanded="' + (!isCollapsed) + '">';
       html += '<span class="kit-group-chevron">' + (isCollapsed ? "&#9654;" : "&#9660;") + "</span>";
-      html += '<span class="kit-group-name">' + escapeHtml(kitName) + "</span>";
+      html += '<span class="kit-group-name">' + escapeHtml(kitLabel) + "</span>";
       html += '<span class="kit-group-count">' + kitItems.length + " item" + (kitItems.length !== 1 ? "s" : "") + "</span>";
       html += "</button>";
 
