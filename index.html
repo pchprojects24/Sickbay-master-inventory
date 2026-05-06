@@ -4,8 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Sickbay">
+  <meta name="theme-color" content="#3478f6">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Mobile-friendly Sickbay master inventory browser with search, filtering, grouping, and CSV export.">
   <title>Sickbay Master Inventory</title>
+  <link rel="manifest" href="assets/manifest.webmanifest">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -41,7 +48,7 @@
   <div class="footer">Data source: Data/master_inventory.csv</div>
 
   <div id="sel-overlay" class="sel-overlay hidden"></div>
-  <div id="sel-drawer" class="sel-drawer hidden">
+  <div id="sel-drawer" class="sel-drawer hidden" role="dialog" aria-modal="true" aria-labelledby="sel-title" aria-hidden="true" inert>
     <div class="sel-header">
       <span id="sel-title">Selected (0)</span>
       <button id="sel-close" class="sel-close" aria-label="Close">&times;</button>
