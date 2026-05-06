@@ -1,0 +1,13 @@
+{
+  "name": "Sickbay Master Inventory",
+  "short_name": "Sickbay",
+  "description": "Mobile-friendly Sickbay master inventory browser with search, filtering, grouping, and CSV export.",
+  "start_url": "../index.html",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f4f7",
+  "theme_color": "#3478f6",
+  "lang": "en",
+  "categories": ["medical", "productivity", "utilities"]
+}

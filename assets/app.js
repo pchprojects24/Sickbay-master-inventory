@@ -569,6 +569,8 @@
     renderDrawer();
     selDrawer.classList.remove("hidden");
     selOverlay.classList.remove("hidden");
+    selDrawer.removeAttribute("aria-hidden");
+    selDrawer.removeAttribute("inert");
     document.body.style.overflow = "hidden";
     // Focus on close button for accessibility
     setTimeout(function() { selClose.focus(); }, 100);
@@ -577,6 +579,8 @@
   function closeDrawer() {
     selDrawer.classList.add("hidden");
     selOverlay.classList.add("hidden");
+    selDrawer.setAttribute("aria-hidden", "true");
+    selDrawer.setAttribute("inert", "");
     document.body.style.overflow = "";
     // Return focus to the button that opened the drawer
     selectedBtn.focus();
