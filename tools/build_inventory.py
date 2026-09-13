@@ -279,13 +279,19 @@ def main():
         )
 
     # 3. Item-level rollup, one row per distinct item across all kits.
+    #    "Is Kit" marks the 28 containers that have contents of their own. They
+    #    are listed because they are real line items inside their parent, but
+    #    their value is already the sum of their contents, so anyone counting
+    #    stock or money should filter them out. Items merely *named* "KIT ..."
+    #    with no contents of their own (pediatric resus, OPA set, the two sexual
+    #    assault kits) are ordinary stock and stay unmarked.
     write_csv(
         os.path.join(DATA_DIR, "master_inventory.csv"),
         ["NSN", "Description", "Unit of Measure", "Total Quantity", "Kit Count",
-         "Unit Price", "Accountability Code", "Source", "Kit Membership"],
+         "Unit Price", "Accountability Code", "Source", "Is Kit", "Kit Membership"],
         [[item["nsn"], item["description"], item["uom"], fmt(item["total_qty"]),
           item["kit_count"], fmt(item["price"]), item["accountability_code"],
-          item["source"],
+          item["source"], "Y" if item["is_kit"] else "",
           "; ".join("%s (%s) x%s" % (kits[m["kit_nsn"]]["name"], m["kit_nsn"],
                                      fmt(m["qty"]))
                     for m in item["memberships"])]

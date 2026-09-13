@@ -1,7 +1,11 @@
 # Sickbay Master Inventory
 
-A searchable browser for the sickbay's kits and the items in them. No build step,
-no server-side anything, no dependencies.
+A searchable browser for the sickbay's kits and the items in them: what is held,
+which kit it belongs to, and its NATO stock number. No build step, no server-side
+anything, no dependencies.
+
+It is a reference catalogue, not a tracking system — there is no on-hand count,
+expiry date or stowage location here, by design.
 
 Serve the folder over HTTP (`python3 -m http.server` from the repository root, or
 any static host) and open `index.html`. It reads `Data/inventory.json` with
@@ -44,11 +48,18 @@ Data/kit_items.csv          every kit-item line (1,268 rows)
 Data/master_inventory.csv   one row per distinct item (966 rows)
 Data/kits/*.csv             one pick list per kit
 Data/inventory.json         what the app loads
+Data/provenance/            archival records; not generated, not read by the app
 tools/build_inventory.py    regenerates everything under Data/ from the workbooks
 ```
 
 `Data/README.md` is the data dictionary: what each column means, how the kit
 hierarchy is derived, and the handful of quirks in the source workbooks.
+`Data/provenance/README.md` covers the two legacy workbooks and the earlier
+cleanup decisions this build deliberately diverges from.
+
+Counting stock from `Data/master_inventory.csv` means excluding rows where
+`Is Kit` is `Y`: those 28 rows are containers whose price already includes their
+contents.
 
 ## Changing the data
 
