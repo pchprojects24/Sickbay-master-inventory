@@ -100,6 +100,7 @@
         });
 
         items.forEach(function (item) {
+          itemByNsn[item.nsn] = item;
           item.kitNsns = item.memberships.map(function (m) { return m.kit_nsn; });
           item.kitNames = item.kitNsns.map(kitName);
           item.searchText = [
@@ -134,9 +135,15 @@
   /* ── Routing (so a kit can be linked and the back button works) ── */
   function applyRoute() {
     var hash = window.location.hash.replace(/^#\/?/, "");
-    var nsn = hash.indexOf("kit/") === 0
-      ? decodeURIComponent(hash.slice(4)).toUpperCase()
-      : "";
+    var nsn = "";
+    if (hash.indexOf("kit/") === 0) {
+      var raw = hash.slice(4);
+      try {
+        nsn = decodeURIComponent(raw).toUpperCase();
+      } catch (e) {
+        nsn = raw.toUpperCase();  // hand-edited link with a bad %-escape
+      }
+    }
     if (nsn && kitByNsn[nsn]) {
       view = "kits";
       openKit = nsn;
@@ -193,6 +200,21 @@
     return list;
   }
 
+  /* The line for this item in a given kit, or null outside a kit context. */
+  function membershipIn(item, kitNsn) {
+    if (!item || !kitNsn) return null;
+    for (var i = 0; i < item.memberships.length; i++) {
+      if (item.memberships[i].kit_nsn === kitNsn) return item.memberships[i];
+    }
+    return null;
+  }
+
+  /* Unit price for this item as that kit prices it, else the rollup price. */
+  function priceFor(item, kitNsn) {
+    var m = membershipIn(item, kitNsn);
+    return m && m.price !== null && m.price !== undefined ? m.price : item.price;
+  }
+
   /* Quantity in the kit being filtered on, else the total across all kits. */
   function qtyFor(item, kitNsn) {
     var target = kitNsn || kitFilter;
@@ -237,7 +259,8 @@
     var on = isSelected(item.nsn);
     return '<button class="sel-add-btn' + (on ? " added" : "") +
       '" data-nsn="' + escapeHtml(item.nsn) +
-      '" data-qty="' + escapeHtml(qtyFor(item, kitNsn)) + '">' +
+      '" data-qty="' + escapeHtml(qtyFor(item, kitNsn)) +
+      '" data-kit="' + escapeHtml(kitNsn || "") + '">' +
       (on ? "Added ✓" : "Add") + "</button>";
   }
 
@@ -255,7 +278,7 @@
       html += '<div class="meta">';
       html += '<span><span class="label">Qty:</span> ' + num(qtyFor(it, kitNsn)) + "</span>";
       html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
-      html += '<span><span class="label">Unit:</span> ' + money(it.price) + "</span>";
+      html += '<span><span class="label">Unit:</span> ' + money(priceFor(it, kitNsn)) + "</span>";
       html += '<span><span class="label">Acct:</span> ' + escapeHtml(it.accountability_code || "—") + "</span>";
       html += "</div>";
       if (!kitNsn) {
@@ -285,12 +308,14 @@
       html += "<td>" + escapeHtml(it.description || "—") + "</td>";
       html += '<td class="num">' + num(qtyFor(it, kitNsn)) + "</td>";
       html += "<td>" + escapeHtml(it.uom || "—") + "</td>";
-      html += '<td class="num">' + money(it.price) +
-        (it.price_varies ? ' <span class="badge badge-warn" title="Priced differently in different kits">varies</span>' : "") + "</td>";
-      html += "<td>" + escapeHtml(it.source || "—") + "</td>";
+      html += '<td class="num">' + money(priceFor(it, kitNsn)) +
+        (it.price_varies && !kitNsn ? ' <span class="badge badge-warn" title="Priced differently in different kits">varies</span>' : "") + "</td>";
+      html += "<td>" + escapeHtml(it.source || "—") +
+        (it.source_varies && !kitNsn ? ' <span class="badge badge-warn" title="Drawn from a different source in different kits">varies</span>' : "") + "</td>";
       html += "<td>" + escapeHtml(it.accountability_code || "—") + "</td>";
       if (kitNsn) {
-        html += '<td class="num">' + money(qtyFor(it, kitNsn) * (it.price || 0)) + "</td>";
+        var line = membershipIn(it, kitNsn);
+        html += '<td class="num">' + money(line ? line.extended_price : null) + "</td>";
       } else {
         html += '<td><button class="detail-toggle" data-nsn="' + escapeHtml(it.nsn) +
           '" aria-expanded="' + open + '">' + it.kit_count + "</button></td>";
@@ -374,7 +399,9 @@
     kits.forEach(function (kit) {
       if (!matching[kit.nsn]) return;
       var parent = kit.parent_nsn;
-      while (parent && kitByNsn[parent]) {
+      var seen = {};
+      while (parent && kitByNsn[parent] && !seen[parent]) {
+        seen[parent] = true;
         matching[parent] = true;
         parent = kitByNsn[parent].parent_nsn;
       }
@@ -475,7 +502,7 @@
       addAll.addEventListener("click", function () {
         contents.forEach(function (it) {
           if (!isSelected(it.nsn)) {
-            selected.push({ nsn: it.nsn, qty: qtyFor(it, kit.nsn) });
+            selected.push({ nsn: it.nsn, qty: qtyFor(it, kit.nsn), kitNsn: kit.nsn });
           }
         });
         persistSelection();
@@ -494,25 +521,18 @@
     return selected.some(function (s) { return s.nsn === nsn; });
   }
 
-  function toggleSelect(nsn, qty) {
+  function toggleSelect(nsn, qty, kitNsn) {
     var idx = -1;
     for (var i = 0; i < selected.length; i++) {
       if (selected[i].nsn === nsn) { idx = i; break; }
     }
     if (idx >= 0) selected.splice(idx, 1);
-    else if (itemByNsnLookup(nsn)) selected.push({ nsn: nsn, qty: qty });
+    else if (itemByNsn[nsn]) {
+      selected.push({ nsn: nsn, qty: qty, kitNsn: kitNsn || "" });
+    }
     persistSelection();
     updateSelectedCount();
     render();
-  }
-
-  function itemByNsnLookup(nsn) {
-    if (!itemByNsn[nsn]) {
-      for (var i = 0; i < items.length; i++) {
-        if (items[i].nsn === nsn) { itemByNsn[nsn] = items[i]; break; }
-      }
-    }
-    return itemByNsn[nsn];
   }
 
   function persistSelection() {
@@ -527,7 +547,7 @@
       var saved = raw ? JSON.parse(raw) : [];
       if (Object.prototype.toString.call(saved) === "[object Array]") {
         selected = saved.filter(function (s) {
-          return s && s.nsn && itemByNsnLookup(s.nsn);
+          return s && s.nsn && itemByNsn[s.nsn];
         });
       }
     } catch (e) { selected = []; }
@@ -538,19 +558,45 @@
     selTitle.textContent = "Pick list (" + selected.length + ")";
   }
 
+  /* Estimated total, and how many lines could not be priced at all. */
+  function drawerTotals() {
+    var total = 0;
+    var unpriced = 0;
+    for (var i = 0; i < selected.length; i++) {
+      var it = itemByNsn[selected[i].nsn];
+      if (!it) continue;
+      var unit = priceFor(it, selected[i].kitNsn);
+      if (unit === null || unit === undefined) unpriced++;
+      else total += (selected[i].qty || 0) * unit;
+    }
+    return { total: total, unpriced: unpriced };
+  }
+
+  function totalLabel() {
+    var t = drawerTotals();
+    return "Estimated total " + money(t.total) +
+      (t.unpriced ? " (excludes " + t.unpriced + " unpriced item" +
+        (t.unpriced !== 1 ? "s" : "") + ")" : "");
+  }
+
+  function updateDrawerTotal() {
+    var el = selList.querySelector(".sel-total");
+    if (el) el.textContent = totalLabel();
+  }
+
   function renderDrawer() {
     updateSelectedCount();
+    selExport.disabled = !selected.length;
     if (!selected.length) {
       selList.innerHTML = '<div class="sel-empty">Nothing on the pick list yet.</div>';
       return;
     }
-    var total = 0;
     var html = "";
     for (var i = 0; i < selected.length; i++) {
-      var it = itemByNsnLookup(selected[i].nsn);
+      var it = itemByNsn[selected[i].nsn];
       if (!it) continue;
       var qty = selected[i].qty || 0;
-      total += qty * (it.price || 0);
+      var unit = priceFor(it, selected[i].kitNsn);
       html += '<div class="sel-card">';
       html += '<div class="sel-card-top"><div class="nsn">' + escapeHtml(it.nsn) + "</div>";
       html += '<button class="sel-remove-btn" data-nsn="' + escapeHtml(it.nsn) +
@@ -561,10 +607,12 @@
         escapeHtml(qty) + '" data-nsn="' + escapeHtml(it.nsn) + '" aria-label="Quantity for ' +
         escapeHtml(it.nsn) + '"></span>';
       html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
-      html += '<span><span class="label">Ext:</span> ' + money(qty * (it.price || 0)) + "</span>";
+      html += '<span><span class="label">Ext:</span> <span class="sel-ext">' +
+        money(unit === null || unit === undefined ? null : qty * unit) + "</span></span>";
       html += "</div></div>";
     }
-    selList.innerHTML = '<div class="sel-total">Estimated total ' + money(total) + "</div>" + html;
+    selList.innerHTML = '<div class="sel-total">' + escapeHtml(totalLabel()) +
+      "</div>" + html;
   }
 
   function openDrawer() {
@@ -595,15 +643,17 @@
     var lines = ["NSN,Description,Quantity,Unit of Measure,Unit Price,Extended Price," +
       "Source,Accountability Code,Kit Membership"];
     selected.forEach(function (sel) {
-      var it = itemByNsnLookup(sel.nsn);
+      var it = itemByNsn[sel.nsn];
       if (!it) return;
       var qty = sel.qty || 0;
+      var unit = priceFor(it, sel.kitNsn);
+      var priced = unit !== null && unit !== undefined;
       lines.push([
         it.nsn, it.description, qty, it.uom,
-        it.price === null ? "" : it.price,
-        it.price === null ? "" : Math.round(qty * it.price * 100) / 100,
+        priced ? unit : "",
+        priced ? Math.round(qty * unit * 100) / 100 : "",
         it.source, it.accountability_code,
-        it.kitNames.join("; "),
+        sel.kitNsn ? kitName(sel.kitNsn) : it.kitNames.join("; "),
       ].map(csvField).join(","));
     });
     return lines.join("\r\n");
@@ -630,7 +680,7 @@
     selExport.disabled = true;
     setTimeout(function () {
       selExport.textContent = original;
-      selExport.disabled = false;
+      selExport.disabled = !selected.length;
     }, 2000);
   }
 
@@ -675,7 +725,8 @@
       e.preventDefault();
       e.stopPropagation();
       var addQty = parseFloat(add.getAttribute("data-qty"));
-      toggleSelect(add.getAttribute("data-nsn"), isNaN(addQty) ? 0 : addQty);
+      toggleSelect(add.getAttribute("data-nsn"), isNaN(addQty) ? 0 : addQty,
+                   add.getAttribute("data-kit"));
     }
   });
 
@@ -762,15 +813,29 @@
     render();
   });
 
-  selList.addEventListener("change", function (e) {
+  /* Re-rendering the whole drawer here would remove the input mid-edit and drop
+     focus (and the soft keyboard), so update only the two derived figures. */
+  selList.addEventListener("input", function (e) {
     if (!e.target.classList.contains("qty-input")) return;
     var nsn = e.target.getAttribute("data-nsn");
     var qty = parseFloat(e.target.value);
-    selected.forEach(function (s) {
-      if (s.nsn === nsn) s.qty = isNaN(qty) || qty < 0 ? 0 : qty;
-    });
+    if (isNaN(qty) || qty < 0) qty = 0;
+
+    var sel = null;
+    for (var i = 0; i < selected.length; i++) {
+      if (selected[i].nsn === nsn) { sel = selected[i]; break; }
+    }
+    if (!sel) return;
+    sel.qty = qty;
     persistSelection();
-    renderDrawer();
+
+    var item = itemByNsn[nsn];
+    var unit = priceFor(item, sel.kitNsn);
+    var priced = unit !== null && unit !== undefined;
+    var card = e.target.closest(".sel-card");
+    var ext = card && card.querySelector(".sel-ext");
+    if (ext) ext.textContent = money(priced ? qty * unit : null);
+    updateDrawerTotal();
   });
 
   document.addEventListener("keydown", function (e) {

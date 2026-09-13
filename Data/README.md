@@ -70,7 +70,11 @@ they are wrong, then re-run the build.
   $1.25 vs $0.98), `7530-21-844-6267` (label, $0.05 vs $0.13), and
   `8105-21-900-0913` (ziplock bag, $0.06 vs $2.21) each differ between the Fatal
   and Non-Fatal Accident kits. The rollup uses the first price seen and flags the
-  item with `price_varies`, which the app shows as a "varies" badge.
+  item with `price_varies`, which the app shows as a "varies" badge. Per-kit
+  views use that kit's own price, so only the item-level rollup is affected.
+- **One item is drawn from two different sources.** `7690-21-883-2495` is `WHSE`
+  in one kit and `ExternalRqn` in another. Same treatment: the rollup keeps the
+  first and sets `source_varies`.
 - **21 lines are documents, not stock.** Pamphlets, booklets, labels and cards
   carry placeholder identifiers (`PAMPHLET1`, `CARD2`, `BOOK40`, …) instead of
   NSNs. They are kept; `is_nsn` is `false` for them.
