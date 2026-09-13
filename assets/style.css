@@ -674,8 +674,26 @@ select,
     border-collapse: collapse;
     background: #fff;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  /* No overflow clipping here: it would make the table the sticky containing
+     block, so the header below would offset from the table instead of the
+     viewport and sit on top of the first rows. Round the corner cells instead. */
+  .inv-table thead th:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  .inv-table thead th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  .inv-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+  }
+
+  .inv-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
   }
 
   .inv-table th,
@@ -691,15 +709,33 @@ select,
     font-weight: 600;
     color: #374151;
     position: sticky;
-    top: 102px;
+    top: var(--topbar-h, 102px);
     white-space: nowrap;
     z-index: 10;
   }
 
-  .inv-table td:first-child {
+  /* Column order: 1 Add, 2 NSN, 3 Description, 4 Qty, 5 UoM,
+     6 Unit Price, 7 Source, 8 Acct, 9 Kits / Ext. Price. */
+  /* No nowrap: at the 768px breakpoint the row does not fit otherwise, and an
+     NSN breaks cleanly at its hyphens. */
+  .inv-table td:nth-child(2) {
     font-weight: 500;
     color: #3478f6;
+  }
+
+  /* Wide enough to hold an NSN on one line wherever the row has the room. */
+  .inv-table th:nth-child(2),
+  .inv-table td:nth-child(2) {
+    min-width: 8.6em;
+  }
+
+  .inv-table td:nth-child(7) {
     white-space: nowrap;
+  }
+
+  /* Only the description needs to break inside a word. */
+  .inv-table td:nth-child(3) {
+    overflow-wrap: anywhere;
   }
 
   .inv-table tr:last-child td {
@@ -783,4 +819,378 @@ select,
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* === Tabs === */
+.top-bar .row.tab-row {
+  justify-content: space-between;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: #e8eaed;
+  border-radius: 9px;
+  padding: 3px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.tab.active {
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
+}
+
+/* Row-level utility only: .hidden on the drawer drives its slide animation. */
+.top-bar .row.hidden {
+  display: none;
+}
+
+/* === Badges === */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.badge-kit {
+  background: #e0ecff;
+  color: #1d4ed8;
+}
+
+.badge-warn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* === Kit tree === */
+.kit-tree {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin: 10px 12px;
+}
+
+.kit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #eef0f3;
+  text-decoration: none;
+  color: inherit;
+}
+
+.kit-row:last-child {
+  border-bottom: 0;
+}
+
+.kit-row:active {
+  background: #f2f4f7;
+}
+
+.kit-row-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.kit-row-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.kit-row-nsn {
+  font-size: 12px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.kit-row-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 12px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* === Kit detail === */
+.kit-detail {
+  padding: 12px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #3478f6;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.kit-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.kit-sub {
+  font-size: 13px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.kit-parent {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 6px;
+}
+
+.kit-parent a {
+  color: #3478f6;
+  text-decoration: none;
+}
+
+.kit-stats {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.stat {
+  flex: 1;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.kit-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.kit-actions .sel-action-btn {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* === Item detail / memberships === */
+.detail-toggle {
+  margin-top: 8px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #3478f6;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  min-height: 32px;
+}
+
+.memberships {
+  margin-top: 8px;
+  border-top: 1px dashed #d1d5db;
+  padding-top: 8px;
+}
+
+.memberships-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.membership {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f3f5;
+  text-decoration: none;
+  color: inherit;
+}
+
+.membership:last-child {
+  border-bottom: 0;
+}
+
+.membership-name {
+  flex: 1;
+  min-width: 140px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3478f6;
+}
+
+.membership-nsn {
+  font-size: 12px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+.membership-qty {
+  font-size: 12px;
+  color: #4b5563;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-kit {
+  border-left: 3px solid #3478f6;
+}
+
+/* === Pick list additions === */
+.sel-total {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0 0 10px;
+}
+
+.qty-input {
+  width: 70px;
+  padding: 4px 6px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Desktop table extras === */
+@media (min-width: 768px) {
+  .inv-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .inv-table .row-kit td {
+    background: #f7faff;
+  }
+
+  .inv-table .detail-row td {
+    background: #fafbfc;
+    padding-top: 0;
+  }
+
+  .inv-table .detail-toggle {
+    margin-top: 0;
+    padding: 3px 10px;
+    min-height: 26px;
+  }
+
+  /* .card-list is a column flex container, and auto side margins would stop a
+     child from stretching, so pin the width explicitly. */
+  .kit-tree,
+  .kit-detail {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* === Print: the pick list is what gets carried around === */
+@media print {
+  .top-bar,
+  .status-bar,
+  .footer,
+  .sel-overlay,
+  .sel-actions,
+  .sel-close,
+  .sel-add-btn,
+  .sel-remove-btn,
+  .detail-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    padding: 0;
+  }
+
+  .sel-drawer,
+  .sel-drawer.hidden {
+    position: static;
+    visibility: visible;
+    transform: none;
+    max-height: none;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .sel-card {
+    break-inside: avoid;
+  }
+
+  .qty-input {
+    border: 0;
+    padding: 0;
+  }
+}
+
+/* === Long unbroken descriptions (e.g. "…ANALYSER)LACTATE/PH/PCO2/PO2/TCO2")
+   have no break opportunity and would push the page sideways. === */
+.card .desc,
+.sel-card .desc,
+.kit-row-name,
+.kit-title,
+.membership-name {
+  overflow-wrap: anywhere;
+}
+
+/* The search field already has its own clear button; hide the browser's. */
+#search::-webkit-search-cancel-button,
+#search::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sel-action-btn[disabled] {
+  opacity: 0.5;
+  cursor: default;
 }
