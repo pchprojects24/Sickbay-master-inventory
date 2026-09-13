@@ -1,7 +1,7 @@
 {
   "name": "Sickbay Master Inventory",
   "short_name": "Sickbay",
-  "description": "Mobile-friendly Sickbay master inventory browser with search, filtering, grouping, and CSV export.",
+  "description": "Searchable Sickbay kit and inventory browser: browse kits by hierarchy, search every item by NSN or description, and build exportable pick lists.",
   "start_url": "../index.html",
   "scope": "../",
   "display": "standalone",
@@ -9,5 +9,13 @@
   "background_color": "#f2f4f7",
   "theme_color": "#3478f6",
   "lang": "en",
-  "categories": ["medical", "productivity", "utilities"]
+  "categories": ["medical", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

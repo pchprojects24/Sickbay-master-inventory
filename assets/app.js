@@ -2,29 +2,38 @@
   "use strict";
 
   /* ── State ── */
-  var allItems = [];
+  var kits = [];            // every kit, ordered as generated
+  var items = [];           // one record per distinct item NSN
+  var kitByNsn = {};
+  var itemByNsn = {};
+  var childKits = {};       // parent NSN -> [kit, …]
+  var rootKits = [];
+
+  var view = "items";       // "items" | "kits"
+  var openKit = "";         // NSN of the kit being drilled into, "" for the tree
   var filteredItems = [];
-  var kitList = [];
   var sortKey = "nsn";
   var sortAsc = true;
   var searchTerm = "";
   var kitFilter = "";
   var groupByKit = false;
   var collapsedKits = {};
+  var expandedItems = {};
   var isDesktop = window.matchMedia("(min-width: 768px)").matches;
-  var selectedItems = [];
-  var NO_KIT_KEY = "__NO_KIT__";
-  var NO_KIT_LABEL = "No kit assigned";
-  var hasNoKitItems = false;
+  var selected = [];        // [{nsn, qty}]
+  var STORAGE_KEY = "sickbay.picklist.v1";
 
   /* ── DOM refs ── */
   var searchInput = document.getElementById("search");
   var searchClearBtn = document.getElementById("search-clear");
   var kitSelect = document.getElementById("kit-filter");
   var sortSelect = document.getElementById("sort-select");
+  var itemControls = document.getElementById("item-controls");
   var statusBar = document.getElementById("status-bar");
   var listEl = document.getElementById("item-list");
   var groupBtn = document.getElementById("group-btn");
+  var tabItems = document.getElementById("tab-items");
+  var tabKits = document.getElementById("tab-kits");
   var selectedBtn = document.getElementById("selected-btn");
   var selOverlay = document.getElementById("sel-overlay");
   var selDrawer = document.getElementById("sel-drawer");
@@ -32,442 +41,655 @@
   var selList = document.getElementById("sel-list");
   var selClose = document.getElementById("sel-close");
   var selExport = document.getElementById("sel-export");
+  var selPrint = document.getElementById("sel-print");
   var selClear = document.getElementById("sel-clear");
 
-  /* ── CSV Parsing ── */
-  function parseCSVRows(text) {
-    var rows = [];
-    var i = 0;
-    var len = text.length;
-
-    while (i < len) {
-      var row = [];
-      while (i < len) {
-        var field = "";
-        // skip leading whitespace? no, preserve it
-        if (i < len && text[i] === '"') {
-          // quoted field
-          i++; // skip opening quote
-          while (i < len) {
-            if (text[i] === '"') {
-              if (i + 1 < len && text[i + 1] === '"') {
-                field += '"';
-                i += 2;
-              } else {
-                i++; // skip closing quote
-                break;
-              }
-            } else {
-              field += text[i];
-              i++;
-            }
-          }
-          // skip to comma or line end
-          while (i < len && text[i] !== "," && text[i] !== "\n" && text[i] !== "\r") {
-            i++;
-          }
-        } else {
-          // unquoted field
-          while (i < len && text[i] !== "," && text[i] !== "\n" && text[i] !== "\r") {
-            field += text[i];
-            i++;
-          }
-        }
-        row.push(field);
-
-        if (i < len && text[i] === ",") {
-          i++; // skip comma, continue to next field
-        } else {
-          break; // end of row
-        }
-      }
-      // skip line endings
-      if (i < len && text[i] === "\r") i++;
-      if (i < len && text[i] === "\n") i++;
-
-      // skip empty trailing rows
-      if (row.length === 1 && row[0] === "" && i >= len) break;
-      rows.push(row);
-    }
-    return rows;
+  /* ── Helpers ── */
+  function escapeHtml(s) {
+    if (s === null || s === undefined) return "";
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
-  function loadData() {
-    listEl.innerHTML = '<div class="loading">Loading inventory\u2026</div>';
+  function money(n) {
+    if (n === null || n === undefined || isNaN(n)) return "—";
+    return "$" + Number(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
-    fetch("Data/master_inventory.csv")
+  function num(n) {
+    if (n === null || n === undefined || isNaN(n)) return "—";
+    return String(Math.round(Number(n) * 10000) / 10000);
+  }
+
+  function compareText(a, b) {
+    return String(a || "").localeCompare(String(b || ""), undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
+  }
+
+  function kitName(nsn) {
+    return kitByNsn[nsn] ? kitByNsn[nsn].name : nsn;
+  }
+
+  /* ── Load ── */
+  function loadData() {
+    listEl.innerHTML = '<div class="loading">Loading inventory…</div>';
+
+    fetch("Data/inventory.json")
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.text();
+        return res.json();
       })
-      .then(function (text) {
-        allItems = [];
-        hasNoKitItems = false;
-        var rows = parseCSVRows(text);
-        if (rows.length < 2) {
-          listEl.innerHTML = '<div class="loading">No data found in CSV.</div>';
-          return;
-        }
-        // first row is header
-        var kitsSet = {};
-        for (var r = 1; r < rows.length; r++) {
-          var cols = rows[r];
-          if (cols.length < 5) {
-            // pad
-            while (cols.length < 5) cols.push("");
+      .then(function (data) {
+        kits = data.kits || [];
+        items = data.items || [];
+
+        kits.forEach(function (kit) {
+          kitByNsn[kit.nsn] = kit;
+        });
+        kits.forEach(function (kit) {
+          if (kit.parent_nsn && kitByNsn[kit.parent_nsn]) {
+            (childKits[kit.parent_nsn] = childKits[kit.parent_nsn] || []).push(kit);
+          } else {
+            rootKits.push(kit);
           }
-          var item = {
-            nsn: cols[0].trim(),
-            description: cols[1].trim(),
-            uom: cols[2].trim(),
-            qty: cols[3].trim(),
-            kits: cols[4].trim(),
-          };
-          // skip entirely blank rows
-          if (!item.nsn && !item.description) continue;
+        });
 
-          item.qtyNum = parseFloat(item.qty) || 0;
-          item.kitArr = item.kits
-            ? item.kits.split(";").map(function (k) { return k.trim(); }).filter(Boolean)
-            : [];
-          if (item.kitArr.length === 0) hasNoKitItems = true;
-          item.searchText = (
-            item.nsn + " " + item.description + " " + item.uom + " " + item.qty + " " + item.kits
-          ).toLowerCase();
+        items.forEach(function (item) {
+          item.kitNsns = item.memberships.map(function (m) { return m.kit_nsn; });
+          item.kitNames = item.kitNsns.map(kitName);
+          item.searchText = [
+            item.nsn, item.description, item.uom, item.source,
+            item.accountability_code, item.kitNames.join(" "), item.kitNsns.join(" "),
+          ].join(" ").toLowerCase();
+        });
 
-          allItems.push(item);
-
-          for (var k = 0; k < item.kitArr.length; k++) {
-            kitsSet[item.kitArr[k]] = true;
-          }
-        }
-
-        kitList = Object.keys(kitsSet).sort();
+        restoreSelection();
         buildKitSelect();
-        applyFilters();
+        updateSelectedCount();
+        applyRoute();
       })
       .catch(function (err) {
         listEl.innerHTML =
           '<div class="loading">Error loading data: ' + escapeHtml(err.message) + "</div>";
+        statusBar.textContent = "Failed to load";
       });
   }
 
-  /* ── Kit dropdown ── */
   function buildKitSelect() {
     var html = '<option value="">All Kits</option>';
-    for (var i = 0; i < kitList.length; i++) {
-      html += '<option value="' + escapeAttr(kitList[i]) + '">' + escapeHtml(kitList[i]) + "</option>";
-    }
-    if (hasNoKitItems) {
-      html += '<option value="' + NO_KIT_KEY + '">' + escapeHtml(NO_KIT_LABEL) + "</option>";
-    }
+    kits.slice().sort(function (a, b) { return compareText(a.name, b.name); })
+      .forEach(function (kit) {
+        html += '<option value="' + escapeHtml(kit.nsn) + '">' +
+          escapeHtml(kit.name) + "</option>";
+      });
     kitSelect.innerHTML = html;
+    kitSelect.value = kitFilter;
   }
 
-  /* ── Filtering & Sorting ── */
-  function applyFilters() {
-    var term = searchTerm.toLowerCase();
-    filteredItems = allItems.filter(function (item) {
-      if (term && item.searchText.indexOf(term) === -1) return false;
-      if (kitFilter) {
-        if (kitFilter === NO_KIT_KEY) return item.kitArr.length === 0;
-        if (item.kitArr.indexOf(kitFilter) === -1) return false;
-      }
-      return true;
-    });
-    sortItems();
+  /* ── Routing (so a kit can be linked and the back button works) ── */
+  function applyRoute() {
+    var hash = window.location.hash.replace(/^#\/?/, "");
+    var nsn = hash.indexOf("kit/") === 0
+      ? decodeURIComponent(hash.slice(4)).toUpperCase()
+      : "";
+    if (nsn && kitByNsn[nsn]) {
+      view = "kits";
+      openKit = nsn;
+    } else if (hash === "kits" || nsn) {
+      view = "kits";
+      openKit = "";
+    } else {
+      view = "items";
+      openKit = "";
+    }
+    syncTabs();
     render();
   }
 
-  function compareText(a, b) {
-    var sa = (a || "");
-    var sb = (b || "");
-    return sa.localeCompare(sb, undefined, { numeric: true, sensitivity: "base" });
+  function navigate(hash) {
+    if (window.location.hash === hash) applyRoute();
+    else window.location.hash = hash;
   }
 
-  function sortItems() {
-    var key = sortKey;
-    var asc = sortAsc;
-    filteredItems.sort(function (a, b) {
-      var va, vb;
-      if (key === "qty") {
-        va = a.qtyNum;
-        vb = b.qtyNum;
-      } else if (key === "nsn") {
-        va = a.nsn;
-        vb = b.nsn;
-      } else {
-        va = a.description;
-        vb = b.description;
-      }
+  function syncTabs() {
+    tabItems.classList.toggle("active", view === "items");
+    tabKits.classList.toggle("active", view === "kits");
+    tabItems.setAttribute("aria-selected", view === "items" ? "true" : "false");
+    tabKits.setAttribute("aria-selected", view === "kits" ? "true" : "false");
+    itemControls.classList.toggle("hidden", view !== "items");
+    searchInput.placeholder = view === "items"
+      ? "Search NSN, description, kit…"
+      : "Search kits…";
+    syncTopBarHeight();
+  }
+
+  /* ── Items view ── */
+  function applyFilters() {
+    var term = searchTerm.toLowerCase();
+    filteredItems = items.filter(function (item) {
+      if (term && item.searchText.indexOf(term) === -1) return false;
+      if (kitFilter && item.kitNsns.indexOf(kitFilter) === -1) return false;
+      return true;
+    });
+    sortList(filteredItems);
+  }
+
+  function sortList(list, kitNsn) {
+    list.sort(function (a, b) {
       var cmp;
-      if (key === "qty") cmp = va - vb;
-      else cmp = compareText(va, vb);
-      if (cmp < 0) return asc ? -1 : 1;
-      if (cmp > 0) return asc ? 1 : -1;
+      if (sortKey === "qty") cmp = qtyFor(a, kitNsn) - qtyFor(b, kitNsn);
+      else if (sortKey === "price") cmp = (a.price || 0) - (b.price || 0);
+      else if (sortKey === "nsn") cmp = compareText(a.nsn, b.nsn);
+      else cmp = compareText(a.description, b.description);
+      if (cmp < 0) return sortAsc ? -1 : 1;
+      if (cmp > 0) return sortAsc ? 1 : -1;
       return 0;
     });
+    return list;
   }
 
-  /* ── Rendering ── */
-  function formatKitLabel(val) {
-    return val === NO_KIT_KEY ? NO_KIT_LABEL : val;
+  /* Quantity in the kit being filtered on, else the total across all kits. */
+  function qtyFor(item, kitNsn) {
+    var target = kitNsn || kitFilter;
+    if (target) {
+      for (var i = 0; i < item.memberships.length; i++) {
+        if (item.memberships[i].kit_nsn === target) return item.memberships[i].qty || 0;
+      }
+      return 0;
+    }
+    return item.total_qty || 0;
   }
 
   function render() {
-    var msg = "Showing " + filteredItems.length + " of " + allItems.length + " items";
+    if (view === "kits") return openKit ? renderKitDetail() : renderKitTree();
+    applyFilters();
+    renderItems();
+  }
+
+  function renderItems() {
+    var msg = "Showing " + filteredItems.length + " of " + items.length + " items";
     var isFiltering = searchTerm || kitFilter;
-    if (isFiltering) {
-      msg += " (filtered)";
-      statusBar.classList.add("filtering");
-    } else {
-      statusBar.classList.remove("filtering");
-    }
+    statusBar.classList.toggle("filtering", !!isFiltering);
+    if (isFiltering) msg += " (filtered)";
     if (groupByKit) msg += " — grouped by kit";
     statusBar.textContent = msg;
 
-    if (filteredItems.length === 0) {
-      var msg = '<div class="no-results"><p>No items match';
-      if (searchTerm) msg += ' search "' + escapeHtml(searchTerm) + '"';
-      if (kitFilter) msg += ' in kit "' + escapeHtml(formatKitLabel(kitFilter)) + '"';
-      msg += '.</p><button id="reset-btn">Reset Filters</button></div>';
-      listEl.innerHTML = msg;
-      document.getElementById("reset-btn").addEventListener("click", resetFilters);
-      return;
-    }
-
-    if (groupByKit) {
-      renderGrouped();
-    } else if (isDesktop) {
-      renderTable();
-    } else {
-      renderCards();
-    }
+    if (filteredItems.length === 0) return renderNoResults();
+    if (groupByKit) return renderGrouped();
+    listEl.innerHTML = isDesktop ? itemTable(filteredItems) : itemCards(filteredItems);
   }
 
-  function renderCards() {
+  function renderNoResults() {
+    var html = '<div class="no-results"><p>No items match';
+    if (searchTerm) html += ' search "' + escapeHtml(searchTerm) + '"';
+    if (kitFilter) html += ' in kit "' + escapeHtml(kitName(kitFilter)) + '"';
+    html += '.</p><button id="reset-btn">Reset Filters</button></div>';
+    listEl.innerHTML = html;
+    document.getElementById("reset-btn").addEventListener("click", resetFilters);
+  }
+
+  function addBtn(item, kitNsn) {
+    var on = isSelected(item.nsn);
+    return '<button class="sel-add-btn' + (on ? " added" : "") +
+      '" data-nsn="' + escapeHtml(item.nsn) +
+      '" data-qty="' + escapeHtml(qtyFor(item, kitNsn)) + '">' +
+      (on ? "Added ✓" : "Add") + "</button>";
+  }
+
+  function itemCards(list, kitNsn) {
     var html = "";
-    for (var i = 0; i < filteredItems.length; i++) {
-      var it = filteredItems[i];
-      var isSel = isSelected(it);
-      html += '<div class="card">';
+    for (var i = 0; i < list.length; i++) {
+      var it = list[i];
+      var open = !!expandedItems[it.nsn];
+      html += '<div class="card' + (it.is_kit ? " card-kit" : "") + '">';
       html += '<div class="card-top"><div class="card-top-left">';
       html += '<div class="nsn">' + escapeHtml(it.nsn) + "</div>";
-      html += '</div>';
-      html += '<button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added \u2713" : "Add") + '</button>';
-      html += '</div>';
-      html += '<div class="desc">' + escapeHtml(it.description || "\u2014") + "</div>";
+      if (it.is_kit) html += '<span class="badge badge-kit">Kit</span>';
+      html += "</div>" + addBtn(it, kitNsn) + "</div>";
+      html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
       html += '<div class="meta">';
-      html += "<span><span class=\"label\">UoM:</span> " + escapeHtml(it.uom || "\u2014") + "</span>";
-      html += "<span><span class=\"label\">Qty:</span> " + escapeHtml(it.qty || "\u2014") + "</span>";
+      html += '<span><span class="label">Qty:</span> ' + num(qtyFor(it, kitNsn)) + "</span>";
+      html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
+      html += '<span><span class="label">Unit:</span> ' + money(it.price) + "</span>";
+      html += '<span><span class="label">Acct:</span> ' + escapeHtml(it.accountability_code || "—") + "</span>";
       html += "</div>";
-      if (it.kits) {
-        var needsTruncate = it.kits.length > 100;
-        html += '<div class="kits"><span class="label">Kits:</span> ';
-        html +=
-          '<span class="kits-text' + (needsTruncate ? " truncated" : "") + '">' +
-          escapeHtml(it.kits) +
-          "</span>";
-        if (needsTruncate) {
-          html += ' <button class="kits-toggle" data-idx="' + i + '" aria-label="Expand kits list" aria-expanded="false">more</button>';
-        }
-        html += "</div>";
+      if (!kitNsn) {
+        html += '<button class="detail-toggle" data-nsn="' + escapeHtml(it.nsn) +
+          '" aria-expanded="' + open + '">' +
+          (open ? "Hide" : "In " + it.kit_count + " kit" + (it.kit_count !== 1 ? "s" : "")) +
+          "</button>";
+        if (open) html += membershipTable(it);
       }
       html += "</div>";
     }
-    listEl.innerHTML = html;
+    return html;
   }
 
-  function renderTable() {
+  function itemTable(list, kitNsn) {
     var html = '<table class="inv-table"><thead><tr>';
-    html += "<th></th><th>NSN</th><th>Description</th><th>UoM</th><th>Qty</th><th>Kit Membership</th>";
-    html += "</tr></thead><tbody>";
-    for (var i = 0; i < filteredItems.length; i++) {
-      var it = filteredItems[i];
-      var needsTruncate = it.kits.length > 120;
-      var isSel = isSelected(it);
-      html += "<tr>";
-      html += '<td class="sel-cell"><button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added \u2713" : "Add") + '</button></td>';
-      html += "<td>" + escapeHtml(it.nsn) + "</td>";
-      html += "<td>" + escapeHtml(it.description || "\u2014") + "</td>";
-      html += "<td>" + escapeHtml(it.uom || "\u2014") + "</td>";
-      html += "<td>" + escapeHtml(it.qty || "\u2014") + "</td>";
-      html += '<td class="kit-cell">';
-      html +=
-        '<span class="kits-text' + (needsTruncate ? " truncated" : "") + '">' +
-        escapeHtml(it.kits || "\u2014") +
-        "</span>";
-      if (needsTruncate) {
-        html += ' <button class="kits-toggle" data-idx="' + i + '" aria-label="Expand kits list" aria-expanded="false">more</button>';
+    html += "<th></th><th>NSN</th><th>Description</th><th>Qty</th><th>UoM</th>" +
+      "<th>Unit Price</th><th>Source</th><th>Acct</th><th>" +
+      (kitNsn ? "Ext. Price" : "Kits") + "</th></tr></thead><tbody>";
+    for (var i = 0; i < list.length; i++) {
+      var it = list[i];
+      var open = !!expandedItems[it.nsn];
+      html += '<tr class="' + (it.is_kit ? "row-kit" : "") + '">';
+      html += '<td class="sel-cell">' + addBtn(it, kitNsn) + "</td>";
+      html += "<td>" + escapeHtml(it.nsn) +
+        (it.is_kit ? ' <span class="badge badge-kit">Kit</span>' : "") + "</td>";
+      html += "<td>" + escapeHtml(it.description || "—") + "</td>";
+      html += '<td class="num">' + num(qtyFor(it, kitNsn)) + "</td>";
+      html += "<td>" + escapeHtml(it.uom || "—") + "</td>";
+      html += '<td class="num">' + money(it.price) +
+        (it.price_varies ? ' <span class="badge badge-warn" title="Priced differently in different kits">varies</span>' : "") + "</td>";
+      html += "<td>" + escapeHtml(it.source || "—") + "</td>";
+      html += "<td>" + escapeHtml(it.accountability_code || "—") + "</td>";
+      if (kitNsn) {
+        html += '<td class="num">' + money(qtyFor(it, kitNsn) * (it.price || 0)) + "</td>";
+      } else {
+        html += '<td><button class="detail-toggle" data-nsn="' + escapeHtml(it.nsn) +
+          '" aria-expanded="' + open + '">' + it.kit_count + "</button></td>";
       }
-      html += "</td></tr>";
+      html += "</tr>";
+      if (open && !kitNsn) {
+        html += '<tr class="detail-row"><td></td><td colspan="8">' +
+          membershipTable(it) + "</td></tr>";
+      }
     }
-    html += "</tbody></table>";
-    listEl.innerHTML = html;
+    return html + "</tbody></table>";
+  }
+
+  function membershipTable(item) {
+    var html = '<div class="memberships"><div class="memberships-title">Held in</div>';
+    for (var i = 0; i < item.memberships.length; i++) {
+      var m = item.memberships[i];
+      html += '<a class="membership" href="#kit/' + encodeURIComponent(m.kit_nsn) + '">';
+      html += '<span class="membership-name">' + escapeHtml(kitName(m.kit_nsn)) + "</span>";
+      html += '<span class="membership-nsn">' + escapeHtml(m.kit_nsn) + "</span>";
+      html += '<span class="membership-qty">' + num(m.qty) + " " +
+        escapeHtml(item.uom || "") + " · " + money(m.extended_price) + "</span>";
+      html += "</a>";
+    }
+    return html + "</div>";
   }
 
   function renderGrouped() {
-    var kitsToShow = kitFilter ? [kitFilter] : kitList.slice();
-    if (!kitFilter && hasNoKitItems) kitsToShow.push(NO_KIT_KEY);
+    var shown = kitFilter ? [kitByNsn[kitFilter]] :
+      kits.slice().sort(function (a, b) { return compareText(a.name, b.name); });
     var html = "";
-    var hasAny = false;
+    var any = false;
 
-    for (var ki = 0; ki < kitsToShow.length; ki++) {
-      var kitName = kitsToShow[ki];
-      var kitItems = [];
-      for (var ii = 0; ii < filteredItems.length; ii++) {
-        var it = filteredItems[ii];
-        if (kitName === NO_KIT_KEY) {
-          if (it.kitArr.length === 0) kitItems.push(it);
-        } else if (it.kitArr.indexOf(kitName) !== -1) {
-          kitItems.push(filteredItems[ii]);
-        }
-      }
-      if (kitItems.length === 0) continue;
-      hasAny = true;
-
-      var key = sortKey;
-      var asc = sortAsc;
-      kitItems.sort(function (a, b) {
-        var va, vb;
-        if (key === "qty") { va = a.qtyNum; vb = b.qtyNum; }
-        else if (key === "nsn") { va = a.nsn; vb = b.nsn; }
-        else { va = a.description; vb = b.description; }
-        var cmp;
-        if (key === "qty") cmp = va - vb;
-        else cmp = compareText(va, vb);
-        if (cmp < 0) return asc ? -1 : 1;
-        if (cmp > 0) return asc ? 1 : -1;
-        return 0;
+    for (var k = 0; k < shown.length; k++) {
+      var kit = shown[k];
+      if (!kit) continue;
+      var kitItems = filteredItems.filter(function (it) {
+        return it.kitNsns.indexOf(kit.nsn) !== -1;
       });
+      if (!kitItems.length) continue;
+      any = true;
+      sortList(kitItems, kit.nsn);
 
-      var isCollapsed = !!collapsedKits[kitName];
-      var kitLabel = kitName === NO_KIT_KEY ? NO_KIT_LABEL : kitName;
+      var collapsed = !!collapsedKits[kit.nsn];
       html += '<div class="kit-group">';
-      html += '<button class="kit-group-header" data-kit="' + escapeAttr(kitName) + '" aria-expanded="' + (!isCollapsed) + '">';
-      html += '<span class="kit-group-chevron">' + (isCollapsed ? "&#9654;" : "&#9660;") + "</span>";
-      html += '<span class="kit-group-name">' + escapeHtml(kitLabel) + "</span>";
-      html += '<span class="kit-group-count">' + kitItems.length + " item" + (kitItems.length !== 1 ? "s" : "") + "</span>";
-      html += "</button>";
-
-      if (!isCollapsed) {
-        html += '<div class="kit-group-body">';
-        if (isDesktop) {
-          html += '<table class="inv-table inv-table-group"><thead><tr>';
-          html += "<th></th><th>NSN</th><th>Description</th><th>UoM</th><th>Qty</th>";
-          html += "</tr></thead><tbody>";
-          for (var i = 0; i < kitItems.length; i++) {
-            var it = kitItems[i];
-            var isSel = isSelected(it);
-            html += "<tr>";
-            html += '<td class="sel-cell"><button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added ✓" : "Add") + "</button></td>";
-            html += "<td>" + escapeHtml(it.nsn) + "</td>";
-            html += "<td>" + escapeHtml(it.description || "—") + "</td>";
-            html += "<td>" + escapeHtml(it.uom || "—") + "</td>";
-            html += "<td>" + escapeHtml(it.qty || "—") + "</td>";
-            html += "</tr>";
-          }
-          html += "</tbody></table>";
-        } else {
-          for (var i = 0; i < kitItems.length; i++) {
-            var it = kitItems[i];
-            var isSel = isSelected(it);
-            html += '<div class="card">';
-            html += '<div class="card-top"><div class="card-top-left">';
-            html += '<div class="nsn">' + escapeHtml(it.nsn) + "</div>";
-            html += "</div>";
-            html += '<button class="sel-add-btn' + (isSel ? " added" : "") + '" data-nsn="' + escapeAttr(it.nsn) + '">' + (isSel ? "Added ✓" : "Add") + "</button>";
-            html += "</div>";
-            html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
-            html += '<div class="meta">';
-            html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
-            html += '<span><span class="label">Qty:</span> ' + escapeHtml(it.qty || "—") + "</span>";
-            html += "</div>";
-            html += "</div>";
-          }
-        }
-        html += "</div>";
+      html += '<button class="kit-group-header" data-kit="' + escapeHtml(kit.nsn) +
+        '" aria-expanded="' + !collapsed + '">';
+      html += '<span class="kit-group-chevron">' + (collapsed ? "&#9654;" : "&#9660;") + "</span>";
+      html += '<span class="kit-group-name">' + escapeHtml(kit.name) + "</span>";
+      html += '<span class="kit-group-count">' + kitItems.length + " item" +
+        (kitItems.length !== 1 ? "s" : "") + "</span></button>";
+      if (!collapsed) {
+        html += '<div class="kit-group-body">' +
+          (isDesktop ? itemTable(kitItems, kit.nsn) : itemCards(kitItems, kit.nsn)) +
+          "</div>";
       }
       html += "</div>";
     }
 
-    if (!hasAny) {
-      var noMsg = '<div class="no-results"><p>No items match';
-      if (searchTerm) noMsg += ' search "' + escapeHtml(searchTerm) + '"';
-      if (kitFilter) noMsg += ' in kit "' + escapeHtml(kitFilter) + '"';
-      noMsg += '.</p><button id="reset-btn">Reset Filters</button></div>';
-      listEl.innerHTML = noMsg;
+    if (!any) return renderNoResults();
+    listEl.innerHTML = html;
+  }
+
+  /* ── Kits view ── */
+  function kitMatches(kit, term) {
+    if (!term) return true;
+    if ((kit.name + " " + kit.nsn).toLowerCase().indexOf(term) !== -1) return true;
+    // Also match a kit by anything it contains.
+    return items.some(function (it) {
+      return it.kitNsns.indexOf(kit.nsn) !== -1 && it.searchText.indexOf(term) !== -1;
+    });
+  }
+
+  function renderKitTree() {
+    var term = searchTerm.toLowerCase();
+    var matching = {};
+    kits.forEach(function (kit) {
+      if (kitMatches(kit, term)) matching[kit.nsn] = true;
+    });
+    // Keep ancestors of a match visible so the tree stays navigable.
+    kits.forEach(function (kit) {
+      if (!matching[kit.nsn]) return;
+      var parent = kit.parent_nsn;
+      while (parent && kitByNsn[parent]) {
+        matching[parent] = true;
+        parent = kitByNsn[parent].parent_nsn;
+      }
+    });
+
+    var count = kits.filter(function (k) { return matching[k.nsn]; }).length;
+    statusBar.classList.toggle("filtering", !!term);
+    statusBar.textContent = term
+      ? "Showing " + count + " of " + kits.length + " kits (filtered)"
+      : kits.length + " kits · " + items.length + " distinct items";
+
+    if (!count) {
+      listEl.innerHTML = '<div class="no-results"><p>No kits match "' +
+        escapeHtml(searchTerm) + '".</p><button id="reset-btn">Reset Filters</button></div>';
       document.getElementById("reset-btn").addEventListener("click", resetFilters);
       return;
     }
 
-    listEl.innerHTML = html;
+    var html = '<div class="kit-tree">';
+    function walk(list, depth) {
+      list.slice().sort(function (a, b) { return compareText(a.name, b.name); })
+        .forEach(function (kit) {
+          if (!matching[kit.nsn]) return;
+          html += '<a class="kit-row" href="#kit/' + encodeURIComponent(kit.nsn) +
+            '" style="padding-left:' + (12 + depth * 18) + 'px">';
+          html += '<div class="kit-row-main">';
+          html += '<div class="kit-row-name">' + escapeHtml(kit.name) + "</div>";
+          html += '<div class="kit-row-nsn">' + escapeHtml(kit.nsn) + "</div></div>";
+          html += '<div class="kit-row-stats"><span>' + kit.line_count + " lines</span>" +
+            "<span>" + money(kit.total_value) + "</span></div>";
+          html += "</a>";
+          walk(childKits[kit.nsn] || [], depth + 1);
+        });
+    }
+    walk(rootKits, 0);
+    listEl.innerHTML = html + "</div>";
   }
 
-  /* ── Toggle kits expand/collapse & Selection ── */
-  listEl.addEventListener("click", function (e) {
-    // Handle kit group header collapse/expand
-    var groupHeader = e.target.closest(".kit-group-header");
-    if (groupHeader) {
-      var kitName = groupHeader.getAttribute("data-kit");
-      if (collapsedKits[kitName]) {
-        delete collapsedKits[kitName];
-      } else {
-        collapsedKits[kitName] = true;
+  function renderKitDetail() {
+    var kit = kitByNsn[openKit];
+    if (!kit) return navigate("#kits");
+
+    var contents = items.filter(function (it) {
+      return it.kitNsns.indexOf(kit.nsn) !== -1;
+    });
+    var term = searchTerm.toLowerCase();
+    if (term) {
+      contents = contents.filter(function (it) {
+        return it.searchText.indexOf(term) !== -1;
+      });
+    }
+    sortList(contents, kit.nsn);
+
+    statusBar.classList.toggle("filtering", !!term);
+    statusBar.textContent = kit.line_count + " lines · " + money(kit.total_value) +
+      (term ? " · showing " + contents.length + " matching" : "");
+
+    var html = '<div class="kit-detail">';
+    html += '<a class="back-link" href="#kits">&#8592; All kits</a>';
+    html += '<h1 class="kit-title">' + escapeHtml(kit.name) + "</h1>";
+    html += '<div class="kit-sub">' + escapeHtml(kit.nsn) + "</div>";
+
+    if (kit.parent_nsn && kitByNsn[kit.parent_nsn]) {
+      html += '<div class="kit-parent">Component of <a href="#kit/' +
+        encodeURIComponent(kit.parent_nsn) + '">' +
+        escapeHtml(kitName(kit.parent_nsn)) + "</a></div>";
+    }
+
+    html += '<div class="kit-stats">';
+    html += '<div class="stat"><div class="stat-value">' + kit.line_count +
+      '</div><div class="stat-label">Lines</div></div>';
+    html += '<div class="stat"><div class="stat-value">' + money(kit.total_value) +
+      '</div><div class="stat-label">Total value</div></div>';
+    html += '<div class="stat"><div class="stat-value">' + kit.sub_kits.length +
+      '</div><div class="stat-label">Sub-kits</div></div>';
+    html += "</div>";
+
+    html += '<div class="kit-actions">';
+    html += '<button id="kit-add-all" class="sel-action-btn">Add all to pick list</button>';
+    html += '<a class="sel-action-btn" href="Data/kits/' + encodeHtmlAttr(kit.slug) +
+      '.csv" download>Download CSV</a>';
+    html += "</div>";
+
+    if (!contents.length) {
+      html += '<div class="no-results"><p>Nothing in this kit matches "' +
+        escapeHtml(searchTerm) + '".</p><button id="reset-btn">Clear search</button></div>';
+    } else {
+      html += (isDesktop ? itemTable(contents, kit.nsn) : itemCards(contents, kit.nsn));
+    }
+    listEl.innerHTML = html + "</div>";
+
+    var reset = document.getElementById("reset-btn");
+    if (reset) reset.addEventListener("click", resetFilters);
+
+    var addAll = document.getElementById("kit-add-all");
+    if (addAll) {
+      addAll.disabled = !contents.length;
+      addAll.addEventListener("click", function () {
+        contents.forEach(function (it) {
+          if (!isSelected(it.nsn)) {
+            selected.push({ nsn: it.nsn, qty: qtyFor(it, kit.nsn) });
+          }
+        });
+        persistSelection();
+        updateSelectedCount();
+        render();
+      });
+    }
+  }
+
+  function encodeHtmlAttr(s) {
+    return escapeHtml(encodeURIComponent(s).replace(/%2F/gi, "/"));
+  }
+
+  /* ── Pick list ── */
+  function isSelected(nsn) {
+    return selected.some(function (s) { return s.nsn === nsn; });
+  }
+
+  function toggleSelect(nsn, qty) {
+    var idx = -1;
+    for (var i = 0; i < selected.length; i++) {
+      if (selected[i].nsn === nsn) { idx = i; break; }
+    }
+    if (idx >= 0) selected.splice(idx, 1);
+    else if (itemByNsnLookup(nsn)) selected.push({ nsn: nsn, qty: qty });
+    persistSelection();
+    updateSelectedCount();
+    render();
+  }
+
+  function itemByNsnLookup(nsn) {
+    if (!itemByNsn[nsn]) {
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].nsn === nsn) { itemByNsn[nsn] = items[i]; break; }
       }
+    }
+    return itemByNsn[nsn];
+  }
+
+  function persistSelection() {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(selected));
+    } catch (e) { /* private mode or blocked storage — the list stays in memory */ }
+  }
+
+  function restoreSelection() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      var saved = raw ? JSON.parse(raw) : [];
+      if (Object.prototype.toString.call(saved) === "[object Array]") {
+        selected = saved.filter(function (s) {
+          return s && s.nsn && itemByNsnLookup(s.nsn);
+        });
+      }
+    } catch (e) { selected = []; }
+  }
+
+  function updateSelectedCount() {
+    selectedBtn.textContent = "List (" + selected.length + ")";
+    selTitle.textContent = "Pick list (" + selected.length + ")";
+  }
+
+  function renderDrawer() {
+    updateSelectedCount();
+    if (!selected.length) {
+      selList.innerHTML = '<div class="sel-empty">Nothing on the pick list yet.</div>';
+      return;
+    }
+    var total = 0;
+    var html = "";
+    for (var i = 0; i < selected.length; i++) {
+      var it = itemByNsnLookup(selected[i].nsn);
+      if (!it) continue;
+      var qty = selected[i].qty || 0;
+      total += qty * (it.price || 0);
+      html += '<div class="sel-card">';
+      html += '<div class="sel-card-top"><div class="nsn">' + escapeHtml(it.nsn) + "</div>";
+      html += '<button class="sel-remove-btn" data-nsn="' + escapeHtml(it.nsn) +
+        '">Remove</button></div>';
+      html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
+      html += '<div class="meta"><span><span class="label">Qty:</span> ';
+      html += '<input class="qty-input" type="number" min="0" step="any" value="' +
+        escapeHtml(qty) + '" data-nsn="' + escapeHtml(it.nsn) + '" aria-label="Quantity for ' +
+        escapeHtml(it.nsn) + '"></span>';
+      html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "—") + "</span>";
+      html += '<span><span class="label">Ext:</span> ' + money(qty * (it.price || 0)) + "</span>";
+      html += "</div></div>";
+    }
+    selList.innerHTML = '<div class="sel-total">Estimated total ' + money(total) + "</div>" + html;
+  }
+
+  function openDrawer() {
+    renderDrawer();
+    selDrawer.classList.remove("hidden");
+    selOverlay.classList.remove("hidden");
+    selDrawer.removeAttribute("aria-hidden");
+    selDrawer.removeAttribute("inert");
+    document.body.style.overflow = "hidden";
+    setTimeout(function () { selClose.focus(); }, 100);
+  }
+
+  function closeDrawer() {
+    selDrawer.classList.add("hidden");
+    selOverlay.classList.add("hidden");
+    selDrawer.setAttribute("aria-hidden", "true");
+    selDrawer.setAttribute("inert", "");
+    document.body.style.overflow = "";
+    selectedBtn.focus();
+  }
+
+  function csvField(val) {
+    var s = val === null || val === undefined ? "" : String(val);
+    return /[",;\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  function buildCsv() {
+    var lines = ["NSN,Description,Quantity,Unit of Measure,Unit Price,Extended Price," +
+      "Source,Accountability Code,Kit Membership"];
+    selected.forEach(function (sel) {
+      var it = itemByNsnLookup(sel.nsn);
+      if (!it) return;
+      var qty = sel.qty || 0;
+      lines.push([
+        it.nsn, it.description, qty, it.uom,
+        it.price === null ? "" : it.price,
+        it.price === null ? "" : Math.round(qty * it.price * 100) / 100,
+        it.source, it.accountability_code,
+        it.kitNames.join("; "),
+      ].map(csvField).join(","));
+    });
+    return lines.join("\r\n");
+  }
+
+  function exportCSV() {
+    if (!selected.length) return;
+    var blob = new Blob([buildCsv()], { type: "text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var now = new Date();
+    var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "sickbay_picklist_" + now.getFullYear() + "-" +
+      pad(now.getMonth() + 1) + "-" + pad(now.getDate()) + "_" +
+      pad(now.getHours()) + pad(now.getMinutes()) + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    var original = selExport.textContent;
+    selExport.textContent = "Exported ✓";
+    selExport.disabled = true;
+    setTimeout(function () {
+      selExport.textContent = original;
+      selExport.disabled = false;
+    }, 2000);
+  }
+
+  /* The desktop table header sticks below the top bar, whose height changes
+     with the viewport and with which control rows are showing. */
+  function syncTopBarHeight() {
+    var bar = document.querySelector(".top-bar");
+    if (bar) {
+      document.documentElement.style.setProperty(
+        "--topbar-h", Math.round(bar.getBoundingClientRect().height) + "px");
+    }
+  }
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(syncTopBarHeight).observe(document.querySelector(".top-bar"));
+  } else {
+    window.addEventListener("resize", syncTopBarHeight);
+  }
+
+  /* ── Events ── */
+  listEl.addEventListener("click", function (e) {
+    var header = e.target.closest(".kit-group-header");
+    if (header) {
+      var nsn = header.getAttribute("data-kit");
+      if (collapsedKits[nsn]) delete collapsedKits[nsn];
+      else collapsedKits[nsn] = true;
       render();
       return;
     }
 
-    // Handle kits toggle
-    if (e.target.classList.contains("kits-toggle")) {
-      e.target.setAttribute("aria-expanded", e.target.textContent === "more" ? "true" : "false");
-      var textEl = e.target.previousElementSibling;
-      if (!textEl) return;
-      var expanded = !textEl.classList.contains("truncated");
-      if (expanded) {
-        textEl.classList.add("truncated");
-        e.target.textContent = "more";
-      } else {
-        textEl.classList.remove("truncated");
-        e.target.textContent = "less";
-      }
+    var detail = e.target.closest(".detail-toggle");
+    if (detail) {
+      var dn = detail.getAttribute("data-nsn");
+      if (expandedItems[dn]) delete expandedItems[dn];
+      else expandedItems[dn] = true;
+      render();
       return;
     }
 
-    // Handle add/remove selection
-    var btn = e.target.closest(".sel-add-btn");
-    if (btn) {
+    var add = e.target.closest(".sel-add-btn");
+    if (add) {
+      e.preventDefault();
       e.stopPropagation();
-      toggleSelect(btn.getAttribute("data-nsn"));
+      var addQty = parseFloat(add.getAttribute("data-qty"));
+      toggleSelect(add.getAttribute("data-nsn"), isNaN(addQty) ? 0 : addQty);
     }
   });
 
-  /* ── Reset ── */
-  function resetFilters() {
-    searchInput.value = "";
-    kitSelect.value = "";
-    sortSelect.value = "nsn-asc";
-    searchTerm = "";
-    kitFilter = "";
-    sortKey = "nsn";
-    sortAsc = true;
-    applyFilters();
-  }
+  tabItems.addEventListener("click", function () { navigate("#items"); });
+  tabKits.addEventListener("click", function () { navigate("#kits"); });
+  window.addEventListener("hashchange", applyRoute);
 
-  /* ── Event Listeners ── */
   var debounceTimer;
   searchInput.addEventListener("input", function () {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(function () {
       searchTerm = searchInput.value.trim();
-      // Toggle clear button visibility
-      if (searchTerm) {
-        searchClearBtn.classList.remove("hidden");
-      } else {
-        searchClearBtn.classList.add("hidden");
-      }
-      applyFilters();
+      searchClearBtn.classList.toggle("hidden", !searchTerm);
+      render();
     }, 200);
   });
 
@@ -475,21 +697,20 @@
     searchInput.value = "";
     searchTerm = "";
     searchClearBtn.classList.add("hidden");
-    applyFilters();
+    render();
     searchInput.focus();
   });
 
   kitSelect.addEventListener("change", function () {
     kitFilter = kitSelect.value;
-    applyFilters();
+    render();
   });
 
   sortSelect.addEventListener("change", function () {
-    var val = sortSelect.value;
-    var parts = val.split("-");
+    var parts = sortSelect.value.split("-");
     sortAsc = parts[parts.length - 1] === "asc";
-    sortKey = parts.slice(0, parts.length - 1).join("-");
-    applyFilters();
+    sortKey = parts.slice(0, -1).join("-");
+    render();
   });
 
   groupBtn.addEventListener("click", function () {
@@ -500,203 +721,68 @@
     render();
   });
 
-  window.matchMedia("(min-width: 768px)").addEventListener("change", function (e) {
-    isDesktop = e.matches;
-    if (filteredItems.length > 0) render();
-  });
-
-  /* ── Helpers ── */
-  function escapeHtml(s) {
-    if (!s) return "";
-    return s
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function escapeAttr(s) {
-    return escapeHtml(s);
-  }
-
-  /* ── Selection Feature ── */
-  function isSelected(item) {
-    for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === item.nsn) return true;
-    }
-    return false;
-  }
-
-  function toggleSelect(nsn) {
-    // find item in allItems
-    var item = null;
-    for (var i = 0; i < allItems.length; i++) {
-      if (allItems[i].nsn === nsn) { item = allItems[i]; break; }
-    }
-    if (!item) return;
-
-    var idx = -1;
-    for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === item.nsn) { idx = i; break; }
-    }
-    if (idx >= 0) {
-      selectedItems.splice(idx, 1);
-    } else {
-      selectedItems.push(item);
-    }
-    updateSelectedCount();
+  function resetFilters() {
+    searchInput.value = "";
+    kitSelect.value = "";
+    sortSelect.value = "nsn-asc";
+    searchTerm = "";
+    kitFilter = "";
+    sortKey = "nsn";
+    sortAsc = true;
+    searchClearBtn.classList.add("hidden");
     render();
   }
 
-  function removeSelected(nsn, desc) {
-    for (var i = 0; i < selectedItems.length; i++) {
-      if (selectedItems[i].nsn === nsn) {
-        selectedItems.splice(i, 1);
-        break;
-      }
-    }
-    updateSelectedCount();
-    renderDrawer();
-  }
+  window.matchMedia("(min-width: 768px)").addEventListener("change", function (e) {
+    isDesktop = e.matches;
+    render();
+  });
 
-  function updateSelectedCount() {
-    var n = selectedItems.length;
-    selectedBtn.textContent = "Selected (" + n + ")";
-    selTitle.textContent = "Selected (" + n + ")";
-  }
-
-  function openDrawer() {
-    renderDrawer();
-    selDrawer.classList.remove("hidden");
-    selOverlay.classList.remove("hidden");
-    selDrawer.removeAttribute("aria-hidden");
-    selDrawer.removeAttribute("inert");
-    document.body.style.overflow = "hidden";
-    // Focus on close button for accessibility
-    setTimeout(function() { selClose.focus(); }, 100);
-  }
-
-  function closeDrawer() {
-    selDrawer.classList.add("hidden");
-    selOverlay.classList.add("hidden");
-    selDrawer.setAttribute("aria-hidden", "true");
-    selDrawer.setAttribute("inert", "");
-    document.body.style.overflow = "";
-    // Return focus to the button that opened the drawer
-    selectedBtn.focus();
-  }
-
-  function renderDrawer() {
-    updateSelectedCount();
-    if (selectedItems.length === 0) {
-      selList.innerHTML = '<div class="sel-empty">No items selected.</div>';
-      return;
-    }
-    var html = "";
-    for (var i = 0; i < selectedItems.length; i++) {
-      var it = selectedItems[i];
-      html += '<div class="sel-card">';
-      html += '<div class="sel-card-top">';
-      html += '<div class="nsn">' + escapeHtml(it.nsn) + '</div>';
-      html += '<button class="sel-remove-btn" data-nsn="' + escapeAttr(it.nsn) + '" data-desc="' + escapeAttr(it.description) + '">Remove</button>';
-      html += '</div>';
-      html += '<div class="desc">' + escapeHtml(it.description || "\u2014") + '</div>';
-      html += '<div class="meta">';
-      html += '<span><span class="label">UoM:</span> ' + escapeHtml(it.uom || "\u2014") + '</span>';
-      html += '<span><span class="label">Qty:</span> ' + escapeHtml(it.qty || "\u2014") + '</span>';
-      html += '</div>';
-      if (it.kits) {
-        html += '<div class="kits"><span class="label">Kits:</span> ' + escapeHtml(it.kits) + '</div>';
-      }
-      html += '</div>';
-    }
-    selList.innerHTML = html;
-  }
-
-  function csvField(val) {
-    if (!val) return '""';
-    if (val.indexOf(",") !== -1 || val.indexOf('"') !== -1 || val.indexOf(";") !== -1 || val.indexOf("\n") !== -1) {
-      return '"' + val.replace(/"/g, '""') + '"';
-    }
-    return val;
-  }
-
-  function exportCSV() {
-    if (selectedItems.length === 0) {
-      alert("No items selected to export.");
-      return;
-    }
-    var lines = ["NSN,Description,Unit of Measure,Quantity Required,Kit Membership"];
-    for (var i = 0; i < selectedItems.length; i++) {
-      var it = selectedItems[i];
-      lines.push(
-        csvField(it.nsn) + "," +
-        csvField(it.description) + "," +
-        csvField(it.uom) + "," +
-        csvField(it.qty) + "," +
-        csvField(it.kits)
-      );
-    }
-    var csv = lines.join("\r\n");
-    var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    var url = URL.createObjectURL(blob);
-    var now = new Date();
-    var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
-    var fname = "selected_items_" +
-      now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) +
-      "_" + pad(now.getHours()) + pad(now.getMinutes()) + ".csv";
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = fname;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    // Show feedback
-    var originalText = selExport.textContent;
-    selExport.textContent = "Exported \u2713";
-    selExport.disabled = true;
-    setTimeout(function() {
-      selExport.textContent = originalText;
-      selExport.disabled = false;
-    }, 2000);
-  }
-
-  /* Drawer events */
   selectedBtn.addEventListener("click", openDrawer);
   selClose.addEventListener("click", closeDrawer);
   selOverlay.addEventListener("click", closeDrawer);
   selExport.addEventListener("click", exportCSV);
+  selPrint.addEventListener("click", function () { window.print(); });
   selClear.addEventListener("click", function () {
-    selectedItems = [];
-    updateSelectedCount();
+    selected = [];
+    persistSelection();
     renderDrawer();
     render();
   });
+
   selList.addEventListener("click", function (e) {
     var btn = e.target.closest(".sel-remove-btn");
-    if (btn) {
-      removeSelected(btn.getAttribute("data-nsn"), btn.getAttribute("data-desc"));
-      render(); // refresh main list button states
+    if (!btn) return;
+    var nsn = btn.getAttribute("data-nsn");
+    for (var i = 0; i < selected.length; i++) {
+      if (selected[i].nsn === nsn) { selected.splice(i, 1); break; }
     }
+    persistSelection();
+    renderDrawer();
+    render();
   });
 
-  /* ── Keyboard shortcuts ── */
+  selList.addEventListener("change", function (e) {
+    if (!e.target.classList.contains("qty-input")) return;
+    var nsn = e.target.getAttribute("data-nsn");
+    var qty = parseFloat(e.target.value);
+    selected.forEach(function (s) {
+      if (s.nsn === nsn) s.qty = isNaN(qty) || qty < 0 ? 0 : qty;
+    });
+    persistSelection();
+    renderDrawer();
+  });
+
   document.addEventListener("keydown", function (e) {
-    // Escape key closes drawer
-    if (e.key === "Escape" && !selDrawer.classList.contains("hidden")) {
-      closeDrawer();
-    }
-    // Clear search with Escape when search is focused and not empty
-    if (e.key === "Escape" && document.activeElement === searchInput && searchInput.value) {
+    if (e.key !== "Escape") return;
+    if (!selDrawer.classList.contains("hidden")) return closeDrawer();
+    if (document.activeElement === searchInput && searchInput.value) {
       searchInput.value = "";
       searchTerm = "";
       searchClearBtn.classList.add("hidden");
-      applyFilters();
+      render();
     }
   });
 
-  /* ── Init ── */
   loadData();
 })();
