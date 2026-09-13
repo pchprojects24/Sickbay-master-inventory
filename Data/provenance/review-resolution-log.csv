@@ -1,0 +1,57 @@
+Master Inventory Row #,Previous NSN/Identifier,New NSN/Identifier,Action Taken,Source Sheet + Row Reference,Notes / Reason
+927,7530-21-920-4737,7530-21-920-4737,REAL NSN,"Non Fatal, Row 15",Valid NSN confirmed in source. UOM blank in source - left as-is per source data.
+920,7510-21-561-5126,7510-21-561-5126,REAL NSN,"Maritime MASCAL, Row 133",Valid NSN confirmed in source. UOM blank in source - left as-is per source data.
+950,CARD2,LOCAL-0001,LOCAL PLACEHOLDER,"FA General, Row 14",Non-standard identifier for kit card. No real NSN exists in source.
+948,BOOKLET4,LOCAL-0002,LOCAL PLACEHOLDER,"Non Fatal, Row 19",Non-standard identifier for kit definition booklet. No real NSN in source.
+951,LABEL1,LOCAL-0003,LOCAL PLACEHOLDER,"Non Fatal, Row 20",Non-standard identifier for exempt specimen label. No real NSN in source.
+952,LABEL2,LOCAL-0004,LOCAL PLACEHOLDER,"Non Fatal, Row 21",Non-standard identifier for UN 3373 label. No real NSN in source.
+956,PAMPHLET1,LOCAL-0005,LOCAL PLACEHOLDER,"Non Fatal, Row 22",Non-standard identifier for AMA Directive pamphlet. No real NSN in source.
+960,PAMPHLET2,LOCAL-0006,LOCAL PLACEHOLDER,"Non Fatal, Row 23",Non-standard identifier for post-crash memo. No real NSN in source.
+961,PAMPHLET3,LOCAL-0007,LOCAL PLACEHOLDER,"Non Fatal, Row 24",Non-standard identifier for chain of custody form. No real NSN in source.
+962,PAMPHLET4,LOCAL-0008,LOCAL PLACEHOLDER,"Non Fatal, Row 25",Non-standard identifier for CF toxicology procedures. No real NSN in source.
+963,PAMPHLET5,LOCAL-0009,LOCAL PLACEHOLDER,"Non Fatal, Row 26",Non-standard identifier for PHAC marking pamphlet. No real NSN in source.
+949,BOOOKLET5,LOCAL-0010,LOCAL PLACEHOLDER,"Fatal, Row 22",Non-standard identifier for fatal kit definition booklet. No real NSN in source.
+953,LABEL5,LOCAL-0011,LOCAL PLACEHOLDER,"Fatal, Row 23",Non-standard identifier for exempt specimen label (fatal). No real NSN in source.
+954,LABEL6,LOCAL-0012,LOCAL PLACEHOLDER,"Fatal, Row 24",Non-standard identifier for UN 3373 label (fatal). No real NSN in source.
+957,PAMPHLET10,LOCAL-0013,LOCAL PLACEHOLDER,"Fatal, Row 25",Non-standard identifier for chain of custody form (fatal). No real NSN in source.
+964,PAMPHLET6,LOCAL-0014,LOCAL PLACEHOLDER,"Fatal, Row 26",Non-standard identifier for AMA Directive (fatal). No real NSN in source.
+965,PAMPHLET7,LOCAL-0015,LOCAL PLACEHOLDER,"Fatal, Row 27",Non-standard identifier for CF toxicology procedures (fatal). No real NSN in source.
+966,PAMPHLET8,LOCAL-0016,LOCAL PLACEHOLDER,"Fatal, Row 28",Non-standard identifier for post-incident procedures. No real NSN in source.
+967,PAMPHLET9,LOCAL-0017,LOCAL PLACEHOLDER,"Fatal, Row 29",Non-standard identifier for PHAC marking (fatal). No real NSN in source.
+959,PAMPHLET14,LOCAL-0018,LOCAL PLACEHOLDER,"HIV, Row 5",Non-standard identifier for blood borne pathogens pamphlet. No real NSN in source.
+955,MED TECH TRIAL BAGS PRINTOUT,LOCAL-0019,LOCAL PLACEHOLDER,"MT Bag, Row 95",Non-standard identifier for MT Bag printout. No real NSN in source.
+958,PAMPHLET11,LOCAL-0020,LOCAL PLACEHOLDER,"MT Bag Meds, Row 49",Non-standard identifier for AEC protocols pamphlet. No real NSN in source.
+947,BOOK40,LOCAL-0021,LOCAL PLACEHOLDER,"Maritime MASCAL, Row 141",Non-standard identifier for Military First Aid book. No real NSN in source.
+814,6545-20-A0M-1004,6545-20-A0M-1004,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+815,6545-20-A0M-1006,6545-20-A0M-1006,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+816,6545-20-A0U-7793,6545-20-A0U-7793,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+817,6545-20-A0U-8722,6545-20-A0U-8722,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+818,6545-20-A0U-8754,6545-20-A0U-8754,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+819,6545-20-A0U-8755,6545-20-A0U-8755,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+820,6545-20-A0U-8757,6545-20-A0U-8757,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+821,6545-20-A0U-8758,6545-20-A0U-8758,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+822,6545-20-A0U-8759,6545-20-A0U-8759,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+823,6545-20-A0U-8760,6545-20-A0U-8760,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+824,6545-20-A0U-8761,6545-20-A0U-8761,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+825,6545-20-A0U-8762,6545-20-A0U-8762,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+826,6545-20-A0U-8763,6545-20-A0U-8763,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+827,6545-20-A0U-8764,6545-20-A0U-8764,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+828,6545-20-A0U-8765,6545-20-A0U-8765,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+829,6545-20-A0U-8766,6545-20-A0U-8766,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+830,6545-20-A0U-8767,6545-20-A0U-8767,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+831,6545-20-A0U-8770,6545-20-A0U-8770,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+832,6545-20-A0U-9002,6545-20-A0U-9002,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+833,6545-21-111-8439,6545-21-111-8439,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+835,6545-21-912-4985,6545-21-912-4985,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+836,6545-21-912-4986,6545-21-912-4986,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+837,6545-21-920-2280,6545-21-920-2280,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+841,6545-CF-002-0270,6545-CF-002-0270,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+842,6545-CF-002-0271,6545-CF-002-0271,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+844,6545-CF-002-1002,6545-CF-002-1002,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+848,6545-CF-002-8529,6545-CF-002-8529,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+849,6545-CF-005-0438,6545-CF-005-0438,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+850,6545-CF-005-0858,6545-CF-005-0858,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+851,6545-CF-005-0860,6545-CF-005-0860,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+852,6545-CF-005-0890,6545-CF-005-0890,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+905,6640-20-010-9275,6640-20-010-9275,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.
+906,6640-20-010-9276,6640-20-010-9276,REMOVED — Kit parent NSN,N/A,Moved to 'Kit NSNs (Reference)' sheet. Kit parent NSNs are not countable stock items.

@@ -44,11 +44,18 @@ Data/kit_items.csv          every kit-item line (1,268 rows)
 Data/master_inventory.csv   one row per distinct item (966 rows)
 Data/kits/*.csv             one pick list per kit
 Data/inventory.json         what the app loads
+Data/provenance/            archival records; not generated, not read by the app
 tools/build_inventory.py    regenerates everything under Data/ from the workbooks
 ```
 
 `Data/README.md` is the data dictionary: what each column means, how the kit
 hierarchy is derived, and the handful of quirks in the source workbooks.
+`Data/provenance/README.md` covers the two legacy workbooks and the earlier
+cleanup decisions this build deliberately diverges from.
+
+Counting stock from `Data/master_inventory.csv` means excluding rows where
+`Is Kit` is `Y`: those 28 rows are containers whose price already includes their
+contents.
 
 ## Changing the data
 
