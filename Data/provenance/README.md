@@ -39,7 +39,7 @@ Both differences are visible in `Data/master_inventory.csv`; neither loses data.
 `Is Kit = Y`** — a container's price already equals the sum of its contents, so
 including it double-counts.
 
-## The two legacy workbooks
+## The legacy workbook
 
 `Sickbay inventory 2025-02-11(AutoRecovered).xlsx` (repository root) is the
 original master: the same 29 kit sheets now in `Data/source/`, plus the rolled-up
@@ -47,13 +47,14 @@ original master: the same 29 kit sheets now in `Data/source/`, plus the rolled-u
 sheets were checked line by line against `Data/source/` — 1,268 lines on both
 sides, no differences — so the split lost nothing.
 
-`Data/Copy of Sickbay inventory 2025-02-11(AutoRecovered) 2.xlsx` is a near-copy
-of it with **one corrupted row**, and should not be used. On the
-`Maj Med Equip Core` sheet, NSN `6515-01-505-3037` carries the description
+There was a second copy, `Data/Copy of Sickbay inventory 2025-02-11(AutoRecovered)
+2.xlsx`, **deleted** because it carried a corrupted row. On its
+`Maj Med Equip Core` sheet, NSN `6515-01-505-3037` had the description
 `spACE PUMP IV SET WITH ANTI-SIPHON VALVE` while keeping the $30.80 price of the
-item it overwrote. That description belongs to `6515-01-690-1463`, which costs
-$6.21 and appears correctly elsewhere. The root workbook, and therefore
-`Data/source/`, has the correct `ELECTRODE,ELECTROCARDIOGRAPH. DISPOSABLE`.
+item it overwrote — that description belongs to `6515-01-690-1463`, which costs
+$6.21 and appears correctly elsewhere. The two files were identical everywhere
+else, and `Data/source/` matches the surviving workbook, so nothing generated was
+ever affected. Git history retains the deleted file if it is ever needed.
 
 ## Fields the master sheet had that are intentionally not carried
 

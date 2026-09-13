@@ -258,16 +258,19 @@ select,
 }
 
 /* === Add/Added button on cards & table === */
+/* 44px is the minimum comfortable touch target; the desktop table overrides
+   this back down, where a mouse is doing the pointing and row height matters. */
 .sel-add-btn {
   font-size: 0.78rem;
   font-weight: 600;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border: 1px solid #3478f6;
   border-radius: 6px;
   background: #fff;
   color: #3478f6;
   cursor: pointer;
-  min-height: 32px;
+  min-height: 44px;
+  min-width: 60px;
   white-space: nowrap;
 }
 
@@ -385,7 +388,7 @@ select,
   background: #3478f6;
   color: #fff;
   cursor: pointer;
-  min-height: 40px;
+  min-height: 44px;
 }
 
 .sel-action-btn:active {
@@ -478,7 +481,7 @@ select,
   background: #fff;
   color: #ef4444;
   cursor: pointer;
-  min-height: 32px;
+  min-height: 44px;
   white-space: nowrap;
 }
 
@@ -759,7 +762,7 @@ select,
   padding: 7px 16px;
   border-radius: 7px;
   cursor: pointer;
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .tab.active {
@@ -940,10 +943,10 @@ select,
   color: #3478f6;
   font-size: 13px;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 7px;
   cursor: pointer;
-  min-height: 32px;
+  min-height: 44px;
 }
 
 .memberships {
@@ -1008,9 +1011,11 @@ select,
 }
 
 .qty-input {
-  width: 70px;
-  padding: 4px 6px;
-  font-size: 13px;
+  width: 80px;
+  padding: 8px 10px;
+  /* 16px keeps iOS from zooming the page when the field takes focus. */
+  font-size: 16px;
+  min-height: 44px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-variant-numeric: tabular-nums;
@@ -1037,6 +1042,12 @@ select,
     margin-top: 0;
     padding: 3px 10px;
     min-height: 26px;
+  }
+
+  .inv-table .sel-add-btn {
+    min-height: 30px;
+    min-width: 0;
+    padding: 3px 12px;
   }
 
   /* .card-list is a column flex container, and auto side margins would stop a
