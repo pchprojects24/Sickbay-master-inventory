@@ -375,6 +375,7 @@
    ],
    "price": 38.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -402,6 +403,7 @@
    ],
    "price": 1.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -423,6 +425,7 @@
    ],
    "price": 57.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -444,6 +447,7 @@
    ],
    "price": 3.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -465,6 +469,7 @@
    ],
    "price": 5.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -486,6 +491,7 @@
    ],
    "price": 2.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 9.0,
    "kit_count": 1
   },
@@ -507,6 +513,7 @@
    ],
    "price": 37.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -540,6 +547,7 @@
    ],
    "price": 0.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -567,6 +575,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 2
   },
@@ -588,6 +597,7 @@
    ],
    "price": 143.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -609,6 +619,7 @@
    ],
    "price": 41.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -630,6 +641,7 @@
    ],
    "price": 0.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -663,6 +675,7 @@
    ],
    "price": 1.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 18.0,
    "kit_count": 3
   },
@@ -702,6 +715,7 @@
    ],
    "price": 0.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 30.0,
    "kit_count": 4
   },
@@ -723,6 +737,7 @@
    ],
    "price": 1.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -744,6 +759,7 @@
    ],
    "price": 169.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -765,6 +781,7 @@
    ],
    "price": 212.47,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -798,6 +815,7 @@
    ],
    "price": 3.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -819,6 +837,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -846,6 +865,7 @@
    ],
    "price": 24.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 16.0,
    "kit_count": 2
   },
@@ -867,6 +887,7 @@
    ],
    "price": 330.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -888,6 +909,7 @@
    ],
    "price": 11.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -915,6 +937,7 @@
    ],
    "price": 248.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -942,6 +965,7 @@
    ],
    "price": 51.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -963,6 +987,7 @@
    ],
    "price": 20.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -984,6 +1009,7 @@
    ],
    "price": 30.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1011,6 +1037,7 @@
    ],
    "price": 23.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -1032,6 +1059,7 @@
    ],
    "price": 84.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -1053,6 +1081,7 @@
    ],
    "price": 21.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -1074,6 +1103,7 @@
    ],
    "price": 6.98,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -1095,6 +1125,7 @@
    ],
    "price": 16.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1122,6 +1153,7 @@
    ],
    "price": 8.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -1143,6 +1175,7 @@
    ],
    "price": 10.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 72.0,
    "kit_count": 1
   },
@@ -1170,6 +1203,7 @@
    ],
    "price": 0.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 105.0,
    "kit_count": 2
   },
@@ -1197,6 +1231,7 @@
    ],
    "price": 10.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -1218,6 +1253,7 @@
    ],
    "price": 33.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -1239,6 +1275,7 @@
    ],
    "price": 22.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1260,6 +1297,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -1281,6 +1319,7 @@
    ],
    "price": 12.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1302,6 +1341,7 @@
    ],
    "price": 0.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -1323,6 +1363,7 @@
    ],
    "price": 7.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1344,6 +1385,7 @@
    ],
    "price": 6.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -1365,6 +1407,7 @@
    ],
    "price": 18.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -1386,6 +1429,7 @@
    ],
    "price": 7.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1407,6 +1451,7 @@
    ],
    "price": 43.9,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -1428,6 +1473,7 @@
    ],
    "price": 2.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 28.0,
    "kit_count": 1
   },
@@ -1449,6 +1495,7 @@
    ],
    "price": 10.96,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1470,6 +1517,7 @@
    ],
    "price": 0.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -1503,6 +1551,7 @@
    ],
    "price": 4.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 3
   },
@@ -1524,6 +1573,7 @@
    ],
    "price": 0.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2016.0,
    "kit_count": 1
   },
@@ -1545,6 +1595,7 @@
    ],
    "price": 6.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -1566,6 +1617,7 @@
    ],
    "price": 53.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1587,6 +1639,7 @@
    ],
    "price": 82.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -1608,6 +1661,7 @@
    ],
    "price": 13.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1635,6 +1689,7 @@
    ],
    "price": 4.41,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -1656,6 +1711,7 @@
    ],
    "price": 138.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1677,6 +1733,7 @@
    ],
    "price": 4.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -1698,6 +1755,7 @@
    ],
    "price": 0.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -1719,6 +1777,7 @@
    ],
    "price": 11.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1740,6 +1799,7 @@
    ],
    "price": 0.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 300.0,
    "kit_count": 1
   },
@@ -1761,6 +1821,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -1782,6 +1843,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -1803,6 +1865,7 @@
    ],
    "price": 0.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -1824,6 +1887,7 @@
    ],
    "price": 26.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -1845,6 +1909,7 @@
    ],
    "price": 10.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -1872,6 +1937,7 @@
    ],
    "price": 14.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 2
   },
@@ -1893,6 +1959,7 @@
    ],
    "price": 55.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -1914,6 +1981,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -1935,6 +2003,7 @@
    ],
    "price": 0.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -1968,6 +2037,7 @@
    ],
    "price": 1.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 3
   },
@@ -1995,6 +2065,7 @@
    ],
    "price": 7.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 21.0,
    "kit_count": 2
   },
@@ -2016,6 +2087,7 @@
    ],
    "price": 30.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -2037,6 +2109,7 @@
    ],
    "price": 0.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1000.0,
    "kit_count": 1
   },
@@ -2058,6 +2131,7 @@
    ],
    "price": 121.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -2079,6 +2153,7 @@
    ],
    "price": 9.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2100,6 +2175,7 @@
    ],
    "price": 0.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -2121,6 +2197,7 @@
    ],
    "price": 3.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -2142,6 +2219,7 @@
    ],
    "price": 0.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -2163,6 +2241,7 @@
    ],
    "price": 20.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2184,6 +2263,7 @@
    ],
    "price": 0.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2211,6 +2291,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 300.0,
    "kit_count": 2
   },
@@ -2232,6 +2313,7 @@
    ],
    "price": 0.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2259,6 +2341,7 @@
    ],
    "price": 1.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -2280,6 +2363,7 @@
    ],
    "price": 9.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.2,
    "kit_count": 1
   },
@@ -2307,6 +2391,7 @@
    ],
    "price": 10.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -2328,6 +2413,7 @@
    ],
    "price": 0.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -2349,6 +2435,7 @@
    ],
    "price": 0.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2370,6 +2457,7 @@
    ],
    "price": 11.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2391,6 +2479,7 @@
    ],
    "price": 13.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2412,6 +2501,7 @@
    ],
    "price": 3.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -2445,6 +2535,7 @@
    ],
    "price": 4.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 52.0,
    "kit_count": 3
   },
@@ -2466,6 +2557,7 @@
    ],
    "price": 7.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -2487,6 +2579,7 @@
    ],
    "price": 3.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -2514,6 +2607,7 @@
    ],
    "price": 2.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 16.0,
    "kit_count": 2
   },
@@ -2535,6 +2629,7 @@
    ],
    "price": 0.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2556,6 +2651,7 @@
    ],
    "price": 3.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 48.0,
    "kit_count": 1
   },
@@ -2577,6 +2673,7 @@
    ],
    "price": 24.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -2604,6 +2701,7 @@
    ],
    "price": 11.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 2
   },
@@ -2625,6 +2723,7 @@
    ],
    "price": 0.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2646,6 +2745,7 @@
    ],
    "price": 0.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -2667,6 +2767,7 @@
    ],
    "price": 0.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -2688,6 +2789,7 @@
    ],
    "price": 6.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2709,6 +2811,7 @@
    ],
    "price": 1.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 48.0,
    "kit_count": 1
   },
@@ -2736,6 +2839,7 @@
    ],
    "price": 2.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 2
   },
@@ -2757,6 +2861,7 @@
    ],
    "price": 3.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -2778,6 +2883,7 @@
    ],
    "price": 2.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -2811,6 +2917,7 @@
    ],
    "price": 4.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 56.0,
    "kit_count": 3
   },
@@ -2832,6 +2939,7 @@
    ],
    "price": 2.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 48.0,
    "kit_count": 1
   },
@@ -2853,6 +2961,7 @@
    ],
    "price": 11.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -2874,6 +2983,7 @@
    ],
    "price": 3.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 32.0,
    "kit_count": 1
   },
@@ -2895,6 +3005,7 @@
    ],
    "price": 4.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -2916,6 +3027,7 @@
    ],
    "price": 5.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -2943,6 +3055,7 @@
    ],
    "price": 1.74,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 2
   },
@@ -2964,6 +3077,7 @@
    ],
    "price": 8.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -2997,6 +3111,7 @@
    ],
    "price": 5.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 3
   },
@@ -3018,6 +3133,7 @@
    ],
    "price": 28.9,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -3039,6 +3155,7 @@
    ],
    "price": 0.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -3060,6 +3177,7 @@
    ],
    "price": 4.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -3087,6 +3205,7 @@
    ],
    "price": 6.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -3108,6 +3227,7 @@
    ],
    "price": 5.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -3129,6 +3249,7 @@
    ],
    "price": 13.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -3150,6 +3271,7 @@
    ],
    "price": 0.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1000.0,
    "kit_count": 1
   },
@@ -3177,6 +3299,7 @@
    ],
    "price": 1.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 202.0,
    "kit_count": 2
   },
@@ -3198,6 +3321,7 @@
    ],
    "price": 0.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -3219,6 +3343,7 @@
    ],
    "price": 4.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -3246,6 +3371,7 @@
    ],
    "price": 0.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2100.0,
    "kit_count": 2
   },
@@ -3267,6 +3393,7 @@
    ],
    "price": 2.92,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -3288,6 +3415,7 @@
    ],
    "price": 2.69,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -3309,6 +3437,7 @@
    ],
    "price": 2.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -3330,6 +3459,7 @@
    ],
    "price": 27.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -3351,6 +3481,7 @@
    ],
    "price": 3.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -3372,6 +3503,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -3393,6 +3525,7 @@
    ],
    "price": 18.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -3414,6 +3547,7 @@
    ],
    "price": 11.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 1
   },
@@ -3435,6 +3569,7 @@
    ],
    "price": 9.96,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -3456,6 +3591,7 @@
    ],
    "price": 0.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2000.0,
    "kit_count": 1
   },
@@ -3489,6 +3625,7 @@
    ],
    "price": 4.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 22.0,
    "kit_count": 3
   },
@@ -3516,6 +3653,7 @@
    ],
    "price": 0.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 2
   },
@@ -3543,6 +3681,7 @@
    ],
    "price": 3.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 203.0,
    "kit_count": 2
   },
@@ -3570,6 +3709,7 @@
    ],
    "price": 7.7,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 2
   },
@@ -3591,6 +3731,7 @@
    ],
    "price": 27.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 72.0,
    "kit_count": 1
   },
@@ -3612,6 +3753,7 @@
    ],
    "price": 36.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -3633,6 +3775,7 @@
    ],
    "price": 7.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 30.0,
    "kit_count": 1
   },
@@ -3654,6 +3797,7 @@
    ],
    "price": 16.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 1
   },
@@ -3675,6 +3819,7 @@
    ],
    "price": 13.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -3696,6 +3841,7 @@
    ],
    "price": 0.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -3717,6 +3863,7 @@
    ],
    "price": 5.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -3738,6 +3885,7 @@
    ],
    "price": 3.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -3759,6 +3907,7 @@
    ],
    "price": 0.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 400.0,
    "kit_count": 1
   },
@@ -3786,6 +3935,7 @@
    ],
    "price": 11.72,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -3807,6 +3957,7 @@
    ],
    "price": 6.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -3828,6 +3979,7 @@
    ],
    "price": 4.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -3849,6 +4001,7 @@
    ],
    "price": 21.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -3870,6 +4023,7 @@
    ],
    "price": 6.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -3891,6 +4045,7 @@
    ],
    "price": 5.41,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -3912,6 +4067,7 @@
    ],
    "price": 0.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1000.0,
    "kit_count": 1
   },
@@ -3933,6 +4089,7 @@
    ],
    "price": 1142.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -3960,6 +4117,7 @@
    ],
    "price": 3.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 49.0,
    "kit_count": 2
   },
@@ -3981,6 +4139,7 @@
    ],
    "price": 6.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -4002,6 +4161,7 @@
    ],
    "price": 2.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -4023,6 +4183,7 @@
    ],
    "price": 11.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4044,6 +4205,7 @@
    ],
    "price": 0.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -4065,6 +4227,7 @@
    ],
    "price": 3.54,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4086,6 +4249,7 @@
    ],
    "price": 0.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -4107,6 +4271,7 @@
    ],
    "price": 18.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -4128,6 +4293,7 @@
    ],
    "price": 19.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -4149,6 +4315,7 @@
    ],
    "price": 19.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -4170,6 +4337,7 @@
    ],
    "price": 21.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4191,6 +4359,7 @@
    ],
    "price": 15.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -4212,6 +4381,7 @@
    ],
    "price": 4.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -4233,6 +4403,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4254,6 +4425,7 @@
    ],
    "price": 0.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4281,6 +4453,7 @@
    ],
    "price": 6.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 14.0,
    "kit_count": 2
   },
@@ -4302,6 +4475,7 @@
    ],
    "price": 28.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -4323,6 +4497,7 @@
    ],
    "price": 130.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -4344,6 +4519,7 @@
    ],
    "price": 15.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4365,6 +4541,7 @@
    ],
    "price": 8.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -4386,6 +4563,7 @@
    ],
    "price": 19.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -4407,6 +4585,7 @@
    ],
    "price": 0.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -4428,6 +4607,7 @@
    ],
    "price": 31.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -4449,6 +4629,7 @@
    ],
    "price": 19.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -4470,6 +4651,7 @@
    ],
    "price": 4.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4491,6 +4673,7 @@
    ],
    "price": 0.64,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4512,6 +4695,7 @@
    ],
    "price": 24.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -4533,6 +4717,7 @@
    ],
    "price": 8.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4554,6 +4739,7 @@
    ],
    "price": 4.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4575,6 +4761,7 @@
    ],
    "price": 0.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4596,6 +4783,7 @@
    ],
    "price": 14.84,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4617,6 +4805,7 @@
    ],
    "price": 2.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 300.0,
    "kit_count": 1
   },
@@ -4644,6 +4833,7 @@
    ],
    "price": 5.68,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -4665,6 +4855,7 @@
    ],
    "price": 5.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4692,6 +4883,7 @@
    ],
    "price": 6.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -4713,6 +4905,7 @@
    ],
    "price": 0.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4734,6 +4927,7 @@
    ],
    "price": 59.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -4761,6 +4955,7 @@
    ],
    "price": 85.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -4782,6 +4977,7 @@
    ],
    "price": 73.69,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4803,6 +4999,7 @@
    ],
    "price": 65.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4824,6 +5021,7 @@
    ],
    "price": 38.51,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -4845,6 +5043,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -4872,6 +5071,7 @@
    ],
    "price": 14.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -4893,6 +5093,7 @@
    ],
    "price": 28.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4914,6 +5115,7 @@
    ],
    "price": 15.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -4935,6 +5137,7 @@
    ],
    "price": 0.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -4956,6 +5159,7 @@
    ],
    "price": 3.54,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -4977,6 +5181,7 @@
    ],
    "price": 12.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -5004,6 +5209,7 @@
    ],
    "price": 3.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -5025,6 +5231,7 @@
    ],
    "price": 306.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -5046,6 +5253,7 @@
    ],
    "price": 12.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -5067,6 +5275,7 @@
    ],
    "price": 5.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -5088,6 +5297,7 @@
    ],
    "price": 2.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -5109,6 +5319,7 @@
    ],
    "price": 15.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 40.0,
    "kit_count": 1
   },
@@ -5130,6 +5341,7 @@
    ],
    "price": 35.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -5151,6 +5363,7 @@
    ],
    "price": 1.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -5172,6 +5385,7 @@
    ],
    "price": 10.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -5193,6 +5407,7 @@
    ],
    "price": 120.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.2,
    "kit_count": 1
   },
@@ -5220,6 +5435,7 @@
    ],
    "price": 2.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -5241,6 +5457,7 @@
    ],
    "price": 4.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -5262,6 +5479,7 @@
    ],
    "price": 0.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -5283,6 +5501,7 @@
    ],
    "price": 130.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 1
   },
@@ -5304,6 +5523,7 @@
    ],
    "price": 3295.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -5325,6 +5545,7 @@
    ],
    "price": 2.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -5346,6 +5567,7 @@
    ],
    "price": 3.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -5367,6 +5589,7 @@
    ],
    "price": 3.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -5394,6 +5617,7 @@
    ],
    "price": 30.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 2
   },
@@ -5415,6 +5639,7 @@
    ],
    "price": 0.41,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -5436,6 +5661,7 @@
    ],
    "price": 20.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -5463,6 +5689,7 @@
    ],
    "price": 5.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -5490,6 +5717,7 @@
    ],
    "price": 18.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 9.0,
    "kit_count": 2
   },
@@ -5511,6 +5739,7 @@
    ],
    "price": 91.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -5532,6 +5761,7 @@
    ],
    "price": 0.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2000.0,
    "kit_count": 1
   },
@@ -5553,6 +5783,7 @@
    ],
    "price": 0.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -5574,6 +5805,7 @@
    ],
    "price": 0.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 60.0,
    "kit_count": 1
   },
@@ -5595,6 +5827,7 @@
    ],
    "price": 22.72,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -5616,6 +5849,7 @@
    ],
    "price": 0.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 90.0,
    "kit_count": 1
   },
@@ -5643,6 +5877,7 @@
    ],
    "price": 38.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 2
   },
@@ -5670,6 +5905,7 @@
    ],
    "price": 9.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -5691,6 +5927,7 @@
    ],
    "price": 2.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -5712,6 +5949,7 @@
    ],
    "price": 38.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -5733,6 +5971,7 @@
    ],
    "price": 37.64,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -5754,6 +5993,7 @@
    ],
    "price": 931.56,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -5775,6 +6015,7 @@
    ],
    "price": 11.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -5796,6 +6037,7 @@
    ],
    "price": 1.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 30.0,
    "kit_count": 1
   },
@@ -5817,6 +6059,7 @@
    ],
    "price": 14.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 60.0,
    "kit_count": 1
   },
@@ -5838,6 +6081,7 @@
    ],
    "price": 13.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -5865,6 +6109,7 @@
    ],
    "price": 3.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 2
   },
@@ -5892,6 +6137,7 @@
    ],
    "price": 2.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 2
   },
@@ -5913,6 +6159,7 @@
    ],
    "price": 125.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -5934,6 +6181,7 @@
    ],
    "price": 11.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -5955,6 +6203,7 @@
    ],
    "price": 0.9,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 1
   },
@@ -5982,6 +6231,7 @@
    ],
    "price": 9.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 49.0,
    "kit_count": 2
   },
@@ -6009,6 +6259,7 @@
    ],
    "price": 160.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 2
   },
@@ -6036,6 +6287,7 @@
    ],
    "price": 49.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -6057,6 +6309,7 @@
    ],
    "price": 58.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -6084,6 +6337,7 @@
    ],
    "price": 38.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -6105,6 +6359,7 @@
    ],
    "price": 3.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -6144,6 +6399,7 @@
    ],
    "price": 2.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.55,
    "kit_count": 4
   },
@@ -6171,6 +6427,7 @@
    ],
    "price": 1.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 37.0,
    "kit_count": 2
   },
@@ -6192,6 +6449,7 @@
    ],
    "price": 10.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -6219,6 +6477,7 @@
    ],
    "price": 5.69,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -6240,6 +6499,7 @@
    ],
    "price": 13.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 1
   },
@@ -6261,6 +6521,7 @@
    ],
    "price": 10.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -6306,6 +6567,7 @@
    ],
    "price": 11.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 188.0,
    "kit_count": 5
   },
@@ -6345,6 +6607,7 @@
    ],
    "price": 13.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 342.0,
    "kit_count": 4
   },
@@ -6384,6 +6647,7 @@
    ],
    "price": 56.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 85.0,
    "kit_count": 4
   },
@@ -6411,6 +6675,7 @@
    ],
    "price": 15.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 2
   },
@@ -6450,6 +6715,7 @@
    ],
    "price": 36.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 4
   },
@@ -6483,6 +6749,7 @@
    ],
    "price": 31.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 18.0,
    "kit_count": 3
   },
@@ -6504,6 +6771,7 @@
    ],
    "price": 64.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -6525,6 +6793,7 @@
    ],
    "price": 9.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -6546,6 +6815,7 @@
    ],
    "price": 18.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -6573,6 +6843,7 @@
    ],
    "price": 29.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 2
   },
@@ -6594,6 +6865,7 @@
    ],
    "price": 36.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -6621,6 +6893,7 @@
    ],
    "price": 39.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -6648,6 +6921,7 @@
    ],
    "price": 43.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -6675,6 +6949,7 @@
    ],
    "price": 1.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 2
   },
@@ -6696,6 +6971,7 @@
    ],
    "price": 3.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -6717,6 +6993,7 @@
    ],
    "price": 6.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 1
   },
@@ -6738,6 +7015,7 @@
    ],
    "price": 9.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 1
   },
@@ -6765,6 +7043,7 @@
    ],
    "price": 9.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -6792,6 +7071,7 @@
    ],
    "price": 6.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -6819,6 +7099,7 @@
    ],
    "price": 6.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -6858,6 +7139,7 @@
    ],
    "price": 1.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1106.0,
    "kit_count": 4
   },
@@ -6897,6 +7179,7 @@
    ],
    "price": 0.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 184.0,
    "kit_count": 4
   },
@@ -6918,6 +7201,7 @@
    ],
    "price": 0.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -6939,6 +7223,7 @@
    ],
    "price": 3.62,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -6960,6 +7245,7 @@
    ],
    "price": 28.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -6993,6 +7279,7 @@
    ],
    "price": 0.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 58.0,
    "kit_count": 3
   },
@@ -7014,6 +7301,7 @@
    ],
    "price": 2.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 48.0,
    "kit_count": 1
   },
@@ -7035,6 +7323,7 @@
    ],
    "price": 0.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -7062,6 +7351,7 @@
    ],
    "price": 0.66,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 84.0,
    "kit_count": 2
   },
@@ -7083,6 +7373,7 @@
    ],
    "price": 1.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7116,6 +7407,7 @@
    ],
    "price": 2.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 26.0,
    "kit_count": 3
   },
@@ -7137,6 +7429,7 @@
    ],
    "price": 1.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -7170,6 +7463,7 @@
    ],
    "price": 1.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 61.0,
    "kit_count": 3
   },
@@ -7191,6 +7485,7 @@
    ],
    "price": 11.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -7224,6 +7519,7 @@
    ],
    "price": 17.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.41,
    "kit_count": 3
   },
@@ -7257,6 +7553,7 @@
    ],
    "price": 0.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 9.0,
    "kit_count": 3
   },
@@ -7284,6 +7581,7 @@
    ],
    "price": 43.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -7329,6 +7627,7 @@
    ],
    "price": 44.55,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.1,
    "kit_count": 5
   },
@@ -7350,6 +7649,7 @@
    ],
    "price": 68.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7389,6 +7689,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 563.0,
    "kit_count": 4
   },
@@ -7410,6 +7711,7 @@
    ],
    "price": 1.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7437,6 +7739,7 @@
    ],
    "price": 4.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -7458,6 +7761,7 @@
    ],
    "price": 23.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -7479,6 +7783,7 @@
    ],
    "price": 50.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.08,
    "kit_count": 1
   },
@@ -7500,6 +7805,7 @@
    ],
    "price": 48.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -7521,6 +7827,7 @@
    ],
    "price": 11.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7542,6 +7849,7 @@
    ],
    "price": 14.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -7569,6 +7877,7 @@
    ],
    "price": 0.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 35.0,
    "kit_count": 2
   },
@@ -7590,6 +7899,7 @@
    ],
    "price": 3.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7611,6 +7921,7 @@
    ],
    "price": 54.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7638,6 +7949,7 @@
    ],
    "price": 0.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 52.0,
    "kit_count": 2
   },
@@ -7659,6 +7971,7 @@
    ],
    "price": 22.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -7680,6 +7993,7 @@
    ],
    "price": 9.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -7701,6 +8015,7 @@
    ],
    "price": 0.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -7734,6 +8049,7 @@
    ],
    "price": 17.64,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -7755,6 +8071,7 @@
    ],
    "price": 7.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -7776,6 +8093,7 @@
    ],
    "price": 2.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 1
   },
@@ -7797,6 +8115,7 @@
    ],
    "price": 5.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7818,6 +8137,7 @@
    ],
    "price": 50.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7845,6 +8165,7 @@
    ],
    "price": 14.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.5,
    "kit_count": 2
   },
@@ -7866,6 +8187,7 @@
    ],
    "price": 4.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -7893,6 +8215,7 @@
    ],
    "price": 14.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 36.0,
    "kit_count": 2
   },
@@ -7920,6 +8243,7 @@
    ],
    "price": 80.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 18.0,
    "kit_count": 2
   },
@@ -7947,6 +8271,7 @@
    ],
    "price": 1.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 2
   },
@@ -7968,6 +8293,7 @@
    ],
    "price": 0.54,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8001,6 +8327,7 @@
    ],
    "price": 0.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 64.0,
    "kit_count": 3
   },
@@ -8022,6 +8349,7 @@
    ],
    "price": 1.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -8043,6 +8371,7 @@
    ],
    "price": 37.61,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8070,6 +8399,7 @@
    ],
    "price": 0.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 2
   },
@@ -8091,6 +8421,7 @@
    ],
    "price": 2.74,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8112,6 +8443,7 @@
    ],
    "price": 0.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8133,6 +8465,7 @@
    ],
    "price": 588.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8154,6 +8487,7 @@
    ],
    "price": 478.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8175,6 +8509,7 @@
    ],
    "price": 17.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8196,6 +8531,7 @@
    ],
    "price": 28.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8217,6 +8553,7 @@
    ],
    "price": 65.41,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8238,6 +8575,7 @@
    ],
    "price": 19.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8277,6 +8615,7 @@
    ],
    "price": 1.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 4
   },
@@ -8298,6 +8637,7 @@
    ],
    "price": 37.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -8319,6 +8659,7 @@
    ],
    "price": 14.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -8340,6 +8681,7 @@
    ],
    "price": 101.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -8361,6 +8703,7 @@
    ],
    "price": 8.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8388,6 +8731,7 @@
    ],
    "price": 3.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 2
   },
@@ -8415,6 +8759,7 @@
    ],
    "price": 18.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -8436,6 +8781,7 @@
    ],
    "price": 24.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -8457,6 +8803,7 @@
    ],
    "price": 13.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -8478,6 +8825,7 @@
    ],
    "price": 18.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -8499,6 +8847,7 @@
    ],
    "price": 1.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -8520,6 +8869,7 @@
    ],
    "price": 14.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -8541,6 +8891,7 @@
    ],
    "price": 25.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8562,6 +8913,7 @@
    ],
    "price": 5.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -8583,6 +8935,7 @@
    ],
    "price": 265.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8604,6 +8957,7 @@
    ],
    "price": 50.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8625,6 +8979,7 @@
    ],
    "price": 137.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -8646,6 +9001,7 @@
    ],
    "price": 2.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -8667,6 +9023,7 @@
    ],
    "price": 15.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -8700,6 +9057,7 @@
    ],
    "price": 0.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 3
   },
@@ -8721,6 +9079,7 @@
    ],
    "price": 5.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -8742,6 +9101,7 @@
    ],
    "price": 2.64,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -8763,6 +9123,7 @@
    ],
    "price": 32.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8784,6 +9145,7 @@
    ],
    "price": 248.92,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8817,6 +9179,7 @@
    ],
    "price": 10.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 3
   },
@@ -8838,6 +9201,7 @@
    ],
    "price": 304.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -8865,6 +9229,7 @@
    ],
    "price": 11.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -8886,6 +9251,7 @@
    ],
    "price": 2.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -8907,6 +9273,7 @@
    ],
    "price": 0.62,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -8928,6 +9295,7 @@
    ],
    "price": 23.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -8955,6 +9323,7 @@
    ],
    "price": 2.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -8976,6 +9345,7 @@
    ],
    "price": 2.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9009,6 +9379,7 @@
    ],
    "price": 9.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 16.0,
    "kit_count": 3
   },
@@ -9030,6 +9401,7 @@
    ],
    "price": 43.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9051,6 +9423,7 @@
    ],
    "price": 117.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9078,6 +9451,7 @@
    ],
    "price": 1.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 2
   },
@@ -9099,6 +9473,7 @@
    ],
    "price": 0.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -9132,6 +9507,7 @@
    ],
    "price": 0.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 107.0,
    "kit_count": 3
   },
@@ -9153,6 +9529,7 @@
    ],
    "price": 19.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9180,6 +9557,7 @@
    ],
    "price": 2.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 2
   },
@@ -9201,6 +9579,7 @@
    ],
    "price": 2.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -9228,6 +9607,7 @@
    ],
    "price": 1.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 125.0,
    "kit_count": 2
   },
@@ -9249,6 +9629,7 @@
    ],
    "price": 1042.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9270,6 +9651,7 @@
    ],
    "price": 55.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9291,6 +9673,7 @@
    ],
    "price": 628.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9312,6 +9695,7 @@
    ],
    "price": 284.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -9333,6 +9717,7 @@
    ],
    "price": 5.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9366,6 +9751,7 @@
    ],
    "price": 17.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 19.0,
    "kit_count": 3
   },
@@ -9387,6 +9773,7 @@
    ],
    "price": 0.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9414,6 +9801,7 @@
    ],
    "price": 0.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 150.0,
    "kit_count": 2
   },
@@ -9435,6 +9823,7 @@
    ],
    "price": 898.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9456,6 +9845,7 @@
    ],
    "price": 17.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9477,6 +9867,7 @@
    ],
    "price": 30.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9498,6 +9889,7 @@
    ],
    "price": 87.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9519,6 +9911,7 @@
    ],
    "price": 349.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9546,6 +9939,7 @@
    ],
    "price": 205.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -9579,6 +9973,7 @@
    ],
    "price": 32.98,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 3
   },
@@ -9600,6 +9995,7 @@
    ],
    "price": 13.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9627,6 +10023,7 @@
    ],
    "price": 35.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -9648,6 +10045,7 @@
    ],
    "price": 20.9,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9669,6 +10067,7 @@
    ],
    "price": 175.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -9690,6 +10089,7 @@
    ],
    "price": 175.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -9711,6 +10111,7 @@
    ],
    "price": 1453.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9732,6 +10133,7 @@
    ],
    "price": 18.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9753,6 +10155,7 @@
    ],
    "price": 154.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 30.0,
    "kit_count": 1
   },
@@ -9780,6 +10183,7 @@
    ],
    "price": 2.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 14.0,
    "kit_count": 2
   },
@@ -9801,6 +10205,7 @@
    ],
    "price": 175.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -9834,6 +10239,7 @@
    ],
    "price": 0.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 3
   },
@@ -9855,6 +10261,7 @@
    ],
    "price": 38.51,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9876,6 +10283,7 @@
    ],
    "price": 422.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -9897,6 +10305,7 @@
    ],
    "price": 11.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -9918,6 +10327,7 @@
    ],
    "price": 17.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -9939,6 +10349,7 @@
    ],
    "price": 170.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -9966,6 +10377,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 9.0,
    "kit_count": 2
   },
@@ -9993,6 +10405,7 @@
    ],
    "price": 447.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -10026,6 +10439,7 @@
    ],
    "price": 35.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 3
   },
@@ -10059,6 +10473,7 @@
    ],
    "price": 35.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 3
   },
@@ -10086,6 +10501,7 @@
    ],
    "price": 391.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 2
   },
@@ -10107,6 +10523,7 @@
    ],
    "price": 1451.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10146,6 +10563,7 @@
    ],
    "price": 0.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 133.0,
    "kit_count": 4
   },
@@ -10167,6 +10585,7 @@
    ],
    "price": 200.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10188,6 +10607,7 @@
    ],
    "price": 21.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -10209,6 +10629,7 @@
    ],
    "price": 86.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -10236,6 +10657,7 @@
    ],
    "price": 1.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 40.0,
    "kit_count": 2
   },
@@ -10263,6 +10685,7 @@
    ],
    "price": 131.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -10284,6 +10707,7 @@
    ],
    "price": 0.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10305,6 +10729,7 @@
    ],
    "price": 3000.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10332,6 +10757,7 @@
    ],
    "price": 6.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 49.0,
    "kit_count": 2
   },
@@ -10359,6 +10785,7 @@
    ],
    "price": 9.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 49.0,
    "kit_count": 2
   },
@@ -10380,6 +10807,7 @@
    ],
    "price": 27.57,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -10401,6 +10829,7 @@
    ],
    "price": 28.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -10422,6 +10851,7 @@
    ],
    "price": 28.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -10443,6 +10873,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10464,6 +10895,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10485,6 +10917,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10506,6 +10939,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10527,6 +10961,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10548,6 +10983,7 @@
    ],
    "price": 14.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10569,6 +11005,7 @@
    ],
    "price": 151.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10590,6 +11027,7 @@
    ],
    "price": 107.7,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -10611,6 +11049,7 @@
    ],
    "price": 2.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10632,6 +11071,7 @@
    ],
    "price": 6.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 1
   },
@@ -10653,6 +11093,7 @@
    ],
    "price": 94.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10674,6 +11115,7 @@
    ],
    "price": 2.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10695,6 +11137,7 @@
    ],
    "price": 47.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10716,6 +11159,7 @@
    ],
    "price": 2.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 1
   },
@@ -10737,6 +11181,7 @@
    ],
    "price": 27.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -10764,6 +11209,7 @@
    ],
    "price": 6.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -10785,6 +11231,7 @@
    ],
    "price": 7545.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10806,6 +11253,7 @@
    ],
    "price": 1.54,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -10827,6 +11275,7 @@
    ],
    "price": 30968.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10848,6 +11297,7 @@
    ],
    "price": 1.74,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 1
   },
@@ -10869,6 +11319,7 @@
    ],
    "price": 1.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 1
   },
@@ -10896,6 +11347,7 @@
    ],
    "price": 1.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 2
   },
@@ -10917,6 +11369,7 @@
    ],
    "price": 8.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10938,6 +11391,7 @@
    ],
    "price": 8.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -10959,6 +11413,7 @@
    ],
    "price": 5.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.05,
    "kit_count": 1
   },
@@ -10992,6 +11447,7 @@
    ],
    "price": 2.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 62.0,
    "kit_count": 3
   },
@@ -11025,6 +11481,7 @@
    ],
    "price": 46.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 3
   },
@@ -11058,6 +11515,7 @@
    ],
    "price": 50.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 3
   },
@@ -11079,6 +11537,7 @@
    ],
    "price": 15529.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11106,6 +11565,7 @@
    ],
    "price": 2.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 2
   },
@@ -11133,6 +11593,7 @@
    ],
    "price": 2.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 26.0,
    "kit_count": 2
   },
@@ -11154,6 +11615,7 @@
    ],
    "price": 5200.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11181,6 +11643,7 @@
    ],
    "price": 3.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -11214,6 +11677,7 @@
    ],
    "price": 23.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 3
   },
@@ -11235,6 +11699,7 @@
    ],
    "price": 7.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11256,6 +11721,7 @@
    ],
    "price": 94.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11283,6 +11749,7 @@
    ],
    "price": 17.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 2
   },
@@ -11304,6 +11771,7 @@
    ],
    "price": 9.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -11325,6 +11793,7 @@
    ],
    "price": 0.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11352,6 +11821,7 @@
    ],
    "price": 0.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 2
   },
@@ -11373,6 +11843,7 @@
    ],
    "price": 17.57,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11394,6 +11865,7 @@
    ],
    "price": 17.57,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11415,6 +11887,7 @@
    ],
    "price": 38.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11436,6 +11909,7 @@
    ],
    "price": 6.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -11457,6 +11931,7 @@
    ],
    "price": 19.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 1
   },
@@ -11478,6 +11953,7 @@
    ],
    "price": 12.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -11499,6 +11975,7 @@
    ],
    "price": 23.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11520,6 +11997,7 @@
    ],
    "price": 83.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -11541,6 +12019,7 @@
    ],
    "price": 119.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11562,6 +12041,7 @@
    ],
    "price": 6.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 1
   },
@@ -11583,6 +12063,7 @@
    ],
    "price": 20.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -11604,6 +12085,7 @@
    ],
    "price": 24.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11625,6 +12107,7 @@
    ],
    "price": 35.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 1
   },
@@ -11646,6 +12129,7 @@
    ],
    "price": 110.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11667,6 +12151,7 @@
    ],
    "price": 6.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -11688,6 +12173,7 @@
    ],
    "price": 22.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -11709,6 +12195,7 @@
    ],
    "price": 10.84,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11730,6 +12217,7 @@
    ],
    "price": 1.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -11751,6 +12239,7 @@
    ],
    "price": 50.9,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -11772,6 +12261,7 @@
    ],
    "price": 9.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11793,6 +12283,7 @@
    ],
    "price": 131.61,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11814,6 +12305,7 @@
    ],
    "price": 33.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -11835,6 +12327,7 @@
    ],
    "price": 8.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11856,6 +12349,7 @@
    ],
    "price": 22.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -11877,6 +12371,7 @@
    ],
    "price": 26.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -11898,6 +12393,7 @@
    ],
    "price": 437.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -11919,6 +12415,7 @@
    ],
    "price": 32.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11946,6 +12443,7 @@
    ],
    "price": 1.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -11967,6 +12465,7 @@
    ],
    "price": 0.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -11988,6 +12487,7 @@
    ],
    "price": 11.57,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -12009,6 +12509,7 @@
    ],
    "price": 5.74,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12030,6 +12531,7 @@
    ],
    "price": 5.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12051,6 +12553,7 @@
    ],
    "price": 4.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12072,6 +12575,7 @@
    ],
    "price": 2.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12093,6 +12597,7 @@
    ],
    "price": 1.51,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -12114,6 +12619,7 @@
    ],
    "price": 0.66,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -12141,6 +12647,7 @@
    ],
    "price": 0.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 2
   },
@@ -12168,6 +12675,7 @@
    ],
    "price": 0.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 2
   },
@@ -12189,6 +12697,7 @@
    ],
    "price": 0.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12216,6 +12725,7 @@
    ],
    "price": 3.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 2
   },
@@ -12243,6 +12753,7 @@
    ],
    "price": 4.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -12288,6 +12799,7 @@
    ],
    "price": 2.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 26.0,
    "kit_count": 5
   },
@@ -12309,6 +12821,7 @@
    ],
    "price": 42.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12330,6 +12843,7 @@
    ],
    "price": 12.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12351,6 +12865,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12372,6 +12887,7 @@
    ],
    "price": 0.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12393,6 +12909,7 @@
    ],
    "price": 1.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12420,6 +12937,7 @@
    ],
    "price": 2.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -12441,6 +12959,7 @@
    ],
    "price": 4.55,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -12462,6 +12981,7 @@
    ],
    "price": 1491.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -12483,6 +13003,7 @@
    ],
    "price": 178.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12504,6 +13025,7 @@
    ],
    "price": 70.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12525,6 +13047,7 @@
    ],
    "price": 16.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12546,6 +13069,7 @@
    ],
    "price": 16.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12567,6 +13091,7 @@
    ],
    "price": 16.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12588,6 +13113,7 @@
    ],
    "price": 11.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12609,6 +13135,7 @@
    ],
    "price": 11.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12630,6 +13157,7 @@
    ],
    "price": 1.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12651,6 +13179,7 @@
    ],
    "price": 1.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -12672,6 +13201,7 @@
    ],
    "price": 1.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12693,6 +13223,7 @@
    ],
    "price": 18.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12714,6 +13245,7 @@
    ],
    "price": 122.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -12735,6 +13267,7 @@
    ],
    "price": 389.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12756,6 +13289,7 @@
    ],
    "price": 384.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12783,6 +13317,7 @@
    ],
    "price": 229.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -12804,6 +13339,7 @@
    ],
    "price": 3.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -12825,6 +13361,7 @@
    ],
    "price": 102.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12846,6 +13383,7 @@
    ],
    "price": 17.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -12867,6 +13405,7 @@
    ],
    "price": 1.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -12894,6 +13433,7 @@
    ],
    "price": 694.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -12915,6 +13455,7 @@
    ],
    "price": 53.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12936,6 +13477,7 @@
    ],
    "price": 28.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -12957,6 +13499,7 @@
    ],
    "price": 455.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12978,6 +13521,7 @@
    ],
    "price": 16.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -12999,6 +13543,7 @@
    ],
    "price": 16.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13020,6 +13565,7 @@
    ],
    "price": 16.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13041,6 +13587,7 @@
    ],
    "price": 1.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -13062,6 +13609,7 @@
    ],
    "price": 0.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -13083,6 +13631,7 @@
    ],
    "price": 5.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13104,6 +13653,7 @@
    ],
    "price": 98.41,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13125,6 +13675,7 @@
    ],
    "price": 1.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -13146,6 +13697,7 @@
    ],
    "price": 0.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13167,6 +13719,7 @@
    ],
    "price": 1143.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13194,6 +13747,7 @@
    ],
    "price": 109.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.16,
    "kit_count": 2
   },
@@ -13215,6 +13769,7 @@
    ],
    "price": 1.62,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 37.0,
    "kit_count": 1
   },
@@ -13236,6 +13791,7 @@
    ],
    "price": 0.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13257,6 +13813,7 @@
    ],
    "price": 37.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.6,
    "kit_count": 1
   },
@@ -13278,6 +13835,7 @@
    ],
    "price": 1375.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13311,6 +13869,7 @@
    ],
    "price": 2.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 3
   },
@@ -13332,6 +13891,7 @@
    ],
    "price": 38.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -13353,6 +13913,7 @@
    ],
    "price": 3.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -13374,6 +13935,7 @@
    ],
    "price": 2.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13395,6 +13957,7 @@
    ],
    "price": 37.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13416,6 +13979,7 @@
    ],
    "price": 191.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13455,6 +14019,7 @@
    ],
    "price": 1.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 106.0,
    "kit_count": 4
   },
@@ -13476,6 +14041,7 @@
    ],
    "price": 29.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.05,
    "kit_count": 1
   },
@@ -13497,6 +14063,7 @@
    ],
    "price": 0.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -13518,6 +14085,7 @@
    ],
    "price": 340.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13557,6 +14125,7 @@
    ],
    "price": 0.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 72.0,
    "kit_count": 4
   },
@@ -13578,6 +14147,7 @@
    ],
    "price": 3.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -13599,6 +14169,7 @@
    ],
    "price": 162.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -13620,6 +14191,7 @@
    ],
    "price": 17.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13641,6 +14213,7 @@
    ],
    "price": 1.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 1
   },
@@ -13662,6 +14235,7 @@
    ],
    "price": 92.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13683,6 +14257,7 @@
    ],
    "price": 11.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13704,6 +14279,7 @@
    ],
    "price": 8.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13725,6 +14301,7 @@
    ],
    "price": 27.68,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13746,6 +14323,7 @@
    ],
    "price": 27.68,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13767,6 +14345,7 @@
    ],
    "price": 27.68,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13788,6 +14367,7 @@
    ],
    "price": 263.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13809,6 +14389,7 @@
    ],
    "price": 168.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13830,6 +14411,7 @@
    ],
    "price": 97.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13851,6 +14433,7 @@
    ],
    "price": 5.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -13872,6 +14455,7 @@
    ],
    "price": 79.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13899,6 +14483,7 @@
    ],
    "price": 94.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 16.0,
    "kit_count": 2
   },
@@ -13920,6 +14505,7 @@
    ],
    "price": 1947.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13941,6 +14527,7 @@
    ],
    "price": 35.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -13962,6 +14549,7 @@
    ],
    "price": 6.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -13983,6 +14571,7 @@
    ],
    "price": 3.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14004,6 +14593,7 @@
    ],
    "price": 26.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -14025,6 +14615,7 @@
    ],
    "price": 5.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -14052,6 +14643,7 @@
    ],
    "price": 34.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 2
   },
@@ -14073,6 +14665,7 @@
    ],
    "price": 556.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14094,6 +14687,7 @@
    ],
    "price": 273.06,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14115,6 +14709,7 @@
    ],
    "price": 143.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14136,6 +14731,7 @@
    ],
    "price": 143.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14157,6 +14753,7 @@
    ],
    "price": 143.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14178,6 +14775,7 @@
    ],
    "price": 143.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14199,6 +14797,7 @@
    ],
    "price": 115.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14220,6 +14819,7 @@
    ],
    "price": 8.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.5,
    "kit_count": 1
   },
@@ -14253,6 +14853,7 @@
    ],
    "price": 7.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -14286,6 +14887,7 @@
    ],
    "price": 6.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 63.0,
    "kit_count": 3
   },
@@ -14307,6 +14909,7 @@
    ],
    "price": 158.87,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14328,6 +14931,7 @@
    ],
    "price": 6.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14349,6 +14953,7 @@
    ],
    "price": 1.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14370,6 +14975,7 @@
    ],
    "price": 2309.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14391,6 +14997,7 @@
    ],
    "price": 145.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14412,6 +15019,7 @@
    ],
    "price": 7.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 9.0,
    "kit_count": 1
   },
@@ -14433,6 +15041,7 @@
    ],
    "price": 13.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -14454,6 +15063,7 @@
    ],
    "price": 23.62,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14475,6 +15085,7 @@
    ],
    "price": 6.54,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14496,6 +15107,7 @@
    ],
    "price": 9.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14523,6 +15135,7 @@
    ],
    "price": 0.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 210.0,
    "kit_count": 2
   },
@@ -14544,6 +15157,7 @@
    ],
    "price": 3.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -14565,6 +15179,7 @@
    ],
    "price": 36.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14586,6 +15201,7 @@
    ],
    "price": 140.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -14607,6 +15223,7 @@
    ],
    "price": 5161.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14628,6 +15245,7 @@
    ],
    "price": 146.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 1
   },
@@ -14655,6 +15273,7 @@
    ],
    "price": 0.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -14676,6 +15295,7 @@
    ],
    "price": 1.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14697,6 +15317,7 @@
    ],
    "price": 1.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -14718,6 +15339,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14739,6 +15361,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14760,6 +15383,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14781,6 +15405,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -14808,6 +15433,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 42.0,
    "kit_count": 2
   },
@@ -14835,6 +15461,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 42.0,
    "kit_count": 2
   },
@@ -14856,6 +15483,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 40.0,
    "kit_count": 1
   },
@@ -14877,6 +15505,7 @@
    ],
    "price": 1.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 40.0,
    "kit_count": 1
   },
@@ -14910,6 +15539,7 @@
    ],
    "price": 59.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 3
   },
@@ -14937,6 +15567,7 @@
    ],
    "price": 0.7,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 51.0,
    "kit_count": 2
   },
@@ -14958,6 +15589,7 @@
    ],
    "price": 21.97,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.32,
    "kit_count": 1
   },
@@ -14985,6 +15617,7 @@
    ],
    "price": 911.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -15006,6 +15639,7 @@
    ],
    "price": 21.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15033,6 +15667,7 @@
    ],
    "price": 102.66,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -15054,6 +15689,7 @@
    ],
    "price": 50.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15075,6 +15711,7 @@
    ],
    "price": 4.92,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15096,6 +15733,7 @@
    ],
    "price": 0.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -15117,6 +15755,7 @@
    ],
    "price": 6.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15138,6 +15777,7 @@
    ],
    "price": 8.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15159,6 +15799,7 @@
    ],
    "price": 5.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15180,6 +15821,7 @@
    ],
    "price": 8.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15201,6 +15843,7 @@
    ],
    "price": 19.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15222,6 +15865,7 @@
    ],
    "price": 176.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15243,6 +15887,7 @@
    ],
    "price": 2492.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -15270,6 +15915,7 @@
    ],
    "price": 1599.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -15291,6 +15937,7 @@
    ],
    "price": 1.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 1
   },
@@ -15312,6 +15959,7 @@
    ],
    "price": 6.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -15333,6 +15981,7 @@
    ],
    "price": 20.84,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -15354,6 +16003,7 @@
    ],
    "price": 22.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15381,6 +16031,7 @@
    ],
    "price": 7.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -15402,6 +16053,7 @@
    ],
    "price": 198.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15429,6 +16081,7 @@
    ],
    "price": 340.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -15450,6 +16103,7 @@
    ],
    "price": 1.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15471,6 +16125,7 @@
    ],
    "price": 694.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15492,6 +16147,7 @@
    ],
    "price": 285.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15519,6 +16175,7 @@
    ],
    "price": 2.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 60.0,
    "kit_count": 2
   },
@@ -15552,6 +16209,7 @@
    ],
    "price": 2.89,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 63.0,
    "kit_count": 3
   },
@@ -15591,6 +16249,7 @@
    ],
    "price": 107.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 4
   },
@@ -15612,6 +16271,7 @@
    ],
    "price": 0.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -15639,6 +16299,7 @@
    ],
    "price": 1.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 2
   },
@@ -15672,6 +16333,7 @@
    ],
    "price": 0.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 115.0,
    "kit_count": 3
   },
@@ -15705,6 +16367,7 @@
    ],
    "price": 0.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 625.0,
    "kit_count": 3
   },
@@ -15738,6 +16401,7 @@
    ],
    "price": 0.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 215.0,
    "kit_count": 3
   },
@@ -15759,6 +16423,7 @@
    ],
    "price": 0.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 50.0,
    "kit_count": 1
   },
@@ -15780,6 +16445,7 @@
    ],
    "price": 0.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -15801,6 +16467,7 @@
    ],
    "price": 0.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 500.0,
    "kit_count": 1
   },
@@ -15822,6 +16489,7 @@
    ],
    "price": 6.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -15843,6 +16511,7 @@
    ],
    "price": 0.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -15864,6 +16533,7 @@
    ],
    "price": 49.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15885,6 +16555,7 @@
    ],
    "price": 44.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15906,6 +16577,7 @@
    ],
    "price": 48.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15927,6 +16599,7 @@
    ],
    "price": 168.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -15948,6 +16621,7 @@
    ],
    "price": 192.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -15969,6 +16643,7 @@
    ],
    "price": 21.35,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -15990,6 +16665,7 @@
    ],
    "price": 97.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16011,6 +16687,7 @@
    ],
    "price": 67.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16032,6 +16709,7 @@
    ],
    "price": 40.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16065,6 +16743,7 @@
    ],
    "price": 8.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 59.0,
    "kit_count": 3
   },
@@ -16086,6 +16765,7 @@
    ],
    "price": 4.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -16107,6 +16787,7 @@
    ],
    "price": 40.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16128,6 +16809,7 @@
    ],
    "price": 50.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16149,6 +16831,7 @@
    ],
    "price": 50.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16170,6 +16853,7 @@
    ],
    "price": 109.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16191,6 +16875,7 @@
    ],
    "price": 11.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16212,6 +16897,7 @@
    ],
    "price": 16.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16233,6 +16919,7 @@
    ],
    "price": 13.7,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -16260,6 +16947,7 @@
    ],
    "price": 5.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 55.0,
    "kit_count": 2
   },
@@ -16281,6 +16969,7 @@
    ],
    "price": 25.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16302,6 +16991,7 @@
    ],
    "price": 109.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16323,6 +17013,7 @@
    ],
    "price": 49.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16344,6 +17035,7 @@
    ],
    "price": 96.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16365,6 +17057,7 @@
    ],
    "price": 96.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16386,6 +17079,7 @@
    ],
    "price": 11.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -16419,6 +17113,7 @@
    ],
    "price": 2.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 18.0,
    "kit_count": 3
   },
@@ -16440,6 +17135,7 @@
    ],
    "price": 27.72,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16461,6 +17157,7 @@
    ],
    "price": 10754.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16482,6 +17179,7 @@
    ],
    "price": 1111.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16503,6 +17201,7 @@
    ],
    "price": 17.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16542,6 +17241,7 @@
    ],
    "price": 13.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.7,
    "kit_count": 4
   },
@@ -16563,6 +17263,7 @@
    ],
    "price": 0.11,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 720.0,
    "kit_count": 1
   },
@@ -16584,6 +17285,7 @@
    ],
    "price": 29.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16611,6 +17313,7 @@
    ],
    "price": 116.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -16632,6 +17335,7 @@
    ],
    "price": 9.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16653,6 +17357,7 @@
    ],
    "price": 9.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16674,6 +17379,7 @@
    ],
    "price": 9.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16695,6 +17401,7 @@
    ],
    "price": 9.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16716,6 +17423,7 @@
    ],
    "price": 30.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16737,6 +17445,7 @@
    ],
    "price": 18.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -16758,6 +17467,7 @@
    ],
    "price": 155.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.8,
    "kit_count": 1
   },
@@ -16779,6 +17489,7 @@
    ],
    "price": 5876.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16800,6 +17511,7 @@
    ],
    "price": 34.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16821,6 +17533,7 @@
    ],
    "price": 54.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16842,6 +17555,7 @@
    ],
    "price": 0.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 40.0,
    "kit_count": 1
   },
@@ -16863,6 +17577,7 @@
    ],
    "price": 0.47,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1440.0,
    "kit_count": 1
   },
@@ -16884,6 +17599,7 @@
    ],
    "price": 7300.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -16905,6 +17621,7 @@
    ],
    "price": 135.84,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -16926,6 +17643,7 @@
    ],
    "price": 22.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -16953,6 +17671,7 @@
    ],
    "price": 22.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 22.0,
    "kit_count": 2
   },
@@ -16992,6 +17711,7 @@
    ],
    "price": 22.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 22.44,
    "kit_count": 4
   },
@@ -17019,6 +17739,7 @@
    ],
    "price": 19.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -17040,6 +17761,7 @@
    ],
    "price": 9.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -17061,6 +17783,7 @@
    ],
    "price": 2200.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17088,6 +17811,7 @@
    ],
    "price": 36.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 21.0,
    "kit_count": 2
   },
@@ -17115,6 +17839,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 2
   },
@@ -17136,6 +17861,7 @@
    ],
    "price": 55.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17157,6 +17883,7 @@
    ],
    "price": 10.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -17178,6 +17905,7 @@
    ],
    "price": 10.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -17199,6 +17927,7 @@
    ],
    "price": 10.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17220,6 +17949,7 @@
    ],
    "price": 10.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17241,6 +17971,7 @@
    ],
    "price": 15.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -17262,6 +17993,7 @@
    ],
    "price": 410.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17283,6 +18015,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -17304,6 +18037,7 @@
    ],
    "price": 130.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -17325,6 +18059,7 @@
    ],
    "price": 76.79,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17346,6 +18081,7 @@
    ],
    "price": 21.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17367,6 +18103,7 @@
    ],
    "price": 96.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.04,
    "kit_count": 1
   },
@@ -17406,6 +18143,7 @@
    ],
    "price": 5.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 13.0,
    "kit_count": 4
   },
@@ -17427,6 +18165,7 @@
    ],
    "price": 19.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.05,
    "kit_count": 1
   },
@@ -17448,6 +18187,7 @@
    ],
    "price": 1.57,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -17469,6 +18209,7 @@
    ],
    "price": 2.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -17490,6 +18231,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17511,6 +18253,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17532,6 +18275,7 @@
    ],
    "price": 7.83,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -17553,6 +18297,7 @@
    ],
    "price": 71.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17574,6 +18319,7 @@
    ],
    "price": 2.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 15.0,
    "kit_count": 1
   },
@@ -17595,6 +18341,7 @@
    ],
    "price": 2.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -17616,6 +18363,7 @@
    ],
    "price": 7.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17637,6 +18385,7 @@
    ],
    "price": 5.51,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17658,6 +18407,7 @@
    ],
    "price": 237.43,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17679,6 +18429,7 @@
    ],
    "price": 1.16,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17712,6 +18463,7 @@
    ],
    "price": 3.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 3
   },
@@ -17733,6 +18485,7 @@
    ],
    "price": 3.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17760,6 +18513,7 @@
    ],
    "price": 0.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 2
   },
@@ -17781,6 +18535,7 @@
    ],
    "price": 15.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17802,6 +18557,7 @@
    ],
    "price": 10.28,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -17823,6 +18579,7 @@
    ],
    "price": 88.92,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17844,6 +18601,7 @@
    ],
    "price": 16.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -17865,6 +18623,7 @@
    ],
    "price": 206.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17886,6 +18645,7 @@
    ],
    "price": 41.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17907,6 +18667,7 @@
    ],
    "price": 140.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -17928,6 +18689,7 @@
    ],
    "price": 4.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -17949,6 +18711,7 @@
    ],
    "price": 0.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -17970,6 +18733,7 @@
    ],
    "price": 0.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 1
   },
@@ -17991,6 +18755,7 @@
    ],
    "price": 2.23,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -18012,6 +18777,7 @@
    ],
    "price": 4.48,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -18033,6 +18799,7 @@
    ],
    "price": 7.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18054,6 +18821,7 @@
    ],
    "price": 5.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -18075,6 +18843,7 @@
    ],
    "price": 13.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -18096,6 +18865,7 @@
    ],
    "price": 2.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -18117,6 +18887,7 @@
    ],
    "price": 5.34,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18138,6 +18909,7 @@
    ],
    "price": 645.79,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18159,6 +18931,7 @@
    ],
    "price": 669.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18186,6 +18959,7 @@
    ],
    "price": 0.94,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 42.0,
    "kit_count": 2
   },
@@ -18207,6 +18981,7 @@
    ],
    "price": 1.53,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -18228,6 +19003,7 @@
    ],
    "price": 11.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18249,6 +19025,7 @@
    ],
    "price": 14.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18270,6 +19047,7 @@
    ],
    "price": 30.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18291,6 +19069,7 @@
    ],
    "price": 1.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 30.0,
    "kit_count": 1
   },
@@ -18312,6 +19091,7 @@
    ],
    "price": 0.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -18333,6 +19113,7 @@
    ],
    "price": 0.66,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -18354,6 +19135,7 @@
    ],
    "price": 140.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18375,6 +19157,7 @@
    ],
    "price": 780.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18396,6 +19179,7 @@
    ],
    "price": 3660.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18417,6 +19201,7 @@
    ],
    "price": 298.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18438,6 +19223,7 @@
    ],
    "price": 149.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18459,6 +19245,7 @@
    ],
    "price": 5153.72,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18480,6 +19267,7 @@
    ],
    "price": 209.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18501,6 +19289,7 @@
    ],
    "price": 214.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18528,6 +19317,7 @@
    ],
    "price": 0.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 2
   },
@@ -18549,6 +19339,7 @@
    ],
    "price": 18.67,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18570,6 +19361,7 @@
    ],
    "price": 36.58,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18591,6 +19383,7 @@
    ],
    "price": 1320.75,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18612,6 +19405,7 @@
    ],
    "price": 1330.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -18633,6 +19427,7 @@
    ],
    "price": 8.76,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -18654,6 +19449,7 @@
    ],
    "price": 0.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 350.0,
    "kit_count": 1
   },
@@ -18675,6 +19471,7 @@
    ],
    "price": 306.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -18696,6 +19493,7 @@
    ],
    "price": 0.09,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -18717,6 +19515,7 @@
    ],
    "price": 0.07,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 200.0,
    "kit_count": 1
   },
@@ -18738,6 +19537,7 @@
    ],
    "price": 54.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -18777,6 +19577,7 @@
    ],
    "price": 205.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 4
   },
@@ -18798,6 +19599,7 @@
    ],
    "price": 221.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 1
   },
@@ -18819,6 +19621,7 @@
    ],
    "price": 69.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -18840,6 +19643,7 @@
    ],
    "price": 213.77,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18861,6 +19665,7 @@
    ],
    "price": 32.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18882,6 +19687,7 @@
    ],
    "price": 2212.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18903,6 +19709,7 @@
    ],
    "price": 10441.61,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18924,6 +19731,7 @@
    ],
    "price": 36.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18945,6 +19753,7 @@
    ],
    "price": 65.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18966,6 +19775,7 @@
    ],
    "price": 270.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -18987,6 +19797,7 @@
    ],
    "price": 1093.21,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -19014,6 +19825,7 @@
    ],
    "price": 25.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 23.0,
    "kit_count": 2
   },
@@ -19041,6 +19853,7 @@
    ],
    "price": 655.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -19062,6 +19875,7 @@
    ],
    "price": 2343.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19083,6 +19897,7 @@
    ],
    "price": 35427.51,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19104,6 +19919,7 @@
    ],
    "price": 91622.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19125,6 +19941,7 @@
    ],
    "price": 15264.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19146,6 +19963,7 @@
    ],
    "price": 7818.37,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19167,6 +19985,7 @@
    ],
    "price": 213.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19188,6 +20007,7 @@
    ],
    "price": 1534.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19209,6 +20029,7 @@
    ],
    "price": 4645.8,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19230,6 +20051,7 @@
    ],
    "price": 168.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19251,6 +20073,7 @@
    ],
    "price": 7808.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19272,6 +20095,7 @@
    ],
    "price": 5592.14,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19293,6 +20117,7 @@
    ],
    "price": 2253.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19314,6 +20139,7 @@
    ],
    "price": 2692.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19335,6 +20161,7 @@
    ],
    "price": 9111.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19356,6 +20183,7 @@
    ],
    "price": 4926.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19377,6 +20205,7 @@
    ],
    "price": 9777.72,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19398,6 +20227,7 @@
    ],
    "price": 473.47,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19419,6 +20249,7 @@
    ],
    "price": 29858.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19440,6 +20271,7 @@
    ],
    "price": 21.45,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -19461,6 +20293,7 @@
    ],
    "price": 443.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19482,6 +20315,7 @@
    ],
    "price": 538.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -19503,6 +20337,7 @@
    ],
    "price": 1754.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -19524,6 +20359,7 @@
    ],
    "price": 842.26,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19545,6 +20381,7 @@
    ],
    "price": 22.56,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -19566,6 +20403,7 @@
    ],
    "price": 126.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -19587,6 +20425,7 @@
    ],
    "price": 178.22,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -19608,6 +20447,7 @@
    ],
    "price": 2789.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19641,6 +20481,7 @@
    ],
    "price": 20.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -19662,6 +20503,7 @@
    ],
    "price": 11.12,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -19683,6 +20525,7 @@
    ],
    "price": 5591.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -19704,6 +20547,7 @@
    ],
    "price": 54.56,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19725,6 +20569,7 @@
    ],
    "price": 40.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19752,6 +20597,7 @@
    ],
    "price": 5.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -19773,6 +20619,7 @@
    ],
    "price": 1270.46,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -19794,6 +20641,7 @@
    ],
    "price": 11571.93,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 1
   },
@@ -19815,6 +20663,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19836,6 +20685,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 20.0,
    "kit_count": 1
   },
@@ -19857,6 +20707,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19878,6 +20729,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19899,6 +20751,7 @@
    ],
    "price": 281.82,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19920,6 +20773,7 @@
    ],
    "price": 74.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -19941,6 +20795,7 @@
    ],
    "price": 174.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19962,6 +20817,7 @@
    ],
    "price": 48.3,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -19983,6 +20839,7 @@
    ],
    "price": 55.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -20004,6 +20861,7 @@
    ],
    "price": 66.29,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -20025,6 +20883,7 @@
    ],
    "price": 398.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20046,6 +20905,7 @@
    ],
    "price": 117.84,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20067,6 +20927,7 @@
    ],
    "price": 12.17,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 24.0,
    "kit_count": 1
   },
@@ -20088,6 +20949,7 @@
    ],
    "price": 88.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20109,6 +20971,7 @@
    ],
    "price": 88.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20130,6 +20993,7 @@
    ],
    "price": 135.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20151,6 +21015,7 @@
    ],
    "price": 23.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 1
   },
@@ -20178,6 +21043,7 @@
    ],
    "price": 683.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20199,6 +21065,7 @@
    ],
    "price": 7.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20220,6 +21087,7 @@
    ],
    "price": 22.47,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 1
   },
@@ -20241,6 +21109,7 @@
    ],
    "price": 200.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20262,6 +21131,7 @@
    ],
    "price": 200.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20283,6 +21153,7 @@
    ],
    "price": 36.38,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20304,6 +21175,7 @@
    ],
    "price": 36.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20325,6 +21197,7 @@
    ],
    "price": 36.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20346,6 +21219,7 @@
    ],
    "price": 27.86,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -20367,6 +21241,7 @@
    ],
    "price": 10.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20388,6 +21263,7 @@
    ],
    "price": 172.71,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20415,6 +21291,7 @@
    ],
    "price": 15.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20442,6 +21319,7 @@
    ],
    "price": 15.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20469,6 +21347,7 @@
    ],
    "price": 15.85,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20496,6 +21375,7 @@
    ],
    "price": 43.66,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20517,6 +21397,7 @@
    ],
    "price": 95.73,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20538,6 +21419,7 @@
    ],
    "price": 200.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20565,6 +21447,7 @@
    ],
    "price": 270.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -20586,6 +21469,7 @@
    ],
    "price": 301.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20619,6 +21503,7 @@
    ],
    "price": 0.32,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 8.0,
    "kit_count": 3
   },
@@ -20640,6 +21525,7 @@
    ],
    "price": 10.78,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20661,6 +21547,7 @@
    ],
    "price": 1992.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20682,6 +21569,7 @@
    ],
    "price": 16.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20703,6 +21591,7 @@
    ],
    "price": 74.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20724,6 +21613,7 @@
    ],
    "price": 75.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20745,6 +21635,7 @@
    ],
    "price": 3038.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20766,6 +21657,7 @@
    ],
    "price": 11185.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20787,6 +21679,7 @@
    ],
    "price": 72.74,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20820,6 +21713,7 @@
    ],
    "price": 0.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 131.0,
    "kit_count": 3
   },
@@ -20847,6 +21741,7 @@
    ],
    "price": 2.15,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 25.0,
    "kit_count": 2
   },
@@ -20868,6 +21763,7 @@
    ],
    "price": 1114.27,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20895,6 +21791,7 @@
    ],
    "price": 26.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 3.0,
    "kit_count": 2
   },
@@ -20916,6 +21813,7 @@
    ],
    "price": 4032.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20943,6 +21841,7 @@
    ],
    "price": 0.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 125.0,
    "kit_count": 2
   },
@@ -20964,6 +21863,7 @@
    ],
    "price": 274.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -20985,6 +21885,7 @@
    ],
    "price": 24.52,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21006,6 +21907,7 @@
    ],
    "price": 30.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21027,6 +21929,7 @@
    ],
    "price": 0.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 100.0,
    "kit_count": 1
   },
@@ -21048,6 +21951,7 @@
    ],
    "price": 109.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -21069,6 +21973,7 @@
    ],
    "price": 37.65,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -21090,6 +21995,7 @@
    ],
    "price": 55.91,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21117,6 +22023,7 @@
    ],
    "price": 0.19,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -21144,6 +22051,7 @@
    ],
    "price": 0.47,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 2
   },
@@ -21165,6 +22073,7 @@
    ],
    "price": 573.24,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21198,6 +22107,7 @@
    ],
    "price": 10.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 11.0,
    "kit_count": 3
   },
@@ -21219,6 +22129,7 @@
    ],
    "price": 712.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21240,6 +22151,7 @@
    ],
    "price": 63.42,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21261,6 +22173,7 @@
    ],
    "price": 35.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -21282,6 +22195,7 @@
    ],
    "price": 61.31,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21303,6 +22217,7 @@
    ],
    "price": 55.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -21330,6 +22245,7 @@
    ],
    "price": 3.49,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 2
   },
@@ -21357,6 +22273,7 @@
    ],
    "price": 50.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -21384,6 +22301,7 @@
    ],
    "price": 1.25,
    "price_varies": true,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -21405,6 +22323,7 @@
    ],
    "price": null,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.08,
    "kit_count": 1
   },
@@ -21432,6 +22351,7 @@
    ],
    "price": 0.05,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -21453,6 +22373,7 @@
    ],
    "price": 106.88,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21480,6 +22401,7 @@
    ],
    "price": 0.05,
    "price_varies": true,
+   "source_varies": false,
    "total_qty": 5.0,
    "kit_count": 2
   },
@@ -21501,6 +22423,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -21522,6 +22445,7 @@
    ],
    "price": 2.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 10.0,
    "kit_count": 1
   },
@@ -21543,6 +22467,7 @@
    ],
    "price": 0.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 1
   },
@@ -21564,6 +22489,7 @@
    ],
    "price": 0.01,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -21585,6 +22511,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21606,6 +22533,7 @@
    ],
    "price": 6.63,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -21627,6 +22555,7 @@
    ],
    "price": 74.4,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21648,6 +22577,7 @@
    ],
    "price": 39.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21675,6 +22605,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": true,
    "total_qty": 1.04,
    "kit_count": 2
   },
@@ -21696,6 +22627,7 @@
    ],
    "price": 18.44,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 1
   },
@@ -21717,6 +22649,7 @@
    ],
    "price": 2.13,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.1,
    "kit_count": 1
   },
@@ -21744,6 +22677,7 @@
    ],
    "price": 0.06,
    "price_varies": true,
+   "source_varies": false,
    "total_qty": 0.46,
    "kit_count": 2
   },
@@ -21765,6 +22699,7 @@
    ],
    "price": 6.33,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.3,
    "kit_count": 1
   },
@@ -21792,6 +22727,7 @@
    ],
    "price": 1.18,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 7.0,
    "kit_count": 2
   },
@@ -21819,6 +22755,7 @@
    ],
    "price": 432.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 2.0,
    "kit_count": 2
   },
@@ -21840,6 +22777,7 @@
    ],
    "price": 533.36,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21861,6 +22799,7 @@
    ],
    "price": 380.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21894,6 +22833,7 @@
    ],
    "price": 0.81,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 12.0,
    "kit_count": 3
   },
@@ -21915,6 +22855,7 @@
    ],
    "price": 478.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21936,6 +22877,7 @@
    ],
    "price": 94.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -21957,6 +22899,7 @@
    ],
    "price": 15.59,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 0.5,
    "kit_count": 1
   },
@@ -21990,6 +22933,7 @@
    ],
    "price": 3.99,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 6.0,
    "kit_count": 3
   },
@@ -22011,6 +22955,7 @@
    ],
    "price": 0.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22032,6 +22977,7 @@
    ],
    "price": 19.95,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22053,6 +22999,7 @@
    ],
    "price": 0.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22074,6 +23021,7 @@
    ],
    "price": 0.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22095,6 +23043,7 @@
    ],
    "price": 0.08,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22116,6 +23065,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -22137,6 +23087,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -22158,6 +23109,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -22179,6 +23131,7 @@
    ],
    "price": 0.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 4.0,
    "kit_count": 1
   },
@@ -22200,6 +23153,7 @@
    ],
    "price": 1.2,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22221,6 +23175,7 @@
    ],
    "price": 1.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22242,6 +23197,7 @@
    ],
    "price": 0.04,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22263,6 +23219,7 @@
    ],
    "price": 3.1,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22284,6 +23241,7 @@
    ],
    "price": 2.39,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22305,6 +23263,7 @@
    ],
    "price": 0.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22326,6 +23285,7 @@
    ],
    "price": 0.25,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22347,6 +23307,7 @@
    ],
    "price": 1.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22368,6 +23329,7 @@
    ],
    "price": 0.5,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22389,6 +23351,7 @@
    ],
    "price": 1.6,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22410,6 +23373,7 @@
    ],
    "price": 1.0,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22431,6 +23395,7 @@
    ],
    "price": 0.02,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   },
@@ -22452,6 +23417,7 @@
    ],
    "price": 0.03,
    "price_varies": false,
+   "source_varies": false,
    "total_qty": 1.0,
    "kit_count": 1
   }

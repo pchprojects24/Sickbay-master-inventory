@@ -1,7 +1,13 @@
 # Sickbay Master Inventory
 
-A searchable, offline-capable browser for the sickbay's kits and the items in
-them. Open `index.html` — no build step, no server-side anything, no dependencies.
+A searchable browser for the sickbay's kits and the items in them. No build step,
+no server-side anything, no dependencies.
+
+Serve the folder over HTTP (`python3 -m http.server` from the repository root, or
+any static host) and open `index.html`. It reads `Data/inventory.json` with
+`fetch`, which browsers block for `file://` URLs, so opening the file directly
+from disk will not load the data. There is no service worker yet, so it needs the
+files to be reachable — it is not offline-capable as it stands.
 
 ## The two ways in
 

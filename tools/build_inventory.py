@@ -71,6 +71,20 @@ def parse_number(value):
         return None
 
 
+EXPECTED_HEADER = ["kit nsn", "kit item nsn", "qty", "uom", "description",
+                   "source", "price", "d kit accountability code"]
+
+
+def check_header(sheet, filename):
+    """Cells map to COLUMNS by position, so a reordered workbook would be parsed
+    wrongly and silently. Refuse to guess."""
+    raw = next(sheet.iter_rows(min_row=1, max_row=1, values_only=True), ())
+    got = [clean(cell).lower() for cell in raw][:len(EXPECTED_HEADER)]
+    if got != EXPECTED_HEADER:
+        sys.exit("%s: unexpected column layout.\n  expected: %s\n  found:    %s"
+                 % (filename, EXPECTED_HEADER, got))
+
+
 def read_rows():
     """Read every workbook into a flat list of kit-item line dicts."""
     files = sorted(f for f in os.listdir(SOURCE_DIR) if f.endswith(".xlsx")
@@ -81,7 +95,12 @@ def read_rows():
     rows = []
     for filename in files:
         path = os.path.join(SOURCE_DIR, filename)
-        sheet = openpyxl.load_workbook(path, data_only=True).worksheets[0]
+        book = openpyxl.load_workbook(path, data_only=True)
+        if len(book.worksheets) > 1:
+            sys.exit("%s: expected one sheet, found %s"
+                     % (filename, book.sheetnames))
+        sheet = book.worksheets[0]
+        check_header(sheet, filename)
         for excel_row, raw in enumerate(sheet.iter_rows(min_row=2, values_only=True),
                                         start=2):
             values = [clean(cell) for cell in raw][:len(COLUMNS)]
@@ -123,15 +142,23 @@ def build_kits(rows):
             parents.setdefault(row["item_nsn"], row["kit_nsn"])
 
     kits = OrderedDict()
+    used_slugs = {}
     for nsn, filename in kit_nsns.items():
         lines = [r for r in rows if r["kit_nsn"] == nsn]
         name = names.get(nsn) or ROOT_KIT_NAMES.get(nsn) or os.path.splitext(filename)[0]
         total = sum(r["extended_price"] for r in lines
                     if r["extended_price"] is not None)
+        # One workbook can carry lines for more than one kit, so a filename-derived
+        # slug is not guaranteed unique. The slug names a generated CSV and the
+        # app's download URL, so a collision would serve the wrong kit's contents.
+        slug = slugify(os.path.splitext(filename)[0])
+        if used_slugs.get(slug, nsn) != nsn:
+            slug = "%s-%s" % (slug, nsn.lower())
+        used_slugs[slug] = nsn
         kits[nsn] = {
             "nsn": nsn,
             "name": name,
-            "slug": slugify(os.path.splitext(filename)[0]),
+            "slug": slug,
             "parent_nsn": parents.get(nsn),
             "source_file": filename,
             "line_count": len(lines),
@@ -167,10 +194,12 @@ def build_items(rows, kits):
                 "is_nsn": row["is_nsn"],
                 "is_kit": row["item_nsn"] in kits,
                 "prices": [],
+                "sources": [],
                 "memberships": [],
             }
         if row["price"] is not None:
             item["prices"].append(row["price"])
+        item["sources"].append(row["source"])
         item["memberships"].append({
             "kit_nsn": row["kit_nsn"],
             "qty": row["qty"],
@@ -180,9 +209,11 @@ def build_items(rows, kits):
 
     for item in items.values():
         prices = item.pop("prices")
-        # Three items are priced differently in two kits; keep the spread visible.
+        # A few items differ between kits on price or on where they are drawn
+        # from. The rollup has to pick one, so flag that it did.
         item["price"] = round(prices[0], 2) if prices else None
         item["price_varies"] = len(set(prices)) > 1
+        item["source_varies"] = len(set(item.pop("sources"))) > 1
         item["total_qty"] = round(sum(m["qty"] for m in item["memberships"]
                                       if m["qty"] is not None), 4)
         item["kit_count"] = len(item["memberships"])
@@ -227,7 +258,15 @@ def main():
          for r in ordered],
     )
 
-    # 2. One pick list per kit.
+    # 2. One pick list per kit. Remove any left over from a renamed or deleted
+    #    workbook first: an orphan is indistinguishable from current data.
+    os.makedirs(KIT_DIR, exist_ok=True)
+    current = {kit["slug"] + ".csv" for kit in kits.values()}
+    for stale in sorted(set(os.listdir(KIT_DIR)) - current):
+        if stale.endswith(".csv"):
+            os.remove(os.path.join(KIT_DIR, stale))
+            print("removed stale %s" % stale)
+
     for kit in kits.values():
         lines = [r for r in ordered if r["kit_nsn"] == kit["nsn"]]
         write_csv(
