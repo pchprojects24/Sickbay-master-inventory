@@ -611,7 +611,7 @@ select,
 }
 
 /* === Desktop table view (>= 768px) === */
-@media (min-width: 768px) {
+@media (min-width: 920px) {
   .card-list {
     padding: 12px 20px;
   }
@@ -663,18 +663,17 @@ select,
 
   /* Column order: 1 Add, 2 NSN, 3 Description, 4 Qty, 5 UoM,
      6 Unit Price, 7 Source, 8 Acct, 9 Kits / Ext. Price. */
-  /* No nowrap: at the 768px breakpoint the row does not fit otherwise, and an
-     NSN breaks cleanly at its hyphens. */
   .inv-table td:nth-child(2) {
     font-weight: 500;
     color: #3478f6;
+    /* Keep an NSN on one line: it is the primary identifier here, and a
+       hyphen break reads as two part numbers. nowrap sets the column's
+       min-content width from the string itself, so no magic number is
+       needed; the description column absorbs the slack and wraps. */
+    white-space: nowrap;
   }
 
-  /* Wide enough to hold an NSN on one line wherever the row has the room. */
-  .inv-table th:nth-child(2),
-  .inv-table td:nth-child(2) {
-    min-width: 8.6em;
-  }
+
 
   .inv-table td:nth-child(7) {
     white-space: nowrap;
@@ -1018,7 +1017,7 @@ select,
 }
 
 /* === Desktop table extras === */
-@media (min-width: 768px) {
+@media (min-width: 920px) {
   .inv-table .num {
     text-align: right;
     font-variant-numeric: tabular-nums;
