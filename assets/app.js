@@ -19,7 +19,10 @@
   var groupByKit = false;
   var collapsedKits = {};
   var expandedItems = {};
-  var isDesktop = window.matchMedia("(min-width: 768px)").matches;
+  /* Below this the nine-column table cannot fit, so the card layout is used.
+     Must stay in step with the same query in style.css. */
+  var TABLE_BREAKPOINT = "(min-width: 920px)";
+  var isDesktop = window.matchMedia(TABLE_BREAKPOINT).matches;
   var selected = [];        // [{nsn, qty}]
   var STORAGE_KEY = "sickbay.picklist.v1";
 
@@ -784,7 +787,7 @@
     render();
   }
 
-  window.matchMedia("(min-width: 768px)").addEventListener("change", function (e) {
+  window.matchMedia(TABLE_BREAKPOINT).addEventListener("change", function (e) {
     isDesktop = e.matches;
     render();
   });
