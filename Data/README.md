@@ -93,14 +93,19 @@ they are wrong, then re-run the build.
   parent kit lists each child kit as a single priced line, so summing a parent's
   lines does not double-count its children's contents.
 
-## What this data is not
+## Scope: a reference catalogue, not a tracking system
 
-These are *required* holdings — what each kit is supposed to contain. There is no
-quantity on hand, no expiry date, no stowage location and no count date anywhere
-in this repository, and the app has nowhere to put them. The legacy master
-workbook has columns for all four, but they are empty in all 933 of its rows.
-Tracking them would mean storing state per item rather than regenerating from the
-workbooks, which is a feature rather than a build change.
+This answers "what is in the sickbay, and what are the stock numbers" — the
+authorised contents of each kit, with NSNs, descriptions, units of measure,
+quantities, prices and accountability codes.
+
+It deliberately does **not** track consumption: no quantity on hand, no expiry
+dates, no stowage locations, no count dates. The legacy master workbook has
+columns for those four, all empty in all 933 of its rows, and they are not
+carried forward. Their absence is the intended scope, not an omission to fix.
+
+Quantities here are therefore *required* holdings — what a kit is supposed to
+contain — not counted ones.
 
 ## Rebuilding
 

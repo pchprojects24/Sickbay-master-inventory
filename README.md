@@ -1,7 +1,11 @@
 # Sickbay Master Inventory
 
-A searchable browser for the sickbay's kits and the items in them. No build step,
-no server-side anything, no dependencies.
+A searchable browser for the sickbay's kits and the items in them: what is held,
+which kit it belongs to, and its NATO stock number. No build step, no server-side
+anything, no dependencies.
+
+It is a reference catalogue, not a tracking system — there is no on-hand count,
+expiry date or stowage location here, by design.
 
 Serve the folder over HTTP (`python3 -m http.server` from the repository root, or
 any static host) and open `index.html`. It reads `Data/inventory.json` with

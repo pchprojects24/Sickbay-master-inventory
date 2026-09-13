@@ -55,11 +55,12 @@ item it overwrote. That description belongs to `6515-01-690-1463`, which costs
 $6.21 and appears correctly elsewhere. The root workbook, and therefore
 `Data/source/`, has the correct `ELECTRODE,ELECTROCARDIOGRAPH. DISPOSABLE`.
 
-## Fields the master sheet had that nothing carries today
+## Fields the master sheet had that are intentionally not carried
 
 The legacy `Master Inventory` sheet has `Quantity On Hand`, `Expiry`, `Location`
 and `Count Date` columns. **All four are empty in every one of its 933 rows**, so
-nothing was lost by leaving them out — but they show what the workbook was built
-to track and the app currently cannot. Holdings here are *required* quantities,
-not counted ones. Supporting on-hand counts, expiry dates and stowage locations
-would mean storing state per item, which is a feature, not a regeneration.
+nothing was lost by leaving them out, and they are out of scope by design: this
+is a reference catalogue of authorised contents and stock numbers, not a
+consumption or expiry tracker. Quantities here are *required* holdings, not
+counted ones. Treat the absence of those columns as settled rather than as
+pending work.
