@@ -560,8 +560,10 @@
     html += '<button id="kit-add-all" class="sel-action-btn">' +
       (kit.inactive_line_count ? "Add all current to pick list" : "Add all to pick list") +
       "</button>";
-    html += '<a class="sel-action-btn" href="Data/kits/' + encodeHtmlAttr(kit.slug) +
-      '.csv" download>Download CSV</a>';
+    if (kit.line_count) {
+      html += '<div class="export-group" id="kit-export" role="group" ' +
+        'aria-label="Download this kit">' + exportButtons("Download") + "</div>";
+    }
     html += "</div>";
 
     if (!contents.length) {
@@ -574,6 +576,14 @@
 
     var reset = document.getElementById("reset-btn");
     if (reset) reset.addEventListener("click", resetFilters);
+
+    var kitExport = document.getElementById("kit-export");
+    if (kitExport) {
+      kitExport.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-export]");
+        if (btn) exportKit(kit, btn.getAttribute("data-export"), btn);
+      });
+    }
 
     // A pick list is for issuing current stock, so "all" means all current items.
     var addable = contents.filter(function (it) { return !it.inactive; });
@@ -591,10 +601,6 @@
         render();
       });
     }
-  }
-
-  function encodeHtmlAttr(s) {
-    return escapeHtml(encodeURIComponent(s).replace(/%2F/gi, "/"));
   }
 
   /* ── Pick list ── */
@@ -667,7 +673,9 @@
 
   function renderDrawer() {
     updateSelectedCount();
-    selExport.disabled = !selected.length;
+    selExport.querySelectorAll("button").forEach(function (btn) {
+      btn.disabled = !selected.length;
+    });
     if (!selected.length) {
       selList.innerHTML = '<div class="sel-empty">Nothing on the pick list yet.</div>';
       return;
@@ -716,55 +724,98 @@
     selectedBtn.focus();
   }
 
-  function csvField(val) {
-    var s = val === null || val === undefined ? "" : String(val);
-    return /[",;\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  /* ── Exports (CSV / Excel / PDF, built by assets/export.js) ──
+     The same five columns everywhere: what to pull and where it lives. */
+  var EXPORT_COLUMNS = [
+    { key: "nsn", label: "NSN", pdfWidth: 13, xlsxWidth: 20 },
+    { key: "description", label: "Description", pdfWidth: 41, xlsxWidth: 60 },
+    { key: "qty", label: "Quantity", type: "number", pdfWidth: 7, xlsxWidth: 10 },
+    { key: "uom", label: "Unit of Measure", pdfWidth: 8, xlsxWidth: 10 },
+    { key: "kits", label: "Kit Membership", pdfWidth: 31, xlsxWidth: 45 },
+  ];
+
+  function exportRow(item, qty, kits) {
+    return {
+      nsn: item.nsn,
+      description: item.description,
+      qty: Math.round((qty || 0) * 10000) / 10000,
+      uom: item.uom,
+      kits: kits,
+    };
   }
 
-  function buildCsv() {
-    var lines = ["NSN,Description,Quantity,Unit of Measure,Unit Price,Extended Price," +
-      "Source,Accountability Code,Kit Membership,Status"];
+  function timestamp() {
+    var now = new Date();
+    var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+    return now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) +
+      "_" + pad(now.getHours()) + pad(now.getMinutes());
+  }
+
+  function exportedOn() {
+    return "exported " + new Date().toLocaleDateString(undefined, {
+      year: "numeric", month: "short", day: "numeric",
+    });
+  }
+
+  /* Briefly confirm on the button that was pressed. */
+  function flashExported(btn, label) {
+    if (!btn) return;
+    btn.textContent = "Saved ✓";
+    btn.disabled = true;
+    setTimeout(function () {
+      btn.textContent = label;
+      btn.disabled = false;
+      if (btn.closest("#sel-export")) btn.disabled = !selected.length;
+    }, 1500);
+  }
+
+  function runExport(format, doc, btn) {
+    var label = btn ? btn.textContent : "";
+    try {
+      window.SickbayExport.download(format, doc);
+      flashExported(btn, label);
+    } catch (e) {
+      window.alert("Export failed: " + e.message);
+    }
+  }
+
+  function exportPickList(format, btn) {
+    if (!selected.length) return;
+    var rows = [];
     selected.forEach(function (sel) {
       var it = itemByNsn[sel.nsn];
       if (!it) return;
-      var qty = sel.qty || 0;
-      var unit = priceFor(it, sel.kitNsn);
-      var priced = unit !== null && unit !== undefined;
-      lines.push([
-        it.nsn, it.description, qty, it.uom,
-        priced ? unit : "",
-        priced ? Math.round(qty * unit * 100) / 100 : "",
-        it.source, it.accountability_code,
-        sel.kitNsn ? kitName(sel.kitNsn) : it.kitNames.join("; "),
-        it.inactive ? "Inactive" : "Current",
-      ].map(csvField).join(","));
+      rows.push(exportRow(it, sel.qty,
+        sel.kitNsn ? kitName(sel.kitNsn) : it.kitNames.join("; ")));
     });
-    return lines.join("\r\n");
+    runExport(format, {
+      title: "Sickbay pick list",
+      subtitle: plural(rows.length, "item") + " · " + exportedOn(),
+      filename: "sickbay_picklist_" + timestamp(),
+      columns: EXPORT_COLUMNS,
+      rows: rows,
+    }, btn);
   }
 
-  function exportCSV() {
-    if (!selected.length) return;
-    var blob = new Blob([buildCsv()], { type: "text/csv;charset=utf-8;" });
-    var url = URL.createObjectURL(blob);
-    var now = new Date();
-    var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = "sickbay_picklist_" + now.getFullYear() + "-" +
-      pad(now.getMonth() + 1) + "-" + pad(now.getDate()) + "_" +
-      pad(now.getHours()) + pad(now.getMinutes()) + ".csv";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  /* A kit's current contents, whatever the search box holds, in the on-screen order. */
+  function exportKit(kit, format, btn) {
+    var list = sortList(items.filter(function (it) {
+      return !it.inactive && it.kitNsns.indexOf(kit.nsn) !== -1;
+    }), kit.nsn);
+    runExport(format, {
+      title: kit.name,
+      subtitle: kit.nsn + " · " + plural(list.length, "item") + " · " + exportedOn(),
+      filename: kit.slug,
+      columns: EXPORT_COLUMNS,
+      rows: list.map(function (it) { return exportRow(it, qtyFor(it, kit.nsn), kit.name); }),
+    }, btn);
+  }
 
-    var original = selExport.textContent;
-    selExport.textContent = "Exported ✓";
-    selExport.disabled = true;
-    setTimeout(function () {
-      selExport.textContent = original;
-      selExport.disabled = !selected.length;
-    }, 2000);
+  function exportButtons(label) {
+    return '<span class="export-label">' + label + "</span>" +
+      '<button class="sel-action-btn" data-export="csv">CSV</button>' +
+      '<button class="sel-action-btn" data-export="xlsx">Excel</button>' +
+      '<button class="sel-action-btn" data-export="pdf">PDF</button>';
   }
 
   /* The desktop table header sticks below the top bar, whose height changes
@@ -882,7 +933,10 @@
   selectedBtn.addEventListener("click", openDrawer);
   selClose.addEventListener("click", closeDrawer);
   selOverlay.addEventListener("click", closeDrawer);
-  selExport.addEventListener("click", exportCSV);
+  selExport.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-export]");
+    if (btn) exportPickList(btn.getAttribute("data-export"), btn);
+  });
   selPrint.addEventListener("click", function () { window.print(); });
   selClear.addEventListener("click", function () {
     selected = [];

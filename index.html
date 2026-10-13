@@ -70,13 +70,19 @@
       <button id="sel-close" class="sel-close" aria-label="Close">&times;</button>
     </div>
     <div class="sel-actions">
-      <button id="sel-export" class="sel-action-btn">Export CSV</button>
+      <div class="export-group" id="sel-export" role="group" aria-label="Export pick list">
+        <span class="export-label">Export</span>
+        <button class="sel-action-btn" data-export="csv">CSV</button>
+        <button class="sel-action-btn" data-export="xlsx">Excel</button>
+        <button class="sel-action-btn" data-export="pdf">PDF</button>
+      </div>
       <button id="sel-print" class="sel-action-btn">Print</button>
       <button id="sel-clear" class="sel-action-btn sel-clear-btn">Clear list</button>
     </div>
     <div id="sel-list" class="sel-list"></div>
   </div>
 
+  <script src="assets/export.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>

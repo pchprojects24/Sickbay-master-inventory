@@ -39,7 +39,8 @@ count on an item shows every kit that holds it, with that kit's own quantity.
 **Kits** — the 36 current kits as the tree they actually form, from the top-level
 set down through the core treatment set and the medic bag set to individual kits,
 with the 2 inactive kits after them. Open one to get its contents, line count,
-total value, a link to its parent, and a one-click CSV download. Searching in this
+total value, a link to its parent, and a download of its current contents as
+CSV, Excel or PDF. Searching in this
 view matches a kit by its name *or* by anything inside it, so "naloxone" narrows
 the tree to the kits that carry it.
 
@@ -51,19 +52,37 @@ bookmarked or passed to someone else.
 *Add* on any item puts it on a pick list, pre-filled with the quantity shown in
 whatever kit you were looking at. *Add all to pick list* takes a whole kit's
 current items at once. Quantities are editable, a running total is shown, and the
-list survives closing the tab. Export it as CSV or print it.
+list survives closing the tab. Export it as CSV, Excel or PDF, or print it.
+
+## Exports
+
+Kit downloads and pick-list exports share the same five columns: **NSN,
+Description, Quantity, Unit of Measure, Kit Membership**. Quantity is the kit's
+quantity (or the edited pick-list quantity); Kit Membership is the kit the line
+came from, or every kit holding the item if it was added from the Items list.
+
+- **CSV** opens in anything, Excel included.
+- **Excel** is a real `.xlsx` workbook: bold header row frozen at the top,
+  filters on, quantities as numbers, set to print landscape with the header on
+  every page.
+- **PDF** is a ruled table on US Letter landscape, with the header repeated on
+  every page and page numbers in the footer.
+
+All three are built in the browser by `assets/export.js` — no libraries, so they
+work offline. A kit download covers the kit's current items only, whatever the
+search box holds.
 
 ## Repository layout
 
 ```
 index.html                  the app
-assets/                     app.js, style.css, icon.svg, manifest.webmanifest
+assets/                     app.js, export.js (CSV/Excel/PDF), style.css, icons
 Data/source/*.xlsx          the SharePoint kit export — the current list
 Data/legacy/*.xlsx          the previous list, one workbook per kit — only read
                             to find (and describe) the inactive items
 Data/kit_items.csv          every kit-item line (1,329 current + 120 inactive)
 Data/master_inventory.csv   one row per distinct item (1,003 current + 97 inactive)
-Data/kits/*.csv             one pick list per kit
+Data/kits/*.csv             one full-detail CSV per kit (every column, incl. inactive)
 Data/inventory.json         what the app loads
 Data/provenance/            archival records; not generated, not read by the app
 tools/build_inventory.py    regenerates everything under Data/ from the workbooks
