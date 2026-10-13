@@ -100,7 +100,9 @@
   function loadData() {
     listEl.innerHTML = '<div class="loading">Loading inventory…</div>';
 
-    fetch("Data/inventory.json")
+    // Revalidate on every load (cheap: the server answers 304 when unchanged), so a
+    // rebuilt inventory is never shadowed by a cached copy.
+    fetch("Data/inventory.json", { cache: "no-cache" })
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
@@ -771,6 +773,11 @@
 
   function runExport(format, doc, btn) {
     var label = btn ? btn.textContent : "";
+    if (!window.SickbayExport) {
+      // assets/export.js failed to load (offline on first visit, or blocked).
+      window.alert("The export tool did not load. Reload the page and try again.");
+      return;
+    }
     try {
       window.SickbayExport.download(format, doc);
       flashExported(btn, label);

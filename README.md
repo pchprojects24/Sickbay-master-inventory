@@ -86,6 +86,7 @@ Data/kits/*.csv             one full-detail CSV per kit (every column, incl. ina
 Data/inventory.json         what the app loads
 Data/provenance/            archival records; not generated, not read by the app
 tools/build_inventory.py    regenerates everything under Data/ from the workbooks
+tools/stamp_assets.py       versions the assets/ links in index.html (see below)
 ```
 
 `Data/README.md` is the data dictionary: what each column means, how the
@@ -110,3 +111,19 @@ python3 tools/build_inventory.py
 
 Everything else under `Data/` is generated — don't hand-edit it, or the next
 rebuild will overwrite the changes.
+
+## Changing the app
+
+After editing anything in `assets/`, run:
+
+```sh
+python3 tools/stamp_assets.py
+```
+
+It tags each `assets/` link in `index.html` with a fingerprint of the file
+(`assets/app.js?v=809212393c`). Browsers cache these files, and without the tag a
+visitor can end up running a cached old `app.js` under a new page — which once
+made the PDF button download an old-format CSV and wiped out the export buttons.
+The tag changes exactly when the file does, so the new file is fetched on the
+first visit after an update. `build_inventory.py` runs it too, and
+`python3 tools/stamp_assets.py --check` fails if the tags are out of date.
