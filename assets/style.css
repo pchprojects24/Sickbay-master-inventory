@@ -372,6 +372,7 @@ select,
 
 .sel-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 10px 16px;
   background: #fff;
@@ -939,6 +940,32 @@ select,
   align-items: center;
   justify-content: center;
   text-decoration: none;
+}
+
+/* "Export / Download: CSV · Excel · PDF" — a labelled row of format buttons.
+   In the drawer it takes a row of its own above Print / Clear list. */
+.export-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 100%;
+}
+
+.kit-actions .export-group {
+  flex: 1 1 280px;
+}
+
+.export-group .sel-action-btn,
+.kit-actions .export-group .sel-action-btn {
+  flex: 1;
+  min-width: 0;
+}
+
+.export-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
 }
 
 /* === Item detail / memberships === */

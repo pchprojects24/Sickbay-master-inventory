@@ -75,7 +75,7 @@ current lines only, and `inactive_line_count` is reported separately.
 | --- | --- | --- |
 | `kit_items.csv` | kit + item (1,329 current + 120 inactive) | The full picture. Per-kit quantities are preserved here. |
 | `master_inventory.csv` | distinct item (1,003 current + 97 inactive) | "How much of this do we hold in total, and where does it live?" |
-| `kits/<slug>.csv` | item within one kit | Printing or issuing a single kit. |
+| `kits/<slug>.csv` | item within one kit | A single kit with every column. (The app's own kit download is built in the browser with five columns — see the main README.) |
 | `inventory.json` | — | What the browser app loads. |
 
 Every CSV ends with a `Status` column, `Current` or `Inactive`.
