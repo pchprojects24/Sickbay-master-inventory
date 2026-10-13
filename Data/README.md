@@ -2,31 +2,83 @@
 
 ## Where the numbers come from
 
-`Data/source/*.xlsx` — 29 workbooks, one per kit, exactly as issued. **This is the
-source of truth.** Every other file in this directory is generated from them by
+Two inputs, one authoritative:
+
+- **`Data/source/` — the current list.** A single workbook exported from the
+  SharePoint kit catalogue (`Sickbay kit from Sharepoint.xlsx`): one flat sheet
+  covering the whole set, `6545-CF-005-1238`. **This is the source of truth** for
+  every item it lists — NSN, description, unit of measure, quantity and price.
+- **`Data/legacy/` — the previous list.** The 29 per-kit workbooks the app was
+  first built from. The build reads them for two things only: to find items that
+  are no longer on the current list (kept as **inactive**), and to carry an item's
+  *Source* and *Accountability Code* across, since the export has neither.
+
+Every other file in this directory is generated from them by
 `tools/build_inventory.py` and should never be hand-edited.
 
-Each workbook has one sheet with the same eight columns:
+### What is read from the SharePoint export
 
-| Column | Meaning |
+The export has 21 columns; the build reads these and ignores the rest:
+
+| Export column | Used for |
 | --- | --- |
-| Kit NSN | The kit this line belongs to |
-| Kit Item NSN | The item stocked in that kit |
-| Qty | Quantity of the item required **in that kit** |
-| UOM | Unit of measure (EA, BX, PG, …) |
-| Description | Item description |
-| Source | `WHSE`, `ExternalRqn`, or `Resource` |
-| Price | Unit price, CAD |
-| Kit Accountability Code | `A`–`D`, or blank |
+| Kit NSN / Kit Name | The top-level set (the root of the tree) |
+| Item NSN | Item NSN |
+| Item Name | Description |
+| UOM | Unit of measure |
+| Qty per Sub-Kit | Quantity of the item **in one copy of its sub-kit** — text such as `70 EA`; the number is used |
+| Total Qty | The quantity when *Qty per Sub-Kit* is blank (the sub-kit is held once) |
+| # Sub-Kits Req | How many copies of the sub-kit the set holds |
+| Total Value | Price: unit price = Total Value ÷ Total Qty |
+| Sub-Kit NSN / Sub-Kit Name | The kit the line belongs to (blank = directly in the set) |
+| Full Sub-Kit Path | The kit's parents, for the tree |
+
+Quantities stay **per kit**, as before: a line in the Maritime MASCAL kit says
+how many are in one MASCAL kit, not in all four. The four appears once, as the
+quantity of the MASCAL kit's own line inside the set.
+
+The export filters out kit definitions, so it never lists a sub-kit as an item of
+its parent. The build adds those container lines itself from the path, with
+quantity = copies of the child ÷ copies of the parent (eight IV injection sets in
+a set holding four MASCAL kits is 2 per MASCAL kit) and price = the child's total
+value.
+
+**Prices.** The unit price is pooled per item (sum of Total Value ÷ sum of Total
+Qty) so cent-level rounding can't make one item look differently priced in two
+kits. 21 items show `$0` in the export but had a price on the previous list —
+mostly pamphlets and labels, plus the Rochester-Pean forceps and the Coleman
+cooler; for those the previous price is kept. The build prints the list.
+
+**Source and Accountability Code** come from the previous list: from the same kit
+line if there was one, else from the item's first line anywhere. The 127 items
+that are new on the SharePoint list have them blank.
+
+### Current and inactive
+
+An item is **inactive** when its NSN appears in the previous list but nowhere on
+the current one. It keeps its previous kit lines — quantity, description, price,
+source and code exactly as they were — each marked inactive. A kit is inactive
+when it has no place in the current list at all (the Med Tech Bag
+`6545-CF-002-1002` and its medications kit `6545-CF-002-8529`).
+
+An item that is still current is **not** carried into a kit it was dropped from;
+only its current kit lines exist. So an inactive kit shows just the items from it
+that are gone entirely, and its `former_line_count` says how many lines it had,
+so the app can say how many of the others are still current elsewhere.
+
+Inactive lines never count: a kit's `line_count` and `total_value` are its
+current lines only, and `inactive_line_count` is reported separately.
 
 ## Generated files
 
 | File | One row per | Use it for |
 | --- | --- | --- |
-| `kit_items.csv` | kit + item (1,268 rows) | The full picture. Per-kit quantities are preserved here. |
-| `master_inventory.csv` | distinct item (966 rows) | "How much of this do we hold in total, and where does it live?" Filter out `Is Kit = Y` to count stock. |
+| `kit_items.csv` | kit + item (1,329 current + 120 inactive) | The full picture. Per-kit quantities are preserved here. |
+| `master_inventory.csv` | distinct item (1,003 current + 97 inactive) | "How much of this do we hold in total, and where does it live?" |
 | `kits/<slug>.csv` | item within one kit | Printing or issuing a single kit. |
 | `inventory.json` | — | What the browser app loads. |
+
+Every CSV ends with a `Status` column, `Current` or `Inactive`.
 
 ### Which file answers which question
 
@@ -37,61 +89,62 @@ count it here.
 `master_inventory.csv` collapses each item to one row. `Total Quantity` is the sum
 across every kit, and the `Kit Membership` column spells out the split, e.g.
 
-    KIT, MARITIME R1 MTF… (6545-CF-005-0438) x10; KIT, TREATMENT, MED TECH, BAG (6545-CF-002-1002) x2
+    KIT, MARITIME R1 MTF… (6545-CF-005-0438) x10; KIT, MEDIC BAG, SECOND LINE… (6545-CF-005-0844) x1
 
-> **Note:** the previous version of `master_inventory.csv` carried a single
-> `Quantity Required` per item, which silently dropped the per-kit split — the
-> survival blanket above was recorded as `2` when the ship actually holds 12.
-> The current columns replace it.
+For an inactive item both columns describe the previous list.
 
-**Counting stock or money means excluding `Is Kit = Y`.** 28 of the 966 rows are
-kit *containers* rather than stock. They belong in the file — a container is a
-real line item inside its parent — but a container's price already equals the sum
-of its contents, so counting it as well double-counts. The remaining 938 rows are
-countable stock. Items merely named "KIT …" that have no contents of their own
-(the pediatric resus kit, the OPA set, the sealed sexual assault kits) are
-ordinary stock and are not marked. See `provenance/README.md`, which also records
-where this build deliberately differs from an earlier cleanup pass.
+**Counting stock or money means keeping `Status = Current` and excluding
+`Is Kit = Y`.** 35 current rows are kit *containers* rather than stock. They
+belong in the file — a container is a real line item inside its parent — but a
+container's price already equals the sum of its contents, so counting it as well
+double-counts. The remaining 968 current rows are countable stock. Items merely
+named "KIT …" that have no contents of their own (the pediatric resus kit, the
+OPA set, the sealed sexual assault kits) are ordinary stock and are not marked.
 
 ## Kit structure
 
-The 29 kits form a three-level tree, derived from the fact that a kit shows up as
-a line item inside its parent:
+The 36 current kits form a tree up to four levels deep, read from each export
+row's *Full Sub-Kit Path*:
 
-    MASTER KIT LIST, SICKBAY (ALL HOLDINGS)          6545-CF-005-1238
+    SET, MAJOR NAVAL WARSHIPS & AOPS                 6545-CF-005-1238
     ├── TREATMENT, SET, CORE, MAJOR NAVAL WARSHIP    6545-20-A0U-8722
     │   ├── TREATMENT KIT, MEDICATIONS               6545-20-A0U-8754
     │   └── … 14 more core treatment kits
-    ├── KIT, MEDICAL, C.A.F. DIVE TEAM               6545-20-A0M-1006
-    │   └── KIT, TMT, C.A.F. DIVE TEAM C-SPINE…      6545-20-A0M-1004
-    └── … 10 more standalone kits
+    ├── SET, MEDIC BAG, PARAMEDIC                    6545-CF-005-0850
+    │   ├── KIT, MEDIC BAG, SECOND LINE…             6545-CF-005-0844
+    │   │   └── PACK, ENT DIAGNOSTIC FIELD KIT       6545-CF-005-1823
+    │   └── … 4 more medic bag kits
+    ├── KIT, MARITIME R1 MTF, MASCAL…                6545-CF-005-0438
+    │   └── INJECTION SET I.V. (FIELD USE)           6545-CF-002-0552
+    └── … 9 more kits
 
-A kit's name is the description used where it appears as a component of its
-parent. The master list at the top is never a component of anything, so it has no
-issued description; its name is set in `ROOT_KIT_NAMES` in the build script.
+Kit names come from the export's *Sub-Kit Name*. The core treatment set only ever
+appears as a step in a path, where its name is truncated, so its full name is
+taken from the previous list.
+
+The two inactive kits sit under the set, where they were on the previous list.
+
+Each kit keeps the CSV slug it had before (from its old workbook's file name), so
+existing download links still work; new kits get a slug from their name.
 
 ## Known quirks in the source data
 
-These are left as-is rather than silently corrected — fix them in the workbooks if
+These are left as-is rather than silently corrected — fix them at the source if
 they are wrong, then re-run the build.
 
-- **Three items are priced differently in two kits.** `7510-20-A03-9054` (Sharpie,
-  $1.25 vs $0.98), `7530-21-844-6267` (label, $0.05 vs $0.13), and
-  `8105-21-900-0913` (ziplock bag, $0.06 vs $2.21) each differ between the Fatal
-  and Non-Fatal Accident kits. The rollup uses the first price seen and flags the
-  item with `price_varies`, which the app shows as a "varies" badge. Per-kit
-  views use that kit's own price, so only the item-level rollup is affected.
-- **One item is drawn from two different sources.** `7690-21-883-2495` is `WHSE`
-  in one kit and `ExternalRqn` in another. Same treatment: the rollup keeps the
-  first and sets `source_varies`.
-- **21 lines are documents, not stock.** Pamphlets, booklets, labels and cards
-  carry placeholder identifiers (`PAMPHLET1`, `CARD2`, `BOOK40`, …) instead of
-  NSNs. They are kept; `is_nsn` is `false` for them.
-- **Some NSNs arrive lowercase** (`6515-cf-002-8554`). The build uppercases them,
-  which is what merges that item's two kit lines into one record.
-- **Totals are line sums.** A kit's `total_value` is the sum of its own lines. A
-  parent kit lists each child kit as a single priced line, so summing a parent's
-  lines does not double-count its children's contents.
+- **20 current items have no unit of measure** in the export: the pamphlets,
+  booklets, labels and cards.
+- **18 current and 3 inactive lines are documents, not stock.** They carry
+  placeholder identifiers (`PAMPHLET1`, `CARD2`, `BOOK40`, …) instead of NSNs.
+  They are kept; `is_nsn` is `false` for them.
+- **Some NSNs in the previous list arrive lowercase** (`6515-cf-002-8554`). The
+  build uppercases them, which is why that scalpel matches its current line
+  instead of showing as inactive.
+- **Totals are line sums.** A kit's `total_value` is the sum of its own current
+  lines. A parent kit lists each child kit as a single priced line, so summing a
+  parent's lines does not double-count its children's contents. The set's total
+  ($438,524) is within $15 of the export's own Total Value sum once the 21 kept
+  prices are added back; the gap is the rounding of unit prices to cents.
 
 ## Scope: a reference catalogue, not a tracking system
 
@@ -112,4 +165,9 @@ contain — not counted ones.
     pip install openpyxl
     python3 tools/build_inventory.py
 
-Expected output: `kits: 29  items: 966  lines: 1268`.
+Expected output:
+
+    current   kits: 36  items: 1003  lines: 1329
+    inactive  kits: 2  items: 97  lines: 120
+
+followed by the list of items whose previous price was kept.

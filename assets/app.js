@@ -16,6 +16,7 @@
   var sortAsc = true;
   var searchTerm = "";
   var kitFilter = "";
+  var statusFilter = "";    // "" both | "current" | "inactive"
   var groupByKit = false;
   var collapsedKits = {};
   var expandedItems = {};
@@ -30,6 +31,7 @@
   var searchInput = document.getElementById("search");
   var searchClearBtn = document.getElementById("search-clear");
   var kitSelect = document.getElementById("kit-filter");
+  var statusSelect = document.getElementById("status-filter");
   var sortSelect = document.getElementById("sort-select");
   var itemControls = document.getElementById("item-controls");
   var statusBar = document.getElementById("status-bar");
@@ -74,8 +76,24 @@
     });
   }
 
+  /* Current kits first, then inactive ones, each alphabetical. */
+  function compareKits(a, b) {
+    if (a.inactive !== b.inactive) return a.inactive ? 1 : -1;
+    return compareText(a.name, b.name);
+  }
+
   function kitName(nsn) {
     return kitByNsn[nsn] ? kitByNsn[nsn].name : nsn;
+  }
+
+  /* Inactive = on the previous list but not on the current SharePoint list.
+     Kept for reference, never counted in current totals. */
+  function inactiveBadge() {
+    return '<span class="badge badge-inactive" title="Not on the current list">Inactive</span>';
+  }
+
+  function plural(n, word) {
+    return n + " " + word + (n !== 1 ? "s" : "");
   }
 
   /* ── Load ── */
@@ -92,6 +110,7 @@
         items = data.items || [];
 
         kits.forEach(function (kit) {
+          kit.inactive = kit.status === "inactive";
           kitByNsn[kit.nsn] = kit;
         });
         kits.forEach(function (kit) {
@@ -104,11 +123,13 @@
 
         items.forEach(function (item) {
           itemByNsn[item.nsn] = item;
+          item.inactive = item.status === "inactive";
           item.kitNsns = item.memberships.map(function (m) { return m.kit_nsn; });
           item.kitNames = item.kitNsns.map(kitName);
           item.searchText = [
             item.nsn, item.description, item.uom, item.source,
             item.accountability_code, item.kitNames.join(" "), item.kitNsns.join(" "),
+            item.inactive ? "inactive removed" : "",
           ].join(" ").toLowerCase();
         });
 
@@ -126,10 +147,10 @@
 
   function buildKitSelect() {
     var html = '<option value="">All Kits</option>';
-    kits.slice().sort(function (a, b) { return compareText(a.name, b.name); })
+    kits.slice().sort(compareKits)
       .forEach(function (kit) {
         html += '<option value="' + escapeHtml(kit.nsn) + '">' +
-          escapeHtml(kit.name) + "</option>";
+          escapeHtml(kit.name) + (kit.inactive ? " (inactive)" : "") + "</option>";
       });
     kitSelect.innerHTML = html;
     kitSelect.value = kitFilter;
@@ -184,13 +205,17 @@
     filteredItems = items.filter(function (item) {
       if (term && item.searchText.indexOf(term) === -1) return false;
       if (kitFilter && item.kitNsns.indexOf(kitFilter) === -1) return false;
+      if (statusFilter && item.status !== statusFilter) return false;
       return true;
     });
     sortList(filteredItems);
   }
 
+  /* Inactive items always sort after current ones, so a mixed list reads as the
+     current list with the old items underneath it. */
   function sortList(list, kitNsn) {
     list.sort(function (a, b) {
+      if (a.inactive !== b.inactive) return a.inactive ? 1 : -1;
       var cmp;
       if (sortKey === "qty") cmp = qtyFor(a, kitNsn) - qtyFor(b, kitNsn);
       else if (sortKey === "price") cmp = (a.price || 0) - (b.price || 0);
@@ -237,10 +262,15 @@
   }
 
   function renderItems() {
+    var inactiveShown = filteredItems.filter(function (it) { return it.inactive; }).length;
     var msg = "Showing " + filteredItems.length + " of " + items.length + " items";
-    var isFiltering = searchTerm || kitFilter;
+    if (inactiveShown && inactiveShown < filteredItems.length) {
+      msg += " (" + (filteredItems.length - inactiveShown) + " current, " +
+        inactiveShown + " inactive)";
+    }
+    var isFiltering = searchTerm || kitFilter || statusFilter;
     statusBar.classList.toggle("filtering", !!isFiltering);
-    if (isFiltering) msg += " (filtered)";
+    if (isFiltering) msg += " — filtered";
     if (groupByKit) msg += " — grouped by kit";
     statusBar.textContent = msg;
 
@@ -253,6 +283,7 @@
     var html = '<div class="no-results"><p>No items match';
     if (searchTerm) html += ' search "' + escapeHtml(searchTerm) + '"';
     if (kitFilter) html += ' in kit "' + escapeHtml(kitName(kitFilter)) + '"';
+    if (statusFilter) html += " among " + statusFilter + " items";
     html += '.</p><button id="reset-btn">Reset Filters</button></div>';
     listEl.innerHTML = html;
     document.getElementById("reset-btn").addEventListener("click", resetFilters);
@@ -272,10 +303,12 @@
     for (var i = 0; i < list.length; i++) {
       var it = list[i];
       var open = !!expandedItems[it.nsn];
-      html += '<div class="card' + (it.is_kit ? " card-kit" : "") + '">';
+      html += '<div class="card' + (it.is_kit ? " card-kit" : "") +
+        (it.inactive ? " card-inactive" : "") + '">';
       html += '<div class="card-top"><div class="card-top-left">';
       html += '<div class="nsn">' + escapeHtml(it.nsn) + "</div>";
       if (it.is_kit) html += '<span class="badge badge-kit">Kit</span>';
+      if (it.inactive) html += inactiveBadge();
       html += "</div>" + addBtn(it, kitNsn) + "</div>";
       html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
       html += '<div class="meta">';
@@ -287,7 +320,7 @@
       if (!kitNsn) {
         html += '<button class="detail-toggle" data-nsn="' + escapeHtml(it.nsn) +
           '" aria-expanded="' + open + '">' +
-          (open ? "Hide" : "In " + it.kit_count + " kit" + (it.kit_count !== 1 ? "s" : "")) +
+          (open ? "Hide" : (it.inactive ? "Was in " : "In ") + plural(it.kit_count, "kit")) +
           "</button>";
         if (open) html += membershipTable(it);
       }
@@ -304,10 +337,12 @@
     for (var i = 0; i < list.length; i++) {
       var it = list[i];
       var open = !!expandedItems[it.nsn];
-      html += '<tr class="' + (it.is_kit ? "row-kit" : "") + '">';
+      html += '<tr class="' + (it.is_kit ? "row-kit" : "") +
+        (it.inactive ? " row-inactive" : "") + '">';
       html += '<td class="sel-cell">' + addBtn(it, kitNsn) + "</td>";
       html += "<td>" + escapeHtml(it.nsn) +
-        (it.is_kit ? ' <span class="badge badge-kit">Kit</span>' : "") + "</td>";
+        (it.is_kit ? ' <span class="badge badge-kit">Kit</span>' : "") +
+        (it.inactive ? " " + inactiveBadge() : "") + "</td>";
       html += "<td>" + escapeHtml(it.description || "—") + "</td>";
       html += '<td class="num">' + num(qtyFor(it, kitNsn)) + "</td>";
       html += "<td>" + escapeHtml(it.uom || "—") + "</td>";
@@ -333,7 +368,8 @@
   }
 
   function membershipTable(item) {
-    var html = '<div class="memberships"><div class="memberships-title">Held in</div>';
+    var html = '<div class="memberships"><div class="memberships-title">' +
+      (item.inactive ? "Was held in (previous list)" : "Held in") + "</div>";
     for (var i = 0; i < item.memberships.length; i++) {
       var m = item.memberships[i];
       html += '<a class="membership" href="#kit/' + encodeURIComponent(m.kit_nsn) + '">';
@@ -347,8 +383,7 @@
   }
 
   function renderGrouped() {
-    var shown = kitFilter ? [kitByNsn[kitFilter]] :
-      kits.slice().sort(function (a, b) { return compareText(a.name, b.name); });
+    var shown = kitFilter ? [kitByNsn[kitFilter]] : kits.slice().sort(compareKits);
     var html = "";
     var any = false;
 
@@ -367,7 +402,8 @@
       html += '<button class="kit-group-header" data-kit="' + escapeHtml(kit.nsn) +
         '" aria-expanded="' + !collapsed + '">';
       html += '<span class="kit-group-chevron">' + (collapsed ? "&#9654;" : "&#9660;") + "</span>";
-      html += '<span class="kit-group-name">' + escapeHtml(kit.name) + "</span>";
+      html += '<span class="kit-group-name">' + escapeHtml(kit.name) +
+        (kit.inactive ? " " + inactiveBadge() : "") + "</span>";
       html += '<span class="kit-group-count">' + kitItems.length + " item" +
         (kitItems.length !== 1 ? "s" : "") + "</span></button>";
       if (!collapsed) {
@@ -411,10 +447,16 @@
     });
 
     var count = kits.filter(function (k) { return matching[k.nsn]; }).length;
+    var currentKits = kits.filter(function (k) { return !k.inactive; }).length;
+    var currentItems = items.filter(function (it) { return !it.inactive; }).length;
     statusBar.classList.toggle("filtering", !!term);
     statusBar.textContent = term
       ? "Showing " + count + " of " + kits.length + " kits (filtered)"
-      : kits.length + " kits · " + items.length + " distinct items";
+      : plural(currentKits, "kit") + " · " + currentItems + " distinct items" +
+        (kits.length > currentKits || items.length > currentItems
+          ? " · inactive: " + plural(kits.length - currentKits, "kit") + ", " +
+            plural(items.length - currentItems, "item")
+          : "");
 
     if (!count) {
       listEl.innerHTML = '<div class="no-results"><p>No kits match "' +
@@ -425,17 +467,28 @@
 
     var html = '<div class="kit-tree">';
     function walk(list, depth) {
-      list.slice().sort(function (a, b) { return compareText(a.name, b.name); })
+      list.slice().sort(compareKits)
         .forEach(function (kit) {
           if (!matching[kit.nsn]) return;
-          html += '<a class="kit-row" href="#kit/' + encodeURIComponent(kit.nsn) +
+          html += '<a class="kit-row' + (kit.inactive ? " kit-row-inactive" : "") +
+            '" href="#kit/' + encodeURIComponent(kit.nsn) +
             '" style="padding-left:' + (12 + depth * 18) + 'px">';
           html += '<div class="kit-row-main">';
-          html += '<div class="kit-row-name">' + escapeHtml(kit.name) + "</div>";
+          html += '<div class="kit-row-name">' + escapeHtml(kit.name) +
+            (kit.inactive ? " " + inactiveBadge() : "") + "</div>";
           html += '<div class="kit-row-nsn">' + escapeHtml(kit.nsn) + "</div></div>";
-          html += '<div class="kit-row-stats"><span>' + kit.line_count + " lines</span>" +
-            "<span>" + money(kit.total_value) + "</span></div>";
-          html += "</a>";
+          html += '<div class="kit-row-stats">';
+          if (kit.inactive) {
+            html += "<span>" + plural(kit.inactive_line_count, "inactive item") + "</span>";
+          } else {
+            html += "<span>" + kit.line_count + " lines</span>";
+            if (kit.inactive_line_count) {
+              html += '<span class="kit-row-removed">+' + kit.inactive_line_count +
+                " inactive</span>";
+            }
+            html += "<span>" + money(kit.total_value) + "</span>";
+          }
+          html += "</div></a>";
           walk(childKits[kit.nsn] || [], depth + 1);
         });
     }
@@ -459,23 +512,44 @@
     sortList(contents, kit.nsn);
 
     statusBar.classList.toggle("filtering", !!term);
-    statusBar.textContent = kit.line_count + " lines · " + money(kit.total_value) +
+    statusBar.textContent = (kit.inactive
+      ? "Inactive kit · " + plural(kit.inactive_line_count, "inactive item")
+      : kit.line_count + " lines · " + money(kit.total_value) +
+        (kit.inactive_line_count ? " · " + kit.inactive_line_count + " inactive" : "")) +
       (term ? " · showing " + contents.length + " matching" : "");
 
     var html = '<div class="kit-detail">';
     html += '<a class="back-link" href="#kits">&#8592; All kits</a>';
-    html += '<h1 class="kit-title">' + escapeHtml(kit.name) + "</h1>";
+    html += '<h1 class="kit-title">' + escapeHtml(kit.name) +
+      (kit.inactive ? " " + inactiveBadge() : "") + "</h1>";
     html += '<div class="kit-sub">' + escapeHtml(kit.nsn) + "</div>";
 
     if (kit.parent_nsn && kitByNsn[kit.parent_nsn]) {
-      html += '<div class="kit-parent">Component of <a href="#kit/' +
-        encodeURIComponent(kit.parent_nsn) + '">' +
+      html += '<div class="kit-parent">' + (kit.inactive ? "Was a component of " : "Component of ") +
+        '<a href="#kit/' + encodeURIComponent(kit.parent_nsn) + '">' +
         escapeHtml(kitName(kit.parent_nsn)) + "</a></div>";
+    }
+
+    if (kit.inactive) {
+      var stillCurrent = (kit.former_line_count || 0) - kit.inactive_line_count;
+      html += '<div class="kit-note">This kit is not on the current list. Shown here ' +
+        (kit.inactive_line_count === 1 ? "is the 1 item" : "are the " +
+          kit.inactive_line_count + " items") +
+        " from it that are no longer on the current list at all." +
+        (stillCurrent > 0 ? " Its other " + plural(stillCurrent, "item") +
+          " are still current and appear in the kits that hold them now." : "") +
+        "</div>";
+    } else if (kit.inactive_line_count) {
+      html += '<div class="kit-note">' + plural(kit.inactive_line_count, "item") +
+        " at the bottom of this kit " + (kit.inactive_line_count === 1 ? "was" : "were") +
+        " on the previous list but " + (kit.inactive_line_count === 1 ? "is" : "are") +
+        " not on the current list. " + (kit.inactive_line_count === 1 ? "It is" : "They are") +
+        " marked Inactive and not counted in the totals.</div>";
     }
 
     html += '<div class="kit-stats">';
     html += '<div class="stat"><div class="stat-value">' + kit.line_count +
-      '</div><div class="stat-label">Lines</div></div>';
+      '</div><div class="stat-label">Current lines</div></div>';
     html += '<div class="stat"><div class="stat-value">' + money(kit.total_value) +
       '</div><div class="stat-label">Total value</div></div>';
     html += '<div class="stat"><div class="stat-value">' + kit.sub_kits.length +
@@ -483,7 +557,9 @@
     html += "</div>";
 
     html += '<div class="kit-actions">';
-    html += '<button id="kit-add-all" class="sel-action-btn">Add all to pick list</button>';
+    html += '<button id="kit-add-all" class="sel-action-btn">' +
+      (kit.inactive_line_count ? "Add all current to pick list" : "Add all to pick list") +
+      "</button>";
     html += '<a class="sel-action-btn" href="Data/kits/' + encodeHtmlAttr(kit.slug) +
       '.csv" download>Download CSV</a>';
     html += "</div>";
@@ -499,11 +575,13 @@
     var reset = document.getElementById("reset-btn");
     if (reset) reset.addEventListener("click", resetFilters);
 
+    // A pick list is for issuing current stock, so "all" means all current items.
+    var addable = contents.filter(function (it) { return !it.inactive; });
     var addAll = document.getElementById("kit-add-all");
     if (addAll) {
-      addAll.disabled = !contents.length;
+      addAll.disabled = !addable.length;
       addAll.addEventListener("click", function () {
-        contents.forEach(function (it) {
+        addable.forEach(function (it) {
           if (!isSelected(it.nsn)) {
             selected.push({ nsn: it.nsn, qty: qtyFor(it, kit.nsn), kitNsn: kit.nsn });
           }
@@ -601,7 +679,8 @@
       var qty = selected[i].qty || 0;
       var unit = priceFor(it, selected[i].kitNsn);
       html += '<div class="sel-card">';
-      html += '<div class="sel-card-top"><div class="nsn">' + escapeHtml(it.nsn) + "</div>";
+      html += '<div class="sel-card-top"><div class="nsn">' + escapeHtml(it.nsn) +
+        (it.inactive ? " " + inactiveBadge() : "") + "</div>";
       html += '<button class="sel-remove-btn" data-nsn="' + escapeHtml(it.nsn) +
         '">Remove</button></div>';
       html += '<div class="desc">' + escapeHtml(it.description || "—") + "</div>";
@@ -644,7 +723,7 @@
 
   function buildCsv() {
     var lines = ["NSN,Description,Quantity,Unit of Measure,Unit Price,Extended Price," +
-      "Source,Accountability Code,Kit Membership"];
+      "Source,Accountability Code,Kit Membership,Status"];
     selected.forEach(function (sel) {
       var it = itemByNsn[sel.nsn];
       if (!it) return;
@@ -657,6 +736,7 @@
         priced ? Math.round(qty * unit * 100) / 100 : "",
         it.source, it.accountability_code,
         sel.kitNsn ? kitName(sel.kitNsn) : it.kitNames.join("; "),
+        it.inactive ? "Inactive" : "Current",
       ].map(csvField).join(","));
     });
     return lines.join("\r\n");
@@ -760,6 +840,11 @@
     render();
   });
 
+  statusSelect.addEventListener("change", function () {
+    statusFilter = statusSelect.value;
+    render();
+  });
+
   sortSelect.addEventListener("change", function () {
     var parts = sortSelect.value.split("-");
     sortAsc = parts[parts.length - 1] === "asc";
@@ -778,9 +863,11 @@
   function resetFilters() {
     searchInput.value = "";
     kitSelect.value = "";
+    statusSelect.value = "";
     sortSelect.value = "nsn-asc";
     searchTerm = "";
     kitFilter = "";
+    statusFilter = "";
     sortKey = "nsn";
     sortAsc = true;
     searchClearBtn.classList.add("hidden");

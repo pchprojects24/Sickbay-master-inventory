@@ -38,6 +38,11 @@
       <select id="kit-filter" aria-label="Filter by kit">
         <option value="">All Kits</option>
       </select>
+      <select id="status-filter" aria-label="Filter by status">
+        <option value="">Current + inactive</option>
+        <option value="current">Current only</option>
+        <option value="inactive">Inactive only</option>
+      </select>
       <select id="sort-select" aria-label="Sort items">
         <option value="nsn-asc">NSN A→Z</option>
         <option value="nsn-desc">NSN Z→A</option>
@@ -56,7 +61,7 @@
 
   <div class="card-list" id="item-list"></div>
 
-  <div class="footer">Source of truth: <code>Data/source/*.xlsx</code> · Generated: <code>Data/inventory.json</code>, <code>Data/kit_items.csv</code>, <code>Data/kits/</code></div>
+  <div class="footer">Current list: <code>Data/source/</code> (SharePoint export) · Inactive items: <code>Data/legacy/</code> · Generated: <code>Data/inventory.json</code>, <code>Data/kit_items.csv</code>, <code>Data/kits/</code></div>
 
   <div id="sel-overlay" class="sel-overlay hidden"></div>
   <div id="sel-drawer" class="sel-drawer hidden" role="dialog" aria-modal="true" aria-labelledby="sel-title" aria-hidden="true" inert>
