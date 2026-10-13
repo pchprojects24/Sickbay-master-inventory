@@ -600,6 +600,11 @@ def main():
         print("previous price kept where SharePoint shows $0: %s"
               % ", ".join(stats["price_fallbacks"]))
 
+    # Keep index.html's asset versions in step, so browsers never pair a cached
+    # old app.js with a newer page.
+    import stamp_assets
+    stamp_assets.main()
+
 
 if __name__ == "__main__":
     main()
