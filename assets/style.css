@@ -798,6 +798,12 @@ select,
   color: #92400e;
 }
 
+/* On the previous list, not on the current one. Kept for reference only. */
+.badge-inactive {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
 /* === Kit tree === */
 .kit-tree {
   background: #fff;
@@ -1002,6 +1008,34 @@ select,
   border-left: 3px solid #3478f6;
 }
 
+.card-inactive {
+  background: #f9fafb;
+  border-left: 3px solid #9ca3af;
+}
+
+.card-inactive .nsn,
+.card-inactive .desc {
+  color: #6b7280;
+}
+
+.kit-row-inactive .kit-row-name {
+  color: #6b7280;
+}
+
+.kit-row-removed {
+  color: #9ca3af;
+}
+
+.kit-note {
+  font-size: 13px;
+  color: #4b5563;
+  background: #f3f4f6;
+  border-left: 3px solid #9ca3af;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 10px;
+}
+
 /* === Pick list additions === */
 .sel-total {
   font-size: 13px;
@@ -1031,6 +1065,11 @@ select,
 
   .inv-table .row-kit td {
     background: #f7faff;
+  }
+
+  .inv-table .row-inactive td {
+    background: #f9fafb;
+    color: #6b7280;
   }
 
   .inv-table .detail-row td {
